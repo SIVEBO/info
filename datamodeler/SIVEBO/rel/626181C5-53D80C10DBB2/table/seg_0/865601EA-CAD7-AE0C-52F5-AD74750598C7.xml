@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="865601EA-CAD7-AE0C-52F5-AD74750598C7" name="guia_despacho">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Guia de despacho generada por admision]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_guia" id="997A0EAF-B261-3E53-8140-A9797992A7E1">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_guia_despacho.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_guia_despacho</autoIncrementSequenceName>
+<autoIncrementTriggerName>guia_despacho_id_guia_trg</autoIncrementTriggerName>
+</Column>
+<Column name="codigo_tracking" id="CEBFD730-92F3-04B1-A334-071630B3820A">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D34B0813-E60C-F838-56B2-C202AE45372B</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_admision" id="8E01BA4B-7293-4A44-366D-C3D4F63DC183">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="40156963-F371-1EB4-31CB-8DE47FF59678" referredColumn="3462D4C0-A51F-A0DE-5CA5-3940E06073EB"/>
+</associations>
+</Column>
+<Column name="fecha_creacion" id="EBAEEBDB-CE20-9DEE-1F31-566D2ECD48BB">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<domain>D2F85336-2C3F-7AAB-CD4B-8D1206380402</domain>
+<defaultValue>SYSTIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="612E1FB2-0150-1997-B610-1D29C3D4C5CD" name="pk_guia_despacho">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="997A0EAF-B261-3E53-8140-A9797992A7E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9E1E5C69-1899-4021-368D-41D805A2913E" name="uq_guia_despacho_tracking">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEBFD730-92F3-04B1-A334-071630B3820A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4D03D9AE-9FB5-37E4-326E-27AC6D84CFEA" name="idx_guia_admision">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E01BA4B-7293-4A44-366D-C3D4F63DC183"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="85C78FD5-EE81-35A8-280F-AB2155E292EF" name="fk_guia_despacho_admision">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E01BA4B-7293-4A44-366D-C3D4F63DC183"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

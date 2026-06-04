@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9F46CE48-35D8-E410-71A3-7B325C77E1B6" containerWithKeyObject="7DF502D9-0BFF-1155-7CC0-469E33161D42" localFKIndex="7351DA56-DB7F-18FF-38C4-1735EA25D600" name="fk_movimiento_caja_venta">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>venta</referredTableLongName>
+<deleteRule>SET NULL</deleteRule>
+<referredTableID>BDD36B14-9DDC-4D25-A2B2-9D3E68F5998F</referredTableID>
+<keyObject>8C2D4DB5-F119-8B66-ED9D-FD48EB1C004E</keyObject>
+<referredKeyID>8C2D4DB5-F119-8B66-ED9D-FD48EB1C004E</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id_venta</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

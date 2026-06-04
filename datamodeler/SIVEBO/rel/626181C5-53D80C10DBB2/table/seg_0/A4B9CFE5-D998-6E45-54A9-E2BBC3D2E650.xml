@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A4B9CFE5-D998-6E45-54A9-E2BBC3D2E650" name="categoria_embalaje">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Categorias de materiales de embalaje]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_cat" id="D6FDA6B1-985A-53A0-E4E4-6AC0C2161B2B">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_categoria_embalaje.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_categoria_embalaje</autoIncrementSequenceName>
+<autoIncrementTriggerName>categoria_embalaje_id_cat_trg</autoIncrementTriggerName>
+</Column>
+<Column name="nombre_categoria" id="66ACD3A5-A191-087B-68DC-0CE4529FB9E0">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D75BA36C-2C9D-A319-5D96-0A2860C2D05A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7E9D4E9E-C275-1401-C33F-A13E3ECF070D" name="pk_categoria_embalaje">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D6FDA6B1-985A-53A0-E4E4-6AC0C2161B2B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BBC79AAE-4901-7F7D-33C4-C2AA061C8E11" name="uq_categoria_embalaje_nombre">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="66ACD3A5-A191-087B-68DC-0CE4529FB9E0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

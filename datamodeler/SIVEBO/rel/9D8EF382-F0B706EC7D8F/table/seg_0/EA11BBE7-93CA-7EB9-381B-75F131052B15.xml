@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EA11BBE7-93CA-7EB9-381B-75F131052B15" name="TIPO_DOCUMENTO">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Tipos de documento de identidad validos]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tipo_doc" id="FA61819C-22D0-84E0-5DB5-414EC7D8C9E0">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_tipo_documento.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_tipo_documento</autoIncrementSequenceName>
+</Column>
+<Column name="codigo" id="BF55C104-D6A4-84F7-58F3-7EDADBF6094D">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>77B9F27E-BC6A-3AAB-617A-C8EC6D1F5D95</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="49C3DA67-B973-FE22-97ED-FCDCF6F33777">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D75BA36C-2C9D-A319-5D96-0A2860C2D05A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D73A66E7-AFBD-4F42-EE7F-5AB24B3165ED" name="pk_tipo_documento">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA61819C-22D0-84E0-5DB5-414EC7D8C9E0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3D64EB00-00F9-9ACC-8C99-818E2ACC4EA4" name="uq_tipo_documento_codigo">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF55C104-D6A4-84F7-58F3-7EDADBF6094D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

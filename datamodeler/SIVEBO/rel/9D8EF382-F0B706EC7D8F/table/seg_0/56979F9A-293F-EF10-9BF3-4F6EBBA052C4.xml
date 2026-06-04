@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="56979F9A-293F-EF10-9BF3-4F6EBBA052C4" name="MOVIMIENTO_CAJA">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Movimientos de ingreso y egreso por sesion de caja]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_mov" id="39B072BC-DD18-CA8F-5899-C0362F6EF65D">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_movimiento_caja.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_movimiento_caja</autoIncrementSequenceName>
+</Column>
+<Column name="id_sesion" id="F350B927-9004-4CDE-DD85-B2C9943EDECF">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="64DDEF08-5FCC-B828-CE6C-B4D1DFB6424F" referredColumn="D1C51542-0D28-14C1-C0FA-F50850AD9368"/>
+</associations>
+</Column>
+<Column name="tipo" id="3E516DE7-F48D-1F9A-4585-38FE95A7BB66">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>77B9F27E-BC6A-3AAB-617A-C8EC6D1F5D95</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="monto" id="23838058-21EC-8F59-109A-690AA883F3EC">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>F5E20F68-7855-460E-7670-BF324239D092</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_venta" id="E0D2145D-062C-1C13-CD37-3D2317204D45">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Nullable: NULL para movimientos manuales sin referencia a venta]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C27F35D9-A03D-4783-7E99-6EE97B4CB547" referredColumn="2BE5C4F6-27F6-FC9E-4B47-A5A1679DB680"/>
+</associations>
+</Column>
+<Column name="concepto" id="D370E19E-8461-F582-6E3B-C2EFF2B556F8">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<domain>885C40E7-4EA8-F52E-D98D-2DB592AE91AA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B515BEC2-DD77-BE65-3D2F-242A88E8271D" name="pk_movimiento_caja">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39B072BC-DD18-CA8F-5899-C0362F6EF65D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="94B7F3B7-FF2D-7B28-FCF4-14AE291A3BE7" name="idx_mov_sesion">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F350B927-9004-4CDE-DD85-B2C9943EDECF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5533ACC3-A1C5-5ED8-C395-C5F666CB2507" name="idx_mov_venta">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0D2145D-062C-1C13-CD37-3D2317204D45"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="79C5F6AA-FD27-D7E1-98FE-4B27F9CB9CBB" name="fk_movimiento_caja_sesion">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F350B927-9004-4CDE-DD85-B2C9943EDECF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="78018FBE-4885-3DD7-D87B-00E246AEC32E" name="fk_movimiento_caja_venta">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0D2145D-062C-1C13-CD37-3D2317204D45"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="ck_movimiento_caja_tipo" directorySegmentName="seg_0" id="0E2F7E1B-401B-1107-A764-28F4AC16CE50">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<rule><![CDATA[tipo IN ('INGRESO','EGRESO')]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="ck_movimiento_caja_monto" directorySegmentName="seg_0" id="62D164C6-08E5-CDFC-1E6E-33D19A5EF397">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<rule><![CDATA[monto > 0]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

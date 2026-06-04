@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3EC4CA5D-A248-74DB-3F39-B76F546D94B2" containerWithKeyObject="633175FA-A721-019D-6C93-57F1636B77C1" localFKIndex="C7D75B2B-9176-6CCE-7203-9230DB4105A9" name="DETALLE_VENTA_ADMISION_FK">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:58:18 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>ADMISION</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>71C12E06-099E-6A1D-E7EA-F111C92B2E9B</referredTableID>
+<keyObject>B140C870-AA4B-C84B-7EDD-ED1F69887DD6</keyObject>
+<referredKeyID>B140C870-AA4B-C84B-7EDD-ED1F69887DD6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_admision</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

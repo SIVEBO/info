@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FCA95DE3-18D1-8807-B0F1-3693A815BE11" containerWithKeyObject="DCDB7A82-5E9F-380B-3D0A-7032C8C32DF0" localFKIndex="C157D1CF-C064-E443-DDCA-F0A6ADCEEE36" name="fk_detalle_venta_articulo">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>articulo_embalaje</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8B39E1AF-7B15-6569-356E-8AFDC25E537D</referredTableID>
+<keyObject>A474101C-1A82-D373-9984-F8785264075D</keyObject>
+<referredKeyID>A474101C-1A82-D373-9984-F8785264075D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_art</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

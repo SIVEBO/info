@@ -1,0 +1,184 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="633175FA-A721-019D-6C93-57F1636B77C1" name="DETALLE_VENTA">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Lineas de detalle de cada venta]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_det" id="FDB5A4D0-6775-BB90-8FD2-D27132E2DEE0">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_detalle_venta.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_detalle_venta</autoIncrementSequenceName>
+</Column>
+<Column name="id_venta" id="90BA8A82-F7AF-BAD4-FE74-EEE5927DEAA3">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="56A16C12-B33D-CBFA-808A-2876D9B9A110" referredColumn="2BE5C4F6-27F6-FC9E-4B47-A5A1679DB680"/>
+</associations>
+</Column>
+<Column name="id_articulo" id="45266175-93D4-FF23-5A64-D42FC68D3C46">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E790E572-30D0-D7F3-7443-FEEFDF000348" referredColumn="E1EB05C3-0663-8974-C370-D81905386BA4"/>
+</associations>
+</Column>
+<Column name="id_admision" id="933BC4A5-AB47-C397-23F5-AB031E310469">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:58:18 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3EC4CA5D-A248-74DB-3F39-B76F546D94B2" referredColumn="D64B472C-5F2B-1488-18E7-23309E2C47B1"/>
+</associations>
+</Column>
+<Column name="cantidad_art" id="CA95A337-A4F8-B72D-D13F-D3CBE8EB48E7">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio_unit_historico_art" id="185619BB-9D59-0B85-8D00-972F84DE4EE3">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>72C29846-715E-7DEF-1A80-1C8C4483E230</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio_admision" id="6337FF94-65AE-26D3-2426-683B9C4824FA">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:57:20 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DB1C8D2B-8F5D-4F11-87F1-50E43F60425E" name="pk_detalle_venta">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FDB5A4D0-6775-BB90-8FD2-D27132E2DEE0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0931E264-67B8-C21F-1AE5-E04B87C35AD2" name="idx_det_venta">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90BA8A82-F7AF-BAD4-FE74-EEE5927DEAA3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C54A6CF-ED44-EAB8-1CA5-97848FA41D63" name="idx_det_articulo">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45266175-93D4-FF23-5A64-D42FC68D3C46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3FB22649-BB44-7DE1-13E1-80FF72A98892" name="fk_detalle_venta_venta">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90BA8A82-F7AF-BAD4-FE74-EEE5927DEAA3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5D241A2-32D6-75EF-C776-27E2C18BC185" name="fk_detalle_venta_articulo">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45266175-93D4-FF23-5A64-D42FC68D3C46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C7D75B2B-9176-6CCE-7203-9230DB4105A9" name="DETALLE_VENTA_ADMISION_FK">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:58:18 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="933BC4A5-AB47-C397-23F5-AB031E310469"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="ck_detalle_venta_cantidad" directorySegmentName="seg_0" id="43B74648-11E7-6DB1-9A81-AE27CDB35BA1">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<rule><![CDATA[cantidad > 0]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="ck_detalle_venta_precio" directorySegmentName="seg_0" id="E2FCE609-D24D-F1C4-CE2A-DAAB5ED4282D">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<rule><![CDATA[precio_unit_historico >= 0]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

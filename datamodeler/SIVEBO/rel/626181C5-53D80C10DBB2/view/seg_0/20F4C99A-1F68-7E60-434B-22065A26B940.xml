@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableView class="oracle.dbtools.crest.model.design.relational.TableView" directorySegmentName="seg_0" id="20F4C99A-1F68-7E60-434B-22065A26B940" name="v_consulta_publica">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<userDefined>true</userDefined>
+<userDefinedSQL><![CDATA[SELECT
+    id_cons,
+    codigo_tracking_consultado,
+    id_guia,
+    CASE WHEN id_guia IS NOT NULL THEN 1 ELSE 0 END AS guia_encontrada,
+    ip_usuario,
+    fecha_hora
+FROM consulta_publica]]></userDefinedSQL>
+<parsed>true</parsed>
+<viewElements>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_cons" id="00A7F340-98F3-ECDB-1591-0A97F266CDC4">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_cons</headerAlias>
+<reference>false</reference>
+<referencedColumn>9E4A20F7-E231-534B-A5FE-77C6BDA9AA5E</referencedColumn>
+<table>D8D98D38-49A7-CE71-3E5A-33FCCD744959</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="codigo_tracking_consultado" id="6713A87B-96CB-6E19-48D7-5E887D740BCA">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>VARCHAR2 (30)</dataType>
+<headerAlias>codigo_tracking_consultado</headerAlias>
+<reference>false</reference>
+<referencedColumn>EE6D9F78-ED14-C574-EA5F-C65826186380</referencedColumn>
+<table>D8D98D38-49A7-CE71-3E5A-33FCCD744959</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_guia" id="18E3CAD9-4ECC-CBCC-7C96-36F7A25503E0">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_guia</headerAlias>
+<reference>false</reference>
+<referencedColumn>1F922037-80CE-5EB9-5A0C-FFC1F8E2FC89</referencedColumn>
+<table>D8D98D38-49A7-CE71-3E5A-33FCCD744959</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="guia_encontrada" id="E8675CF7-4F56-4A4E-F63F-DEDD55F31854">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>guia_encontrada</alias>
+<dataType>UNKNOWN</dataType>
+<headerAlias>guia_encontrada</headerAlias>
+<expression>CASEWHENid_guiaISNOTNULLTHEN1ELSE0END</expression>
+<reference>false</reference>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="ip_usuario" id="A274723E-116E-DB2A-3F17-3B9E5FB7277F">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>VARCHAR2 (45)</dataType>
+<headerAlias>ip_usuario</headerAlias>
+<reference>false</reference>
+<referencedColumn>D3A5ADB2-DBD9-1B5A-DEED-A966137F7AE9</referencedColumn>
+<table>D8D98D38-49A7-CE71-3E5A-33FCCD744959</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="fecha_hora" id="393D2EE5-754C-96B4-DCF2-A9C46603AC62">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>TIMESTAMP WITH TIME ZONE</dataType>
+<headerAlias>fecha_hora</headerAlias>
+<reference>false</reference>
+<referencedColumn>4E84C9BE-13EE-8FB1-9B68-4C025E23B900</referencedColumn>
+<table>D8D98D38-49A7-CE71-3E5A-33FCCD744959</table>
+</viewElement>
+</viewElements>
+<usedObjects>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="D8D98D38-49A7-CE71-3E5A-33FCCD744959">
+<container>true</container>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="9E4A20F7-E231-534B-A5FE-77C6BDA9AA5E">
+<columnName>id_cons</columnName>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="EE6D9F78-ED14-C574-EA5F-C65826186380">
+<columnName>codigo_tracking_consultado</columnName>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="1F922037-80CE-5EB9-5A0C-FFC1F8E2FC89">
+<columnName>id_guia</columnName>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="D3A5ADB2-DBD9-1B5A-DEED-A966137F7AE9">
+<columnName>ip_usuario</columnName>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="4E84C9BE-13EE-8FB1-9B68-4C025E23B900">
+<columnName>fecha_hora</columnName>
+<tableName>consulta_publica</tableName>
+</UsedObject>
+</usedObjects>
+</TableView>

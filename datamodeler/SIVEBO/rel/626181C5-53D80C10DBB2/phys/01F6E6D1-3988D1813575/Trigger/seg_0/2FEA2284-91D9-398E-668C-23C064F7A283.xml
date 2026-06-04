@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_stock_sucursal_updated_at" directorySegmentName="seg_0" id="2FEA2284-91D9-398E-668C-23C064F7A283">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[BEGIN
+    :new.updated_at := SYSTIMESTAMP;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>B264A1F3-9B84-9EA8-83BB-B9A79047C0BF</table>
+</TriggerOraclev10g>

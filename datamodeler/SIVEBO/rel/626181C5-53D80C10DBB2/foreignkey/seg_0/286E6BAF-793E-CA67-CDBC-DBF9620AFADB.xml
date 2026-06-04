@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="286E6BAF-793E-CA67-CDBC-DBF9620AFADB" containerWithKeyObject="E85CD216-425B-5831-3A81-8DAB5E025A70" localFKIndex="26BA1B7B-AF90-70B9-B860-D26D30C6DF85" name="fk_hist_estado">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>estado_maestro</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D0884633-8AEC-9B25-BAF9-BB0407A13E08</referredTableID>
+<keyObject>CFBA67B4-F07E-02CA-B0A9-A64077914225</keyObject>
+<referredKeyID>CFBA67B4-F07E-02CA-B0A9-A64077914225</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_estado</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

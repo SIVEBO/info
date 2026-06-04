@@ -1,0 +1,259 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5FDE1830-7B96-9BCC-179D-0446FBAB827D" name="admision">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Registro de ingreso de encomiendas]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_admision" id="3462D4C0-A51F-A0DE-5CA5-3940E06073EB">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_admision.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_admision</autoIncrementSequenceName>
+<autoIncrementTriggerName>admision_id_admision_trg</autoIncrementTriggerName>
+</Column>
+<Column name="id_cliente_rem" id="22E66EC9-EB3A-2F14-6F8B-68307A3BD38F">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E527DCAA-2F89-DDB2-0364-0919DE0D4BEC" referredColumn="328C6561-B388-9778-0475-FE0C4FBFFDBC"/>
+</associations>
+</Column>
+<Column name="id_cliente_dest" id="1503EE37-FC60-20C2-517D-95F75B5522C3">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2CE30168-CF67-F6D4-7F2B-F407FD78D465" referredColumn="328C6561-B388-9778-0475-FE0C4FBFFDBC"/>
+</associations>
+</Column>
+<Column name="id_sucursal_origen" id="387B273C-0E69-6183-CEB7-F3535A072DE5">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2AEEE400-AEB0-5921-81F8-2622A1CBFE07" referredColumn="0563E7C9-DA4B-7D31-B6AD-3023ECC685F8"/>
+</associations>
+</Column>
+<Column name="id_sucursal_dest" id="8FF16D46-4A67-0932-CB92-6D5357652558">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FC180CA0-BE66-3450-F288-A6A8DCC2BC55" referredColumn="0563E7C9-DA4B-7D31-B6AD-3023ECC685F8"/>
+</associations>
+</Column>
+<Column name="id_tipo" id="4E6F4929-352F-248A-A576-DDE53A263C0E">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="385569E2-7F3F-C5AD-4195-7612D781E954" referredColumn="5E153839-C7F9-DA7A-32C5-D90D8CCD236D"/>
+</associations>
+</Column>
+<Column name="peso_kg" id="1FF7CD0B-BE2A-F21E-FB0C-DA9A549E6765">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>B26839D3-627F-3CD4-56D4-DE6CC0E4409B</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_creacion" id="899A0860-6E16-93EB-3CC4-4A9D5EE4E159">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<domain>D2F85336-2C3F-7AAB-CD4B-8D1206380402</domain>
+<defaultValue>SYSTIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_usuario_reg" id="AB6FF499-7F15-2D58-0919-63A536503979">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BE777EB4-180A-9CF5-1F9F-4D3C4D107087" referredColumn="00CECE70-D670-E376-07E3-DAD07548B559"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12F7A6B2-01FA-78A3-9A6C-0AC43CEFA1B3" name="pk_admision">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3462D4C0-A51F-A0DE-5CA5-3940E06073EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5F20DAA-A198-E32B-C188-C32A11DA21B7" name="idx_admision_rem">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22E66EC9-EB3A-2F14-6F8B-68307A3BD38F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6A7E74EF-FE1B-C4E8-2A83-DD8E0E438DF0" name="idx_admision_dest">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1503EE37-FC60-20C2-517D-95F75B5522C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F2A7AA9E-5547-0D1E-2B0B-EEBFD40771EF" name="idx_admision_sucursal">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="387B273C-0E69-6183-CEB7-F3535A072DE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F4DABE2-7536-2766-6611-7C89088F4C95" name="idx_admision_suc_dest">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8FF16D46-4A67-0932-CB92-6D5357652558"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA8BF17B-99F3-A427-081E-265B24E82270" name="idx_admision_fecha">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="899A0860-6E16-93EB-3CC4-4A9D5EE4E159"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B007B780-A5B2-0D5E-4BEF-2A4C8F195C38" name="fk_admision_cliente_rem">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22E66EC9-EB3A-2F14-6F8B-68307A3BD38F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D38D8AA0-D9C7-8C4D-B3C0-2344026A55EA" name="fk_admision_cliente_dest">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1503EE37-FC60-20C2-517D-95F75B5522C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C4B3550-16A6-FC2B-02AC-72FA90FDD584" name="fk_admision_sucursal_origen">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="387B273C-0E69-6183-CEB7-F3535A072DE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E19B8385-D765-3171-912B-85C3A257C1A3" name="fk_admision_sucursal_dest">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8FF16D46-4A67-0932-CB92-6D5357652558"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CCE1BB26-34AE-5FFC-0289-E3E7F7DF828F" name="fk_admision_tipo_carga">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E6F4929-352F-248A-A576-DDE53A263C0E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E5FFA7AE-C093-36F8-850B-A7A7C3C8A34B" name="fk_admision_usuario_reg">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AB6FF499-7F15-2D58-0919-63A536503979"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

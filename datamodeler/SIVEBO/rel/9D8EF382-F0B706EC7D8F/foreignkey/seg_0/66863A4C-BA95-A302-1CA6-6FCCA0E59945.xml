@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="66863A4C-BA95-A302-1CA6-6FCCA0E59945" containerWithKeyObject="B6623341-BF9E-6FB0-A020-A62BBFB75DA6" localFKIndex="09F75B61-085F-E988-4664-3D783A8A2CBF" name="fk_apertura_cierre_caja">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>CAJA_SUCURSAL</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C1A2C9AE-D084-0E8B-1C3D-3791276F281F</referredTableID>
+<keyObject>5DEB5DA1-278C-491F-F072-333E69FDBF24</keyObject>
+<referredKeyID>5DEB5DA1-278C-491F-F072-333E69FDBF24</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_caja</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

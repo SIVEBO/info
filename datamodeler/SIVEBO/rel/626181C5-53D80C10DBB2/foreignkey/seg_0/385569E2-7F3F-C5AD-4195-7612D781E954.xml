@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="385569E2-7F3F-C5AD-4195-7612D781E954" containerWithKeyObject="5FDE1830-7B96-9BCC-179D-0446FBAB827D" localFKIndex="CCE1BB26-34AE-5FFC-0289-E3E7F7DF828F" name="fk_admision_tipo_carga">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>tipo_carga</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6E072169-D6F2-6622-1D31-C7ED849FE5A8</referredTableID>
+<keyObject>85A68479-40D8-7A43-B136-E16D3FC625E6</keyObject>
+<referredKeyID>85A68479-40D8-7A43-B136-E16D3FC625E6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tipo</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

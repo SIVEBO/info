@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E3DA991D-98A9-B693-4BA9-D6D17EE7964B" containerWithKeyObject="1D7C3F45-370B-B01C-9C78-FB8CC6F7A8EF" localFKIndex="6B0DAF0B-2F59-A0DA-3EC7-015580BAD0F4" name="fk_sucursal_comuna">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>COMUNA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>581F3553-7173-BD96-9399-CC9122DC1C9B</referredTableID>
+<keyObject>0474923C-9D52-BE54-7A49-3A428EC1DACA</keyObject>
+<referredKeyID>0474923C-9D52-BE54-7A49-3A428EC1DACA</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_comuna</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

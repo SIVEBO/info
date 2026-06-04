@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="200B826C-2D99-E7FF-00EF-49B940418687" name="caja_sucursal">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Caja registradora por sucursal (1:1)]]></commentInRDBMS>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_caja" id="09C2CB13-9B2A-2FD8-2F82-32432C9CDE1F">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<defaultValue>seq_caja_sucursal.NEXTVAL</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_caja_sucursal</autoIncrementSequenceName>
+<autoIncrementTriggerName>caja_sucursal_id_caja_trg</autoIncrementTriggerName>
+</Column>
+<Column name="id_sucursal" id="7A52DCFD-1A82-FE3C-8543-358E0B3CC91F">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>CCAD67CF-9535-833E-94CF-15919B607E28</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="247DEEFB-4DB4-54AC-12E2-A3580748FB20" referredColumn="0563E7C9-DA4B-7D31-B6AD-3023ECC685F8"/>
+</associations>
+</Column>
+<Column name="estado_actual" id="F49D17CE-8E11-273A-0B69-138674DF7453">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<constraintName>ck_caja_sucursal_estado</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>8085D0A0-E879-57BA-DF96-8D7FD97BA451</domain>
+<listOfValues>
+<valueDef value="ABIERTA" description=""/>
+<valueDef value="CERRADA" description=""/>
+</listOfValues>
+<defaultValue>&apos;CERRADA&apos;</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="177D435D-F3F3-700D-3877-D135FDEAA5BC" name="pk_caja_sucursal">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="09C2CB13-9B2A-2FD8-2F82-32432C9CDE1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BADD2662-6440-B6FE-4F9D-BB1F31A06D8A" name="uq_caja_sucursal_sucursal">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A52DCFD-1A82-FE3C-8543-358E0B3CC91F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6190BFD8-1F09-FF09-958F-922F3DB74920" name="idx_caja_sucursal">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A52DCFD-1A82-FE3C-8543-358E0B3CC91F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CC06F885-C866-5EAB-5D7B-2588D2339386" name="fk_caja_sucursal_sucursal">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A52DCFD-1A82-FE3C-8543-358E0B3CC91F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

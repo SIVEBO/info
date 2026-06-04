@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="34FC254C-AC7C-C2A8-942E-320F7D88DD00" containerWithKeyObject="4EC7CF8A-ED58-2753-F832-9DB499390F34" localFKIndex="AF742AC3-625C-504C-A307-74EAD09ABF06" name="fk_cliente_tipo_doc">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>TIPO_DOCUMENTO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>EA11BBE7-93CA-7EB9-381B-75F131052B15</referredTableID>
+<keyObject>D73A66E7-AFBD-4F42-EE7F-5AB24B3165ED</keyObject>
+<referredKeyID>D73A66E7-AFBD-4F42-EE7F-5AB24B3165ED</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tipo_doc</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

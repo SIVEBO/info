@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="64DDEF08-5FCC-B828-CE6C-B4D1DFB6424F" containerWithKeyObject="56979F9A-293F-EF10-9BF3-4F6EBBA052C4" localFKIndex="79C5F6AA-FD27-D7E1-98FE-4B27F9CB9CBB" name="fk_movimiento_caja_sesion">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>APERTURA_CIERRE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B6623341-BF9E-6FB0-A020-A62BBFB75DA6</referredTableID>
+<keyObject>2ED60813-2F0A-0628-EED2-C1C29F5FF281</keyObject>
+<referredKeyID>2ED60813-2F0A-0628-EED2-C1C29F5FF281</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_sesion</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

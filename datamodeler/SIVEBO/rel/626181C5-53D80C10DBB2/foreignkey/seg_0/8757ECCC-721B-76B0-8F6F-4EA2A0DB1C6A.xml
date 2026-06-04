@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8757ECCC-721B-76B0-8F6F-4EA2A0DB1C6A" containerWithKeyObject="5B7E37AB-A2CF-B6FF-8A33-EA09F716C63A" localFKIndex="C9029481-3F33-D9EB-C5DB-87C59EB938DC" name="fk_inv_paquete_guia">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 19:51:01 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>guia_despacho</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>865601EA-CAD7-AE0C-52F5-AD74750598C7</referredTableID>
+<keyObject>612E1FB2-0150-1997-B610-1D29C3D4C5CD</keyObject>
+<referredKeyID>612E1FB2-0150-1997-B610-1D29C3D4C5CD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_guia</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

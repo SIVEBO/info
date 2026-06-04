@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="ED2C4F7E-801B-1103-3574-85B19AB028D1" containerWithKeyObject="19C9A098-8075-BF76-803A-C8305BFB26B0" localFKIndex="AB415D2F-D32D-FF7D-9879-6E8994924B53" name="fk_token_sesion_usuario">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<referredTableLongName>USUARIO</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>48F9A707-69C7-31D2-9627-3D4E35F31105</referredTableID>
+<keyObject>5BD23A44-8214-32BB-6629-7297971107DB</keyObject>
+<referredKeyID>5BD23A44-8214-32BB-6629-7297971107DB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_usuario</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

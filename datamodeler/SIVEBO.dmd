@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="SIVEBO" id="4D81B15C-442A-9143-D9CD-D6D4FCB2EB95" version="3.5">
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:30 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>4D81B15C-442A-9143-D9CD-D6D4FCB2EB95</designId>
+</OSDM_Design>

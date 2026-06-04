@@ -1,0 +1,166 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableView class="oracle.dbtools.crest.model.design.relational.TableView" directorySegmentName="seg_0" id="250D36F0-9051-2F41-246C-A30F57AEFB04" name="V_ESTADO_ACTUAL_GUIA">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<userDefined>true</userDefined>
+<userDefinedSQL><![CDATA[SELECT
+    h.id_guia,
+    h.id_estado,
+    e.nombre_estado,
+    h.fecha_hora        AS fecha_ultimo_estado,
+    h.id_sucursal_actual,
+    h.id_usuario        AS id_usuario_responsable,
+    h.comentario
+FROM HISTORIAL_LOGISTICO h
+JOIN ESTADO_MAESTRO e ON e.id_estado = h.id_estado
+WHERE h.fecha_hora = (
+    SELECT MAX(h2.fecha_hora)
+    FROM HISTORIAL_LOGISTICO h2
+    WHERE h2.id_guia = h.id_guia
+)]]></userDefinedSQL>
+<parsed>true</parsed>
+<viewElements>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_guia" id="90D8E1C9-3504-A4F9-C236-B182F4C85CD2">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_guia</headerAlias>
+<reference>false</reference>
+<referencedColumn>13608EC4-252A-9DA0-18DC-E698E0CEBAF0</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+<tableAlias>h</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_estado" id="9D243B6E-C9B9-3E2E-0146-12F49666D153">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_estado</headerAlias>
+<reference>false</reference>
+<referencedColumn>DF067A0D-5172-67BF-DB39-AC56C25439C5</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+<tableAlias>h</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="nombre_estado" id="23582828-A667-5D17-C425-55324C032C7C">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>VARCHAR2 (60)</dataType>
+<headerAlias>nombre_estado</headerAlias>
+<reference>false</reference>
+<referencedColumn>A8BFE12C-F5B3-71E3-409B-0788033F985C</referencedColumn>
+<table>5895495A-4C71-E283-D245-8456EC3EF8A3</table>
+<tableAlias>e</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="fecha_ultimo_estado" id="F6941581-F0ED-C66A-0CA7-C15A15D53946">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>fecha_ultimo_estado</alias>
+<dataType>TIMESTAMP WITH TIME ZONE</dataType>
+<headerAlias>fecha_ultimo_estado</headerAlias>
+<reference>false</reference>
+<referencedColumn>96D148AB-94AC-B39F-6A47-FFA33092999C</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_sucursal_actual" id="EF72C738-519A-F690-6C59-31403C1CA3F6">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_sucursal_actual</headerAlias>
+<reference>false</reference>
+<referencedColumn>CF94AA06-9098-B036-9D53-3163E9538270</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+<tableAlias>h</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="id_usuario_responsable" id="556A0109-AE4D-02DD-D407-9272844A25AE">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>id_usuario_responsable</alias>
+<dataType>NUMBER (10)</dataType>
+<headerAlias>id_usuario_responsable</headerAlias>
+<reference>false</reference>
+<referencedColumn>C25FEA5A-939B-CBF4-E0B5-3C5FB488EBD7</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="comentario" id="875D5BC1-F5E2-DFD2-A0C4-E1DD3E3103CA">
+<sourceDDLFile>ddl_oracle.sql</sourceDDLFile>
+<createdBy>daemu</createdBy>
+<createdTime>2026-06-04 18:11:53 UTC</createdTime>
+<ownerDesignName>SIVEBO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>CLOB</dataType>
+<headerAlias>comentario</headerAlias>
+<reference>false</reference>
+<referencedColumn>975915E9-CE6C-F884-FEA6-0AE727AF8EF9</referencedColumn>
+<table>4EA3AA0C-2CBB-99E4-779B-F8E729D749E8</table>
+<tableAlias>h</tableAlias>
+</viewElement>
+</viewElements>
+<usedObjects>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="4EA3AA0C-2CBB-99E4-779B-F8E729D749E8">
+<container>true</container>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="5895495A-4C71-E283-D245-8456EC3EF8A3">
+<container>true</container>
+<tableName>ESTADO_MAESTRO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="13608EC4-252A-9DA0-18DC-E698E0CEBAF0">
+<columnName>id_guia</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="DF067A0D-5172-67BF-DB39-AC56C25439C5">
+<columnName>id_estado</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="A8BFE12C-F5B3-71E3-409B-0788033F985C">
+<columnName>nombre_estado</columnName>
+<tableName>ESTADO_MAESTRO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="CF94AA06-9098-B036-9D53-3163E9538270">
+<columnName>id_sucursal_actual</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="975915E9-CE6C-F884-FEA6-0AE727AF8EF9">
+<columnName>comentario</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="C25FEA5A-939B-CBF4-E0B5-3C5FB488EBD7">
+<columnName>id_usuario</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="1A2C7966-3AE7-EC7A-DEEB-2AB6FD0518F9">
+<columnName>id_estado</columnName>
+<tableName>ESTADO_MAESTRO</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="96D148AB-94AC-B39F-6A47-FFA33092999C">
+<columnName>fecha_hora</columnName>
+<tableName>HISTORIAL_LOGISTICO</tableName>
+</UsedObject>
+</usedObjects>
+</TableView>
