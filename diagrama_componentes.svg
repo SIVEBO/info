@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="820" font-family="Arial, sans-serif">
+<defs>
+  <marker id="dep" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+    <polyline points="0,0 9,5 0,10" fill="none" stroke="#64748b" stroke-width="1.5"/>
+  </marker>
+</defs>
+<rect width="1100" height="820" fill="#f8fafc"/>
+<rect width="1100" height="48" fill="#1e40af"/>
+<text x="550" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Componentes — SIVEBO · RapidinBombin</text>
+
+<!-- Helper: component box template (rectangle + «component» tag + small icon) -->
+<!-- Component icon: two small notched rects on left side -->
+
+<!-- ── GROUP: SEGURIDAD ──────────────────────────── -->
+<rect x="18" y="58" width="210" height="190" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="123" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#7c3aed">Seguridad</text>
+
+<!-- ms_auth -->
+<rect x="35" y="85" width="175" height="70" rx="4" fill="white" stroke="#7c3aed" stroke-width="1.5"/>
+<rect x="25" y="100" width="14" height="10" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+<rect x="25" y="116" width="14" height="10" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+<text x="122" y="107" text-anchor="middle" font-size="10" fill="#6d28d9" font-style="italic">«component»</text>
+<text x="122" y="123" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Auth</text>
+<text x="122" y="140" text-anchor="middle" font-size="10" fill="#64748b">JWT · BCrypt · Spring Security</text>
+<text x="35" y="155" font-size="9" fill="#7c3aed">⬡ POST /auth/login</text>
+<text x="35" y="167" font-size="9" fill="#7c3aed">⬡ POST /auth/register</text>
+<text x="35" y="182" font-size="9" fill="#7c3aed">⬡ GET /usuarios</text>
+<text x="122" y="240" text-anchor="middle" font-size="9" fill="#7c3aed">:8086</text>
+
+<!-- ── GROUP: GEOGRAFICO ──────────────────────────── -->
+<rect x="245" y="58" width="250" height="310" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="370" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#059669">Geográfico</text>
+
+<!-- ms_regiones -->
+<rect x="260" y="85" width="215" height="65" rx="4" fill="white" stroke="#059669" stroke-width="1.5"/>
+<rect x="250" y="100" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<rect x="250" y="116" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<text x="367" y="105" text-anchor="middle" font-size="10" fill="#065f46" font-style="italic">«component»</text>
+<text x="367" y="121" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Regiones</text>
+<text x="367" y="138" text-anchor="middle" font-size="9" fill="#64748b">GET /regiones  :8082</text>
+
+<!-- ms_comunas -->
+<rect x="260" y="163" width="215" height="65" rx="4" fill="white" stroke="#059669" stroke-width="1.5"/>
+<rect x="250" y="178" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<rect x="250" y="194" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<text x="367" y="183" text-anchor="middle" font-size="10" fill="#065f46" font-style="italic">«component»</text>
+<text x="367" y="199" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Comunas</text>
+<text x="367" y="216" text-anchor="middle" font-size="9" fill="#64748b">GET /comunas  :8088</text>
+
+<!-- ms_sucursales -->
+<rect x="260" y="241" width="215" height="65" rx="4" fill="white" stroke="#059669" stroke-width="1.5"/>
+<rect x="250" y="256" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<rect x="250" y="272" width="14" height="10" rx="2" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+<text x="367" y="261" text-anchor="middle" font-size="10" fill="#065f46" font-style="italic">«component»</text>
+<text x="367" y="277" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Sucursales</text>
+<text x="367" y="294" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /sucursales  :8083</text>
+<text x="260" y="358" font-size="9" fill="#059669">Actuator · Swagger UI</text>
+
+<!-- ── GROUP: CLIENTES ──────────────────────────── -->
+<rect x="513" y="58" width="210" height="140" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="618" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#ea580c">Clientes</text>
+
+<rect x="528" y="85" width="180" height="70" rx="4" fill="white" stroke="#ea580c" stroke-width="1.5"/>
+<rect x="518" y="100" width="14" height="10" rx="2" fill="#ffedd5" stroke="#ea580c" stroke-width="1"/>
+<rect x="518" y="116" width="14" height="10" rx="2" fill="#ffedd5" stroke="#ea580c" stroke-width="1"/>
+<text x="618" y="105" text-anchor="middle" font-size="10" fill="#c2410c" font-style="italic">«component»</text>
+<text x="618" y="121" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Clientes</text>
+<text x="618" y="138" text-anchor="middle" font-size="9" fill="#64748b">CRUD /clientes  :8085</text>
+
+<!-- ── GROUP: LOGISTICA (row 2 left) ── -->
+<rect x="18" y="265" width="210" height="310" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="123" y="283" text-anchor="middle" font-size="11" font-weight="bold" fill="#3b82f6">Logística</text>
+
+<!-- ms_admision -->
+<rect x="30" y="292" width="185" height="55" rx="4" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="20" y="305" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<rect x="20" y="320" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<text x="122" y="310" text-anchor="middle" font-size="10" fill="#1e40af" font-style="italic">«component»</text>
+<text x="122" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Admision</text>
+<text x="122" y="340" text-anchor="middle" font-size="9" fill="#64748b">POST /admisiones  :8087</text>
+
+<!-- ms_guias_despacho -->
+<rect x="30" y="358" width="185" height="55" rx="4" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="20" y="371" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<rect x="20" y="386" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<text x="122" y="376" text-anchor="middle" font-size="10" fill="#1e40af" font-style="italic">«component»</text>
+<text x="122" y="392" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·GuiasDespacho</text>
+<text x="122" y="407" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /guias  :8093</text>
+
+<!-- ms_historial_logistico -->
+<rect x="30" y="424" width="185" height="55" rx="4" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="20" y="437" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<rect x="20" y="452" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<text x="122" y="442" text-anchor="middle" font-size="10" fill="#1e40af" font-style="italic">«component»</text>
+<text x="122" y="458" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·HistorialLogistico</text>
+<text x="122" y="473" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /historial  :8080</text>
+
+<!-- ms_paquetes -->
+<rect x="30" y="490" width="185" height="55" rx="4" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="20" y="503" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<rect x="20" y="518" width="14" height="10" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<text x="122" y="508" text-anchor="middle" font-size="10" fill="#1e40af" font-style="italic">«component»</text>
+<text x="122" y="524" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Paquetes</text>
+<text x="122" y="539" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /inventario  :8092</text>
+
+<!-- ── GROUP: COMERCIAL ── -->
+<rect x="245" y="385" width="250" height="260" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="370" y="403" text-anchor="middle" font-size="11" font-weight="bold" fill="#d97706">Comercial</text>
+
+<rect x="258" y="412" width="220" height="55" rx="4" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<rect x="248" y="427" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<rect x="248" y="442" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<text x="368" y="430" text-anchor="middle" font-size="10" fill="#92400e" font-style="italic">«component»</text>
+<text x="368" y="446" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Ventas</text>
+<text x="368" y="461" text-anchor="middle" font-size="9" fill="#64748b">POST /ventas  :8084</text>
+
+<rect x="258" y="478" width="220" height="55" rx="4" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<rect x="248" y="493" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<rect x="248" y="508" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<text x="368" y="496" text-anchor="middle" font-size="10" fill="#92400e" font-style="italic">«component»</text>
+<text x="368" y="512" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·DetalleVenta</text>
+<text x="368" y="527" text-anchor="middle" font-size="9" fill="#64748b">POST /detalles  :8089</text>
+
+<rect x="258" y="544" width="220" height="55" rx="4" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<rect x="248" y="559" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<rect x="248" y="574" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+<text x="368" y="562" text-anchor="middle" font-size="10" fill="#92400e" font-style="italic">«component»</text>
+<text x="368" y="578" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Embalaje</text>
+<text x="368" y="593" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /articulos  :8091</text>
+
+<!-- ── GROUP: FINANZAS + PORTAL ── -->
+<rect x="513" y="215" width="210" height="340" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="618" y="233" text-anchor="middle" font-size="11" font-weight="bold" fill="#16a34a">Finanzas</text>
+
+<rect x="526" y="242" width="185" height="65" rx="4" fill="white" stroke="#16a34a" stroke-width="1.5"/>
+<rect x="516" y="257" width="14" height="10" rx="2" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+<rect x="516" y="272" width="14" height="10" rx="2" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+<text x="618" y="262" text-anchor="middle" font-size="10" fill="#14532d" font-style="italic">«component»</text>
+<text x="618" y="278" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Finanzas</text>
+<text x="618" y="295" text-anchor="middle" font-size="9" fill="#64748b">GET/POST /caja  :8090</text>
+
+<rect x="513" y="575" width="210" height="150" rx="6" fill="#fdf2f8" stroke="#be185d" stroke-width="2"/>
+<text x="618" y="593" text-anchor="middle" font-size="11" font-weight="bold" fill="#be185d">Portal</text>
+
+<rect x="526" y="602" width="185" height="65" rx="4" fill="white" stroke="#be185d" stroke-width="1.5"/>
+<rect x="516" y="617" width="14" height="10" rx="2" fill="#fce7f3" stroke="#be185d" stroke-width="1"/>
+<rect x="516" y="632" width="14" height="10" rx="2" fill="#fce7f3" stroke="#be185d" stroke-width="1"/>
+<text x="618" y="622" text-anchor="middle" font-size="10" fill="#831843" font-style="italic">«component»</text>
+<text x="618" y="638" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">MS·Portal</text>
+<text x="618" y="655" text-anchor="middle" font-size="9" fill="#64748b">GET /tracking · POST /feedback  :8081</text>
+
+<!-- ── DEPENDENCY ARROWS ── -->
+<!-- Admision → Clientes -->
+<line x1="215" y1="318" x2="513" y2="120" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Admision → Sucursales -->
+<line x1="215" y1="325" x2="260" y2="275" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- GuiasDespacho → Admision -->
+<line x1="122" y1="424" x2="122" y2="358" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Historial → GuiasDespacho -->
+<line x1="122" y1="490" x2="122" y2="424" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Paquetes → GuiasDespacho -->
+<line x1="145" y1="556" x2="145" y2="414" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Ventas → Embalaje -->
+<line x1="368" y1="478" x2="368" y2="544" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Ventas → Admision -->
+<line x1="258" y1="440" x2="215" y2="330" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Finanzas → Ventas -->
+<line x1="513" y1="275" x2="478" y2="440" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Portal → GuiasDespacho -->
+<line x1="513" y1="630" x2="215" y2="385" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<!-- Portal → Clientes -->
+<line x1="618" y1="602" x2="618" y2="198" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- LEGEND -->
+<rect x="740" y="265" width="345" height="110" rx="6" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="912" y="285" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">Leyenda</text>
+<rect x="755" y="295" width="40" height="28" rx="3" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="748" y="303" width="10" height="7" rx="1" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<rect x="748" y="314" width="10" height="7" rx="1" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+<text x="810" y="313" font-size="10" fill="#1e293b">Componente (microservicio)</text>
+<line x1="755" y1="345" x2="795" y2="345" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+<text x="810" y="349" font-size="10" fill="#1e293b">Dependencia «uses»</text>
+<text x="755" y="368" font-size="10" fill="#64748b">⬡ Interfaz REST provista</text>
+</svg>

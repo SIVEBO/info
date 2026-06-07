@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="760" font-family="Arial, sans-serif">
+<defs>
+  <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#374151"/></marker>
+  <marker id="arrd" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#94a3b8"/></marker>
+</defs>
+<rect width="1060" height="760" fill="#f8fafc"/>
+<rect width="1060" height="48" fill="#1e40af"/>
+<text x="530" y="20" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Arquitectura — SIVEBO · RapidinBombin</text>
+<text x="530" y="39" text-anchor="middle" fill="#93c5fd" font-size="11">Arquitectura de microservicios · Spring Boot 4 · MariaDB (database-per-service) · REST / WebClient</text>
+
+<!-- ── LAYER 1: CLIENT ─────────────────────────────── -->
+<rect x="18" y="58" width="1024" height="108" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="25" y="76" font-size="11" font-weight="bold" fill="#475569">Capa Cliente</text>
+
+<!-- Browser -->
+<rect x="100" y="82" width="150" height="72" rx="6" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="175" y="112" text-anchor="middle" font-size="22">🌐</text>
+<text x="175" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Web Browser</text>
+<text x="175" y="148" text-anchor="middle" font-size="10" fill="#64748b">Operador / Admin</text>
+
+<!-- Mobile -->
+<rect x="300" y="82" width="150" height="72" rx="6" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="375" y="112" text-anchor="middle" font-size="22">📱</text>
+<text x="375" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">App Móvil</text>
+<text x="375" y="148" text-anchor="middle" font-size="10" fill="#64748b">Cliente / Público</text>
+
+<!-- REST client -->
+<rect x="500" y="82" width="150" height="72" rx="6" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="575" y="112" text-anchor="middle" font-size="22">🔧</text>
+<text x="575" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">REST Client</text>
+<text x="575" y="148" text-anchor="middle" font-size="10" fill="#64748b">Postman / curl</text>
+
+<!-- External system -->
+<rect x="700" y="82" width="150" height="72" rx="6" fill="white" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="775" y="112" text-anchor="middle" font-size="22">🏢</text>
+<text x="775" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#64748b">Sist. Externo</text>
+<text x="775" y="148" text-anchor="middle" font-size="10" fill="#94a3b8">futuro</text>
+
+<!-- Arrows from clients down -->
+<line x1="175" y1="154" x2="175" y2="178" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="375" y1="154" x2="375" y2="178" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="575" y1="154" x2="575" y2="178" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="775" y1="154" x2="775" y2="178" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrd)"/>
+
+<!-- ── LAYER 2: API GATEWAY ─────────────────────────── -->
+<rect x="18" y="178" width="1024" height="70" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="25" y="196" font-size="11" font-weight="bold" fill="#92400e">Capa API Gateway  (objetivo arquitectural — en implementación)</text>
+<rect x="300" y="192" width="460" height="44" rx="6" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<text x="530" y="210" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">API Gateway</text>
+<text x="530" y="228" text-anchor="middle" font-size="10" fill="#64748b">Eureka Service Discovery · Enrutamiento · Load Balancing · SSL Termination</text>
+
+<!-- Arrow from gateway down -->
+<line x1="530" y1="248" x2="530" y2="268" stroke="#374151" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- ── LAYER 3: MICROSERVICES ─────────────────────────── -->
+<rect x="18" y="268" width="1024" height="298" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="25" y="286" font-size="11" font-weight="bold" fill="#1e40af">Capa de Microservicios  (Spring Boot 4.0 · Java 25 · REST / WebClient)</text>
+
+<!-- Row 1 of services -->
+<rect x="35"  y="296" width="130" height="52" rx="5" fill="white" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="100" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Auth</text>
+<text x="100" y="332" text-anchor="middle" font-size="9" fill="#7c3aed">:8086</text>
+<text x="100" y="343" text-anchor="middle" font-size="9" fill="#64748b">JWT · Roles</text>
+
+<rect x="178" y="296" width="130" height="52" rx="5" fill="white" stroke="#059669" stroke-width="1.5"/>
+<text x="243" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Regiones</text>
+<text x="243" y="332" text-anchor="middle" font-size="9" fill="#059669">:8082</text>
+<text x="243" y="343" text-anchor="middle" font-size="9" fill="#64748b">Ref. geográfica</text>
+
+<rect x="321" y="296" width="130" height="52" rx="5" fill="white" stroke="#059669" stroke-width="1.5"/>
+<text x="386" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Comunas</text>
+<text x="386" y="332" text-anchor="middle" font-size="9" fill="#059669">:8088</text>
+<text x="386" y="343" text-anchor="middle" font-size="9" fill="#64748b">Ref. geográfica</text>
+
+<rect x="464" y="296" width="130" height="52" rx="5" fill="white" stroke="#059669" stroke-width="1.5"/>
+<text x="529" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Sucursales</text>
+<text x="529" y="332" text-anchor="middle" font-size="9" fill="#059669">:8083</text>
+<text x="529" y="343" text-anchor="middle" font-size="9" fill="#64748b">Red de puntos</text>
+
+<rect x="607" y="296" width="130" height="52" rx="5" fill="white" stroke="#ea580c" stroke-width="1.5"/>
+<text x="672" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Clientes</text>
+<text x="672" y="332" text-anchor="middle" font-size="9" fill="#ea580c">:8085</text>
+<text x="672" y="343" text-anchor="middle" font-size="9" fill="#64748b">Remit. · Dest.</text>
+
+<rect x="750" y="296" width="130" height="52" rx="5" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="815" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Admision</text>
+<text x="815" y="332" text-anchor="middle" font-size="9" fill="#3b82f6">:8087</text>
+<text x="815" y="343" text-anchor="middle" font-size="9" fill="#64748b">Intake · Tracking</text>
+
+<rect x="893" y="296" width="130" height="52" rx="5" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="958" y="317" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Paquetes</text>
+<text x="958" y="332" text-anchor="middle" font-size="9" fill="#3b82f6">:8092</text>
+<text x="958" y="343" text-anchor="middle" font-size="9" fill="#64748b">Bodega · Stock</text>
+
+<!-- Row 2 of services -->
+<rect x="35"  y="364" width="130" height="52" rx="5" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="100" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Guias</text>
+<text x="100" y="399" text-anchor="middle" font-size="9" fill="#3b82f6">:8093</text>
+<text x="100" y="410" text-anchor="middle" font-size="9" fill="#64748b">Despacho</text>
+
+<rect x="178" y="364" width="130" height="52" rx="5" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="243" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Historial</text>
+<text x="243" y="399" text-anchor="middle" font-size="9" fill="#3b82f6">:8080</text>
+<text x="243" y="410" text-anchor="middle" font-size="9" fill="#64748b">Log. · Estados</text>
+
+<rect x="321" y="364" width="130" height="52" rx="5" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<text x="386" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Embalaje</text>
+<text x="386" y="399" text-anchor="middle" font-size="9" fill="#d97706">:8091</text>
+<text x="386" y="410" text-anchor="middle" font-size="9" fill="#64748b">Materiales POS</text>
+
+<rect x="464" y="364" width="130" height="52" rx="5" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<text x="529" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Ventas</text>
+<text x="529" y="399" text-anchor="middle" font-size="9" fill="#d97706">:8084</text>
+<text x="529" y="410" text-anchor="middle" font-size="9" fill="#64748b">POS · Boletas</text>
+
+<rect x="607" y="364" width="130" height="52" rx="5" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<text x="672" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·DetalleVenta</text>
+<text x="672" y="399" text-anchor="middle" font-size="9" fill="#d97706">:8089</text>
+<text x="672" y="410" text-anchor="middle" font-size="9" fill="#64748b">Líneas boleta</text>
+
+<rect x="750" y="364" width="130" height="52" rx="5" fill="white" stroke="#16a34a" stroke-width="1.5"/>
+<text x="815" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Finanzas</text>
+<text x="815" y="399" text-anchor="middle" font-size="9" fill="#16a34a">:8090</text>
+<text x="815" y="410" text-anchor="middle" font-size="9" fill="#64748b">Caja · Reportes</text>
+
+<rect x="893" y="364" width="130" height="52" rx="5" fill="white" stroke="#be185d" stroke-width="1.5"/>
+<text x="958" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">MS·Portal</text>
+<text x="958" y="399" text-anchor="middle" font-size="9" fill="#be185d">:8081</text>
+<text x="958" y="410" text-anchor="middle" font-size="9" fill="#64748b">Tracking · Feedback</text>
+
+<!-- Inter-service communication label -->
+<text x="530" y="445" text-anchor="middle" font-size="10" fill="#3b82f6" font-style="italic">↔ Comunicación inter-servicio via WebClient (HTTP/REST) · sin FK entre bases de datos · ID externos</text>
+
+<!-- Arrows to DB layer -->
+<line x1="530" y1="566" x2="530" y2="580" stroke="#374151" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- ── LAYER 4: DATA ─────────────────────────────── -->
+<rect x="18" y="580" width="1024" height="160" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="25" y="598" font-size="11" font-weight="bold" fill="#92400e">Capa de Persistencia  (Database-per-Service · MariaDB · Spring Data JPA · Hibernate)</text>
+
+<!-- DB icons in two rows -->
+<g font-size="9" text-anchor="middle" fill="#64748b">
+  <rect x="28"  y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="78"  y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_auth</text>
+  <text x="78"  y="638">MariaDB</text>
+
+  <rect x="138" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="188" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_reg.</text>
+  <text x="188" y="638">MariaDB</text>
+
+  <rect x="248" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="298" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_com.</text>
+  <text x="298" y="638">MariaDB</text>
+
+  <rect x="358" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="408" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_suc.</text>
+  <text x="408" y="638">MariaDB</text>
+
+  <rect x="468" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="518" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_cli.</text>
+  <text x="518" y="638">MariaDB</text>
+
+  <rect x="578" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="628" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_adm.</text>
+  <text x="628" y="638">MariaDB</text>
+
+  <rect x="688" y="608" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="738" y="624" fill="#92400e" font-size="10" font-weight="bold">db_ms_paq.</text>
+  <text x="738" y="638">MariaDB</text>
+
+  <rect x="28"  y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="78"  y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_guias</text>
+  <text x="78"  y="684">MariaDB</text>
+
+  <rect x="138" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="188" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_hist.</text>
+  <text x="188" y="684">MariaDB</text>
+
+  <rect x="248" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="298" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_emb.</text>
+  <text x="298" y="684">MariaDB</text>
+
+  <rect x="358" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="408" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_vtas</text>
+  <text x="408" y="684">MariaDB</text>
+
+  <rect x="468" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="518" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_det.</text>
+  <text x="518" y="684">MariaDB</text>
+
+  <rect x="578" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="628" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_fin.</text>
+  <text x="628" y="684">MariaDB</text>
+
+  <rect x="688" y="654" width="100" height="38" rx="4" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="738" y="670" fill="#92400e" font-size="10" font-weight="bold">db_ms_portal</text>
+  <text x="738" y="684">MariaDB</text>
+</g>
+
+<!-- LEGEND -->
+<rect x="800" y="608" width="235" height="125" rx="6" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="917" y="626" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">Leyenda</text>
+<rect x="815" y="633" width="40" height="18" rx="3" fill="white" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="865" y="646" font-size="10" fill="#1e293b">Seguridad</text>
+<rect x="815" y="656" width="40" height="18" rx="3" fill="white" stroke="#059669" stroke-width="1.5"/>
+<text x="865" y="669" font-size="10" fill="#1e293b">Geográfico</text>
+<rect x="815" y="679" width="40" height="18" rx="3" fill="white" stroke="#d97706" stroke-width="1.5"/>
+<text x="865" y="692" font-size="10" fill="#1e293b">Comercial / Finanzas</text>
+<rect x="945" y="633" width="40" height="18" rx="3" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="994" y="646" font-size="10" fill="#1e293b">Logística</text>
+<rect x="945" y="656" width="40" height="18" rx="3" fill="white" stroke="#be185d" stroke-width="1.5"/>
+<text x="994" y="669" font-size="10" fill="#1e293b">Portal</text>
+<rect x="945" y="679" width="40" height="18" rx="3" fill="white" stroke="#ea580c" stroke-width="1.5"/>
+<text x="994" y="692" font-size="10" fill="#1e293b">Clientes</text>
+</svg>

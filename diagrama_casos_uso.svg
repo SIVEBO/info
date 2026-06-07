@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="800" font-family="Arial, sans-serif">
+<defs>
+  <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#94a3b8"/></marker>
+</defs>
+<rect width="1060" height="800" fill="#f8fafc"/>
+<rect width="1060" height="48" fill="#1e40af"/>
+<text x="530" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Casos de Uso — SIVEBO · RapidinBombin</text>
+
+<!-- System boundary -->
+<rect x="190" y="58" width="640" height="710" rx="8" fill="white" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10,5"/>
+<text x="510" y="80" text-anchor="middle" font-size="13" fill="#3b82f6" font-style="italic">«Sistema» SIVEBO</text>
+
+<!-- ── ACTORS ── -->
+<!-- Operador (left) -->
+<circle cx="95" cy="290" r="20" fill="none" stroke="#1e40af" stroke-width="2"/>
+<line x1="95" y1="310" x2="95" y2="365" stroke="#1e40af" stroke-width="2"/>
+<line x1="60"  y1="335" x2="130" y2="335" stroke="#1e40af" stroke-width="2"/>
+<line x1="95"  y1="365" x2="65"  y2="405" stroke="#1e40af" stroke-width="2"/>
+<line x1="95"  y1="365" x2="125" y2="405" stroke="#1e40af" stroke-width="2"/>
+<text x="95" y="425" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">Operador</text>
+<text x="95" y="440" text-anchor="middle" font-size="11" fill="#3b82f6">Polifuncional</text>
+
+<!-- Admin (right-top) -->
+<circle cx="965" cy="210" r="20" fill="none" stroke="#7c3aed" stroke-width="2"/>
+<line x1="965" y1="230" x2="965" y2="285" stroke="#7c3aed" stroke-width="2"/>
+<line x1="930" y1="255" x2="1000" y2="255" stroke="#7c3aed" stroke-width="2"/>
+<line x1="965" y1="285" x2="935" y2="325" stroke="#7c3aed" stroke-width="2"/>
+<line x1="965" y1="285" x2="995" y2="325" stroke="#7c3aed" stroke-width="2"/>
+<text x="965" y="345" text-anchor="middle" font-size="12" font-weight="bold" fill="#7c3aed">Administrador</text>
+
+<!-- Cliente (right-bottom) -->
+<circle cx="965" cy="560" r="20" fill="none" stroke="#059669" stroke-width="2"/>
+<line x1="965" y1="580" x2="965" y2="635" stroke="#059669" stroke-width="2"/>
+<line x1="930" y1="605" x2="1000" y2="605" stroke="#059669" stroke-width="2"/>
+<line x1="965" y1="635" x2="935" y2="675" stroke="#059669" stroke-width="2"/>
+<line x1="965" y1="635" x2="995" y2="675" stroke="#059669" stroke-width="2"/>
+<text x="965" y="695" text-anchor="middle" font-size="12" font-weight="bold" fill="#059669">Cliente /</text>
+<text x="965" y="710" text-anchor="middle" font-size="12" font-weight="bold" fill="#059669">Público</text>
+
+<!-- ── USE CASES (left column — Operador) ── -->
+<ellipse cx="380" cy="118" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="123" text-anchor="middle" font-size="11" fill="#1e293b">Iniciar sesión</text>
+
+<ellipse cx="380" cy="178" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="183" text-anchor="middle" font-size="11" fill="#1e293b">Buscar / registrar cliente</text>
+
+<ellipse cx="380" cy="238" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="243" text-anchor="middle" font-size="11" fill="#1e293b">Registrar admisión de paquete</text>
+
+<ellipse cx="380" cy="298" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="303" text-anchor="middle" font-size="11" fill="#1e293b">Actualizar estado logístico</text>
+
+<ellipse cx="380" cy="358" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="363" text-anchor="middle" font-size="11" fill="#1e293b">Realizar venta POS</text>
+
+<ellipse cx="380" cy="418" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="423" text-anchor="middle" font-size="11" fill="#1e293b">Consultar stock embalaje</text>
+
+<ellipse cx="380" cy="478" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="483" text-anchor="middle" font-size="11" fill="#1e293b">Abrir / cerrar caja</text>
+
+<ellipse cx="380" cy="538" rx="108" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="380" y="543" text-anchor="middle" font-size="11" fill="#1e293b">Registrar ingreso/salida bodega</text>
+
+<!-- ── USE CASES (right column — Admin + Cliente) ── -->
+<ellipse cx="650" cy="118" rx="108" ry="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="650" y="123" text-anchor="middle" font-size="11" fill="#1e293b">Gestionar usuarios y roles</text>
+
+<ellipse cx="650" cy="178" rx="108" ry="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="650" y="183" text-anchor="middle" font-size="11" fill="#1e293b">Gestionar sucursales</text>
+
+<ellipse cx="650" cy="238" rx="108" ry="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="650" y="243" text-anchor="middle" font-size="11" fill="#1e293b">Gestionar catálogo embalaje</text>
+
+<ellipse cx="650" cy="298" rx="108" ry="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="650" y="303" text-anchor="middle" font-size="11" fill="#1e293b">Anular venta</text>
+
+<ellipse cx="650" cy="358" rx="108" ry="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="650" y="363" text-anchor="middle" font-size="11" fill="#1e293b">Ver reportes financieros</text>
+
+<ellipse cx="650" cy="560" rx="108" ry="22" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+<text x="650" y="565" text-anchor="middle" font-size="11" fill="#1e293b">Consultar tracking público</text>
+
+<ellipse cx="650" cy="630" rx="108" ry="22" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+<text x="650" y="635" text-anchor="middle" font-size="11" fill="#1e293b">Registrar feedback</text>
+
+<!-- ── ASSOCIATIONS ── -->
+<!-- Operador → left UCs -->
+<line x1="163" y1="300" x2="270" y2="118" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="305" x2="270" y2="178" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="310" x2="270" y2="238" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="315" x2="270" y2="298" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="320" x2="270" y2="358" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="325" x2="270" y2="418" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="330" x2="270" y2="478" stroke="#3b82f6" stroke-width="1"/>
+<line x1="163" y1="335" x2="270" y2="538" stroke="#3b82f6" stroke-width="1"/>
+
+<!-- Admin → right UCs -->
+<line x1="948" y1="228" x2="760" y2="118" stroke="#7c3aed" stroke-width="1"/>
+<line x1="950" y1="234" x2="760" y2="178" stroke="#7c3aed" stroke-width="1"/>
+<line x1="952" y1="240" x2="760" y2="238" stroke="#7c3aed" stroke-width="1"/>
+<line x1="950" y1="246" x2="760" y2="298" stroke="#7c3aed" stroke-width="1"/>
+<line x1="948" y1="252" x2="760" y2="358" stroke="#7c3aed" stroke-width="1"/>
+<!-- Admin also uses iniciar sesión -->
+<line x1="870" y1="210" x2="490" y2="118" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="695" y="135" text-anchor="middle" font-size="9" fill="#7c3aed" font-style="italic">«include»</text>
+
+<!-- Cliente → bottom UCs -->
+<line x1="948" y1="572" x2="760" y2="560" stroke="#059669" stroke-width="1"/>
+<line x1="950" y1="580" x2="760" y2="630" stroke="#059669" stroke-width="1"/>
+
+<!-- LEGEND -->
+<rect x="18" y="760" width="1024" height="36" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+<ellipse cx="65" cy="778" rx="30" ry="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="65" y="782" text-anchor="middle" font-size="10" fill="#1e293b">Operador</text>
+<ellipse cx="170" cy="778" rx="30" ry="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="170" y="782" text-anchor="middle" font-size="10" fill="#1e293b">Admin</text>
+<ellipse cx="270" cy="778" rx="35" ry="12" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+<text x="270" y="782" text-anchor="middle" font-size="10" fill="#1e293b">Cliente/Público</text>
+<line x1="360" y1="778" x2="400" y2="778" stroke="#94a3b8" stroke-width="1"/>
+<text x="410" y="782" font-size="10" fill="#1e293b">Asociación (actor–caso de uso)</text>
+<line x1="600" y1="778" x2="640" y2="778" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="650" y="782" font-size="10" fill="#1e293b">«include»</text>
+<text x="800" y="782" font-size="10" fill="#64748b">Sistema boundary: «Sistema» SIVEBO (borde azul punteado)</text>
+</svg>

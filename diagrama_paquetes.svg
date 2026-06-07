@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="660" font-family="Arial, sans-serif">
+<defs>
+  <marker id="dep" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+    <polyline points="0,0 9,5 0,10" fill="none" stroke="#64748b" stroke-width="1.5"/>
+  </marker>
+</defs>
+<rect width="900" height="660" fill="#f8fafc"/>
+<rect width="900" height="48" fill="#1e40af"/>
+<text x="450" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Paquetes — SIVEBO · RapidinBombin</text>
+
+<!-- Outer SIVEBO package -->
+<rect x="18" y="60" width="64" height="18" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="50" y="74" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">SIVEBO</text>
+<rect x="18" y="78" width="864" height="548" rx="4" fill="white" stroke="#94a3b8" stroke-width="1.5"/>
+
+<!-- ── ROW 1 ─────────────────────────────────────── -->
+
+<!-- seguridad -->
+<rect x="35" y="93" width="70" height="16" rx="3" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="70" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="#7c3aed">seguridad</text>
+<rect x="35" y="109" width="195" height="85" rx="4" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="132" y="140" text-anchor="middle" font-size="11" fill="#4c1d95" font-style="italic">«ms_auth»</text>
+<text x="132" y="158" text-anchor="middle" font-size="10" fill="#6d28d9">JWT · BCrypt · Roles</text>
+<text x="132" y="175" text-anchor="middle" font-size="10" fill="#6d28d9">Spring Security</text>
+
+<!-- geografico -->
+<rect x="248" y="93" width="72" height="16" rx="3" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+<text x="284" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669">geografico</text>
+<rect x="248" y="109" width="210" height="85" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+<text x="353" y="135" text-anchor="middle" font-size="11" fill="#065f46" font-style="italic">«ms_regiones»</text>
+<text x="353" y="153" text-anchor="middle" font-size="11" fill="#065f46" font-style="italic">«ms_comunas»</text>
+<text x="353" y="171" text-anchor="middle" font-size="11" fill="#065f46" font-style="italic">«ms_sucursales»</text>
+
+<!-- clientes -->
+<rect x="476" y="93" width="62" height="16" rx="3" fill="#ffedd5" stroke="#ea580c" stroke-width="1.5"/>
+<text x="507" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="#ea580c">clientes</text>
+<rect x="476" y="109" width="200" height="85" rx="4" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+<text x="576" y="140" text-anchor="middle" font-size="11" fill="#7c2d12" font-style="italic">«ms_clientes»</text>
+<text x="576" y="160" text-anchor="middle" font-size="10" fill="#c2410c">RUT · Pasaporte</text>
+<text x="576" y="178" text-anchor="middle" font-size="10" fill="#c2410c">Remitente · Destinatario</text>
+
+<!-- ── ROW 2 ─────────────────────────────────────── -->
+
+<!-- logistica -->
+<rect x="35" y="215" width="68" height="16" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="69" y="227" text-anchor="middle" font-size="10" font-weight="bold" fill="#3b82f6">logistica</text>
+<rect x="35" y="231" width="255" height="155" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="162" y="262" text-anchor="middle" font-size="11" fill="#1e40af" font-style="italic">«ms_admision»</text>
+<text x="162" y="282" text-anchor="middle" font-size="11" fill="#1e40af" font-style="italic">«ms_paquetes»</text>
+<text x="162" y="302" text-anchor="middle" font-size="11" fill="#1e40af" font-style="italic">«ms_guias_despacho»</text>
+<text x="162" y="322" text-anchor="middle" font-size="11" fill="#1e40af" font-style="italic">«ms_historial_logistico»</text>
+<text x="162" y="370" text-anchor="middle" font-size="10" fill="#3b82f6">Tracking · Estados · Bodega</text>
+
+<!-- comercial -->
+<rect x="310" y="215" width="68" height="16" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="344" y="227" text-anchor="middle" font-size="10" font-weight="bold" fill="#d97706">comercial</text>
+<rect x="310" y="231" width="225" height="155" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="422" y="262" text-anchor="middle" font-size="11" fill="#92400e" font-style="italic">«ms_ventas»</text>
+<text x="422" y="282" text-anchor="middle" font-size="11" fill="#92400e" font-style="italic">«ms_detalle_venta»</text>
+<text x="422" y="302" text-anchor="middle" font-size="11" fill="#92400e" font-style="italic">«ms_embalaje»</text>
+<text x="422" y="370" text-anchor="middle" font-size="10" fill="#d97706">POS · Stock · Boletas</text>
+
+<!-- finanzas -->
+<rect x="555" y="215" width="62" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="586" y="227" text-anchor="middle" font-size="10" font-weight="bold" fill="#16a34a">finanzas</text>
+<rect x="555" y="231" width="200" height="155" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<text x="655" y="262" text-anchor="middle" font-size="11" fill="#14532d" font-style="italic">«ms_finanzas»</text>
+<text x="655" y="370" text-anchor="middle" font-size="10" fill="#16a34a">Caja · Cierre · Reportes</text>
+
+<!-- ── ROW 3 ─────────────────────────────────────── -->
+
+<!-- portal -->
+<rect x="310" y="410" width="52" height="16" rx="3" fill="#fce7f3" stroke="#be185d" stroke-width="1.5"/>
+<text x="336" y="422" text-anchor="middle" font-size="10" font-weight="bold" fill="#be185d">portal</text>
+<rect x="310" y="426" width="260" height="85" rx="4" fill="#fdf2f8" stroke="#be185d" stroke-width="1.5"/>
+<text x="440" y="458" text-anchor="middle" font-size="11" fill="#831843" font-style="italic">«ms_portal»</text>
+<text x="440" y="478" text-anchor="middle" font-size="10" fill="#be185d">Tracking público · Feedback</text>
+
+<!-- DEPENDENCY ARROWS -->
+<!-- logistica → seguridad -->
+<line x1="90" y1="231" x2="90" y2="194" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- logistica → geografico -->
+<line x1="200" y1="231" x2="280" y2="194" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- logistica → clientes -->
+<line x1="265" y1="270" x2="476" y2="170" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- comercial → logistica -->
+<line x1="310" y1="310" x2="290" y2="310" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- comercial → geografico -->
+<line x1="380" y1="231" x2="380" y2="194" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- comercial → seguridad -->
+<line x1="320" y1="231" x2="180" y2="194" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- finanzas → comercial -->
+<line x1="555" y1="310" x2="535" y2="310" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- finanzas → seguridad -->
+<line x1="560" y1="240" x2="232" y2="165" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- portal → logistica -->
+<line x1="350" y1="426" x2="200" y2="386" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- portal → clientes -->
+<line x1="530" y1="426" x2="590" y2="194" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#dep)"/>
+
+<!-- LEGEND -->
+<rect x="18" y="638" width="864" height="18" rx="3" fill="#f1f5f9" stroke="#e2e8f0"/>
+<line x1="35" y1="647" x2="60" y2="647" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,2" marker-end="url(#dep)"/>
+<text x="68" y="651" font-size="11" fill="#475569">dependencia (paquete origen usa servicios del paquete destino)</text>
+<text x="500" y="651" font-size="11" fill="#475569" font-style="italic">«nombre» = microservicio Spring Boot independiente</text>
+</svg>
