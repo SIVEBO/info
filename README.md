@@ -4,7 +4,7 @@
 **Sistema POS Integral para Operadores Polifuncionales - SIVEBO**
 
 Fecha: Abril 2025  
-Última actualización del modelo de datos: Junio 2025
+Última actualización del modelo de datos: Junio 2026
 
 ---
 
@@ -429,21 +429,4 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 ![Diagrama de Arquitectura](diagrama_arquitectura.svg)
 
 ---
-
-## 12. Archivos DDL
-
-Cada microservicio tiene su propio script DDL MariaDB ubicado en `/ddl/`:
-
-| Archivo | Microservicio | Tablas |
-| --- | --- | --- |
-| `01_ms_auth.sql` | db_ms_auth | ROL, USUARIO, TOKEN_SESION |
-| `02_ms_sucursales.sql` | db_ms_sucursales | REGION, COMUNA, SUCURSAL |
-| `03_ms_clientes.sql` | db_ms_clientes | TIPO_DOCUMENTO, CLIENTE |
-| `04_ms_admision.sql` | db_ms_admision | TIPO_CARGA, ADMISION |
-| `05_ms_tracking.sql` | db_ms_tracking | ESTADO_MAESTRO, GUIA_DESPACHO, HISTORIAL_LOGISTICO |
-| `06_ms_inv_paquetes.sql` | db_ms_inv_paquetes | INVENTARIO_PAQUETE |
-| `07_ms_inv_embalaje.sql` | db_ms_inv_embalaje | CATEGORIA_EMBALAJE, ARTICULO_EMBALAJE, STOCK_SUCURSAL |
-| `08_ms_ventas.sql` | db_ms_ventas | VENTA, DETALLE_VENTA |
-| `09_ms_finanzas.sql` | db_ms_finanzas | CAJA_SUCURSAL, APERTURA_CIERRE, MOVIMIENTO_CAJA |
-| `10_ms_portal.sql` | db_ms_portal | CONSULTA_PUBLICA, FEEDBACK_CLIENTE |
 
