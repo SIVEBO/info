@@ -1,7 +1,7 @@
 # SIVEBO - Sistema de Ventas y Bodega
 # PROPUESTA DE PROYECTO
 
-**Sistema POS Integral para Operadores Polifuncionales - RapidinBombin**
+**Sistema POS Integral para Operadores Polifuncionales - SIVEBO**
 
 Fecha: Abril 2025  
 Última actualización del modelo de datos: Junio 2025
@@ -12,7 +12,7 @@ Fecha: Abril 2025
 
 ### 1.1 Contexto de la Empresa
 
-RapidinBombin es una empresa de logística con presencia en múltiples sucursales, cuya operación diaria depende de operadores polifuncionales. Estos trabajadores son responsables de ejecutar una amplia variedad de tareas críticas para el funcionamiento del negocio.
+SIVEBO es una empresa de logística con presencia en múltiples sucursales, cuya operación diaria depende de operadores polifuncionales. Estos trabajadores son responsables de ejecutar una amplia variedad de tareas críticas para el funcionamiento del negocio.
 
 ### 1.2 Funciones del Operador Polifuncional
 
