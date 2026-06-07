@@ -6,7 +6,7 @@ Este documento detalla las directrices arquitectónicas y los estándares para l
 
 Para mantener el desacoplamiento de los microservicios y garantizar la mantenibilidad, SIVEBO utiliza un **patrón de integración centralizada**.
 
-- **MS-11 Integrator:** Es el microservicio dedicado exclusivamente a interactuar con sistemas externos (ej. ClickUp, Trello).
+- **MS-11 Integrator:** Es el microservicio dedicado exclusivamente a interactuar con sistemas externos (ej. ClickUp, Trello, Jira).
 - **Event Bus:** Los microservicios de dominio publican eventos (ej. `AdmissionCreatedEvent`) en un bus interno (Kafka/RabbitMQ). El `MS-11` consume estos eventos para ejecutar las acciones necesarias en el sistema externo.
 
 ## 2. Integración con ClickUp
@@ -32,7 +32,16 @@ Para mantener el desacoplamiento de los microservicios y garantizar la mantenibi
 ### 3.2 Credenciales
 - Se requieren `TRELLO_API_KEY` y `TRELLO_API_TOKEN`. Deben gestionarse estrictamente mediante variables de entorno o un servicio de configuración segura.
 
-## 4. Guía para el Desarrollador
+## 4. Integración con Jira
+
+### 4.1 Arquitectura
+- **Outbound (Push):** `MS-11` consume eventos internos -> Llama a la API REST de Jira mediante `WebClient` configurado.
+- **Inbound (Webhooks):** Jira envía eventos vía Webhooks -> `MS-11` recibe -> Verifica firma -> Publica evento interno.
+
+### 4.2 Credenciales
+- Se requiere `JIRA_USER_EMAIL` y `JIRA_API_TOKEN` (usado como password en autenticación Basic Auth). Deben gestionarse estrictamente mediante variables de entorno o un servicio de configuración segura.
+
+## 5. Guía para el Desarrollador
 
 1.  **Nuevo flujo de integración:**
     - Identificar el evento de dominio que dispara la acción.
@@ -40,5 +49,5 @@ Para mantener el desacoplamiento de los microservicios y garantizar la mantenibi
     - Implementar el consumidor del evento en `MS-11`.
     - Configurar la llamada a la API en `MS-11` utilizando el `WebClient` configurado.
 2.  **Configuración de Webhooks:**
-    - Registrar el endpoint en la plataforma externa (ClickUp/Trello) manualmente o mediante automatización al iniciar el servicio.
-    - Implementar la verificación del header de firma correspondiente (`X-Signature` o similar) en el controlador de Webhooks de `MS-11`.
+    - Registrar el endpoint en la plataforma externa (ClickUp/Trello/Jira) manualmente o mediante automatización al iniciar el servicio.
+    - Implementar la verificación del header de firma correspondiente en el controlador de Webhooks de `MS-11`.
