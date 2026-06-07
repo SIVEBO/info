@@ -4,7 +4,7 @@
 </defs>
 <rect width="1060" height="800" fill="#f8fafc"/>
 <rect width="1060" height="48" fill="#1e40af"/>
-<text x="530" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Casos de Uso — SIVEBO · RapidinBombin</text>
+<text x="530" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Casos de Uso — SIVEBO</text>
 
 <!-- System boundary -->
 <rect x="190" y="58" width="640" height="710" rx="8" fill="white" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10,5"/>

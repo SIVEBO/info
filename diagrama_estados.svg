@@ -6,7 +6,7 @@
 </defs>
 <rect width="920" height="500" fill="#f8fafc"/>
 <rect width="920" height="48" fill="#1e40af"/>
-<text x="460" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Estados — Guía de Despacho · SIVEBO</text>
+<text x="460" y="31" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Diagrama de Estados — Guía de Despacho</text>
 
 <!-- Initial state -->
 <circle cx="55" cy="200" r="14" fill="#1e293b"/>
