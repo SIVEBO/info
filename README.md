@@ -232,6 +232,7 @@ Las historias de usuario describen las necesidades del negocio desde la perspect
 - **Database per Service:** Cada microservicio tiene su propia base de datos MariaDB independiente. Las referencias entre servicios se implementan mediante **ID externos (Ref Ext)** sin FK formal entre bases de datos. La integridad referencial entre servicios es responsabilidad de la capa de aplicación.
 - **Motor de Base de Datos:** **MariaDB**, con modelo relacional en **Tercera Forma Normal (3FN)**, `AUTO_INCREMENT` para autoincremento y constraints de negocio declarados explícitamente.
 - **Patrón de Diseño:** Implementación del patrón **CSR (Controller-Service-Repository)** y uso de **DTOs**.
+- **Documentación de API:** Cada microservicio integra **SpringDoc OpenAPI (Swagger UI)** para la documentación interactiva de sus endpoints REST.
 
 ---
 
@@ -400,7 +401,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 ## 10. Control de Versiones, Pruebas y Despliegue
 
 - **Repositorio:** Uso obligatorio de **GitHub** para evidenciar el avance progresivo, la participación del equipo, el historial de cambios, y el uso de ramas de desarrollo con commits frecuentes.
-- **Pruebas y Documentación:** Se desarrollará documentación técnica del sistema y pruebas unitarias de los módulos principales.
+- **Pruebas y Documentación:** Se desarrollará documentación técnica del sistema y pruebas unitarias de los módulos principales. Cada microservicio expondrá su API mediante **Swagger UI (SpringDoc OpenAPI)**, accesible en `/swagger-ui.html`, permitiendo explorar y probar los endpoints de forma interactiva.
 - **Despliegue:** Despliegue en entorno local exponiendo los servicios a través del API Gateway, dejando el sistema disponible mediante una URL para el consumo de las APIs.
 
 ---
