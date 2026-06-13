@@ -36,7 +36,7 @@ La empresa busca un sistema integrado para los operadores polifuncionales. Debid
 
 ---
 
-## 3. Arquitectura de Microservicios (Solución Recomendada)
+## 3. Arquitectura de Microservicios
 
 El sistema se desarrollará obligatoriamente utilizando **Spring Boot** y estará compuesto por un **API Gateway (Eureka)** para la gestión de peticiones y los siguientes 10 microservicios independientes:
 
