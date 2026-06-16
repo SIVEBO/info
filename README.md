@@ -281,8 +281,8 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `REGION` | id_region `PK`, nombre_region `UK` |
-| `COMUNA` | id_comuna `PK`, nombre_comuna, id_region `FK` |
-| `SUCURSAL` | id_sucursal `PK`, nombre_sucursal, id_comuna `FK`, direccion_fisica, telefono_contacto`?`, activa |
+| `COMUNA` | id_comuna `PK`, nombre_comuna `UK`, id_region `FK` |
+| `SUCURSAL` | id_sucursal `PK`, nombre_sucursal `UK`, id_comuna `FK`, direccion_fisica `UK`, telefono_contacto `UK`·`?`, estado |
 
 **Ref Ext:** Ninguna. Fuente de verdad de la red geográfica.
 
