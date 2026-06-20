@@ -4,7 +4,7 @@
 **Sistema POS Integral para Operadores Polifuncionales - SIVEBO**
 
 Fecha: Abril 2025
-Última actualización del modelo de datos: Junio 2026
+Última actualización: Junio 2026
 
 ---
 
