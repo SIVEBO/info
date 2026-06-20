@@ -55,18 +55,18 @@ El sistema se desarrollará obligatoriamente utilizando **Spring Boot** y estar�
 
 | MS | Nombre | Directorio | Puerto | Descripción |
 | --- | --- | --- | --- | --- |
-| Infra | API Gateway | `api_gateway/` | **8080** | Punto de entrada único, enrutamiento de peticiones |
 | Infra | Eureka Server | `eureka_server/` | **8761** | Service registry y descubrimiento de servicios |
-| MS-01 | Auth & Usuarios | `ms_auth/` | **8001** | Login, tokens JWT, roles |
-| MS-02 | Sucursales | `ms_sucursales/` | **8002** | Red de sucursales, comunas y regiones |
-| MS-03 | Admisión de Paquetes | `ms_admision/` | **8003** | Ingreso de carga y generación de guía |
-| MS-04 | Tracking & Logística | `ms_tracking/` | **8004** | Estados y historial de guías de despacho |
-| MS-05 | Inventario de Paquetes | `ms_paquetes/` | **8005** | Stock de envíos en bodega por sucursal |
-| MS-06 | Inventario de Embalaje | `ms_embalaje/` | **8006** | Artículos de embalaje, categorías y stock |
-| MS-07 | Ventas / POS | `ms_ventas/` | **8007** | Punto de venta, boletas y detalles |
-| MS-08 | Finanzas | `ms_finanzas/` | **8008** | Caja, apertura/cierre y movimientos |
-| MS-09 | Clientes | `ms_clientes/` | **8009** | Remitentes y destinatarios |
-| MS-10 | Portal Cliente | `ms_portal/` | **8010** | Consulta pública de tracking y feedback |
+| Infra | API Gateway | `api_gateway/` | **8080** | Punto de entrada único, enrutamiento de peticiones |
+| MS-01 | Auth & Usuarios | `ms_auth/` | **8081** | Login, tokens JWT, roles |
+| MS-02 | Sucursales | `ms_sucursales/` | **8082** | Red de sucursales, comunas y regiones |
+| MS-03 | Admisión de Paquetes | `ms_admision/` | **8083** | Ingreso de carga y generación de guía |
+| MS-04 | Tracking & Logística | `ms_tracking/` | **8084** | Estados y historial de guías de despacho |
+| MS-05 | Inventario de Paquetes | `ms_paquetes/` | **8085** | Stock de envíos en bodega por sucursal |
+| MS-06 | Inventario de Embalaje | `ms_embalaje/` | **8086** | Artículos de embalaje, categorías y stock |
+| MS-07 | Ventas / POS | `ms_ventas/` | **8087** | Punto de venta, boletas y detalles |
+| MS-08 | Finanzas | `ms_finanzas/` | **8088** | Caja, apertura/cierre y movimientos |
+| MS-09 | Clientes | `ms_clientes/` | **8089** | Remitentes y destinatarios |
+| MS-10 | Portal Cliente | `ms_portal/` | **8090** | Consulta pública de tracking y feedback |
 
 ---
 
