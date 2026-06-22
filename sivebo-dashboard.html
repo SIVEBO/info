@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIVEBO — Dashboard completo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+header{background:#1e293b;border-bottom:2px solid #3b82f6;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:1.3rem;color:#60a5fa}
+.header-right{display:flex;gap:1.5rem;align-items:center}
+.status-pill{display:flex;align-items:center;gap:6px;font-size:.8rem;color:#94a3b8}
+.dot{width:8px;height:8px;border-radius:50%;background:#ef4444}
+.dot.ok{background:#22c55e}
+.dot.warn{background:#f59e0b}
+
+.tabs{display:flex;background:#1e293b;border-bottom:1px solid #334155;padding:0 1rem;gap:0;overflow-x:auto;flex-wrap:nowrap}
+.tab{padding:.6rem 1rem;cursor:pointer;color:#64748b;border-bottom:2px solid transparent;transition:all .2s;font-size:.8rem;white-space:nowrap}
+.tab:hover{color:#e2e8f0;background:#334155}
+.tab.active{color:#60a5fa;border-bottom-color:#3b82f6}
+
+main{max-width:1200px;margin:0 auto;padding:1.5rem 2rem}
+.panel{display:none}
+.panel.active{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.card{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:1.1rem}
+.card h3{color:#60a5fa;margin-bottom:.8rem;font-size:.95rem;display:flex;align-items:center;gap:6px}
+.method{font-size:.65rem;padding:2px 6px;border-radius:4px;font-weight:700}
+.get{background:#166534;color:#4ade80}
+.post{background:#854d0e;color:#fbbf24}
+.patch{background:#4c1d95;color:#a78bfa}
+.del{background:#7f1d1d;color:#f87171}
+
+label{display:block;font-size:.75rem;color:#94a3b8;margin-bottom:.2rem;margin-top:.6rem}
+input,select{width:100%;padding:.4rem .5rem;background:#0f172a;border:1px solid #475569;border-radius:6px;color:#e2e8f0;font-size:.82rem}
+input:focus,select:focus{outline:none;border-color:#3b82f6}
+
+.btn{margin-top:.8rem;padding:.4rem 1rem;border:none;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .15s}
+.btn-go{background:#3b82f6;color:#fff}.btn-go:hover{background:#2563eb}
+.btn-ok{background:#22c55e;color:#fff}.btn-ok:hover{background:#16a34a}
+.btn-sm{padding:.3rem .7rem;margin-top:.5rem;font-size:.75rem}
+
+.res{margin-top:.7rem;background:#0c1222;border:1px solid #334155;border-radius:6px;padding:.6rem;max-height:250px;overflow:auto;font-family:'Cascadia Code','Fira Code',monospace;font-size:.75rem;white-space:pre-wrap;word-break:break-all}
+.res.err{border-color:#ef4444;color:#fca5a5}
+.res.ok{border-color:#22c55e;color:#86efac}
+
+/* Eureka panel */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.svc-card{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:1rem;text-align:center;transition:border-color .2s}
+.svc-card.up{border-color:#22c55e}
+.svc-card.down{border-color:#ef4444}
+.svc-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+.svc-port{color:#64748b;font-size:.75rem}
+.svc-status{margin-top:.4rem;font-size:.7rem;padding:2px 8px;border-radius:10px;display:inline-block}
+.svc-status.up{background:#166534;color:#4ade80}
+.svc-status.down{background:#7f1d1d;color:#f87171}
+
+/* Arch diagram */
+.arch{background:#0c1222;border:1px solid #1e293b;border-radius:8px;padding:1.5rem;margin:1rem 0;font-family:monospace;white-space:pre;font-size:.7rem;color:#94a3b8;line-height:1.5;overflow-x:auto}
+.arch .hl{color:#60a5fa}.arch .gn{color:#4ade80}.arch .yw{color:#fbbf24}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SIVEBO — Dashboard</h1>
+  <div class="header-right">
+    <div class="status-pill"><span class="dot" id="dGw"></span><span id="tGw">Gateway...</span></div>
+    <div class="status-pill"><span class="dot" id="dEu"></span><span id="tEu">Eureka...</span></div>
+    <div class="status-pill"><span class="dot" id="dDb"></span><span id="tDb">MariaDB...</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-p="eureka">Eureka</div>
+  <div class="tab" data-p="auth">Auth</div>
+  <div class="tab" data-p="sucursales">Sucursales</div>
+  <div class="tab" data-p="clientes">Clientes</div>
+  <div class="tab" data-p="admision">Admision</div>
+  <div class="tab" data-p="tracking">Tracking</div>
+  <div class="tab" data-p="paquetes">Paquetes</div>
+  <div class="tab" data-p="embalaje">Embalaje</div>
+  <div class="tab" data-p="ventas">Ventas</div>
+  <div class="tab" data-p="finanzas">Finanzas</div>
+  <div class="tab" data-p="portal">Portal</div>
+</div>
+
+<main>
+
+<!-- EUREKA -->
+<div class="panel active" id="eureka">
+  <div class="card" style="margin-bottom:1rem">
+    <h3>Arquitectura SIVEBO</h3>
+    <div class="arch">                              <span class="yw">Cliente / Browser</span>
+                                    |
+                           <span class="hl">Gateway :8080</span>
+                     /      |       |       |      \
+               <span class="gn">Auth</span>   <span class="gn">Sucurs</span>  <span class="gn">Admis</span>  <span class="gn">Track</span>  <span class="gn">Paqt</span>
+               :8081   :8082   :8083   :8084   :8085
+               <span class="gn">Embal</span>  <span class="gn">Ventas</span>  <span class="gn">Finanz</span> <span class="gn">Client</span> <span class="gn">Portal</span>
+               :8086   :8087   :8088   :8089   :8090
+                     \      |       |       |      /
+                          <span class="yw">MariaDB :3306</span>
+                     Eureka Discovery <span class="hl">:8761</span></div>
+  </div>
+  <div class="card">
+    <h3>Servicios registrados</h3>
+    <button class="btn btn-go" onclick="loadEureka()">Refrescar</button>
+    <div class="svc-grid" id="svcGrid"><p style="color:#64748b;grid-column:1/-1;text-align:center">Cargando...</p></div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="panel" id="auth">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-01 Auth & Usuarios — :8081</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method post">POST</span> Login</h3>
+      <label>Username</label><input id="aUser" value="admin">
+      <label>Password</label><input id="aPass" type="password" value="admin">
+      <button class="btn btn-go" onclick="doPost('/api/v1/auth/login',{username:v('aUser'),password:v('aPass')},'rLogin')">Login</button>
+      <div class="res" id="rLogin"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar usuarios</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/usuarios','rUsers')">Listar</button>
+      <div class="res" id="rUsers"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar roles</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/roles','rRoles')">Listar</button>
+      <div class="res" id="rRoles"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCURSALES -->
+<div class="panel" id="sucursales">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-02 Sucursales — :8082</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar regiones</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/regiones','rRegiones')">Listar</button>
+      <div class="res" id="rRegiones"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar comunas</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/comunas','rComunas')">Listar</button>
+      <div class="res" id="rComunas"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar sucursales</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/sucursales','rSucs')">Listar</button>
+      <div class="res" id="rSucs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTES -->
+<div class="panel" id="clientes">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-09 Clientes — :8089</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Tipos de documento</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/tipos-documento','rTipoDoc')">Listar</button>
+      <div class="res" id="rTipoDoc"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Registrar cliente</h3>
+      <label>Codigo tipo doc (RUT, PASAPORTE, DNI)</label><input id="cTipo" value="RUT">
+      <label>Nro documento</label><input id="cNroDoc" placeholder="12345678-9">
+      <label>Nombre</label><input id="cNom" placeholder="Juan">
+      <label>Apellido</label><input id="cApe" placeholder="Perez">
+      <label>Email (opcional)</label><input id="cEmail" placeholder="juan@mail.com">
+      <label>Telefono (opcional)</label><input id="cTel" placeholder="+56912345678">
+      <button class="btn btn-go" onclick="doPost('/api/v1/clientes',{codigoTipoDoc:v('cTipo'),nroDocumento:v('cNroDoc'),nombre:v('cNom'),apellido:v('cApe'),email:v('cEmail')||null,telefono:v('cTel')||null},'rCliCreate')">Registrar</button>
+      <div class="res" id="rCliCreate"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar clientes</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/clientes','rCliList')">Listar</button>
+      <div class="res" id="rCliList"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Buscar por documento</h3>
+      <label>Codigo tipo</label><input id="cBTipo" value="RUT">
+      <label>Nro documento</label><input id="cBNro" placeholder="12345678-9">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/clientes/buscar?codigoTipoDoc='+v('cBTipo')+'&nroDocumento='+v('cBNro'),'rCliBuscar')">Buscar</button>
+      <div class="res" id="rCliBuscar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMISION -->
+<div class="panel" id="admision">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-03 Admision — :8083</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method post">POST</span> Registrar admision</h3>
+      <label>ID cliente remitente</label><input id="adRem" type="number" placeholder="1">
+      <label>ID cliente destinatario</label><input id="adDest" type="number" placeholder="2">
+      <label>ID sucursal origen</label><input id="adOrig" type="number" placeholder="1">
+      <label>ID sucursal destino</label><input id="adDst" type="number" placeholder="2">
+      <label>ID tipo carga</label><input id="adTipo" type="number" placeholder="1">
+      <label>Peso (kg)</label><input id="adPeso" type="number" step="0.1" placeholder="2.5">
+      <label>ID usuario registro</label><input id="adUser" type="number" placeholder="1">
+      <button class="btn btn-go" onclick="doPost('/api/v1/admisiones',{idClienteRem:num('adRem'),idClienteDest:num('adDest'),idSucursalOrigen:num('adOrig'),idSucursalDest:num('adDst'),idTipoCarga:num('adTipo'),pesoKg:num('adPeso'),idUsuarioReg:num('adUser')},'rAdmCreate')">Registrar</button>
+      <div class="res" id="rAdmCreate"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar admisiones</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/admisiones','rAdmList')">Listar</button>
+      <div class="res" id="rAdmList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKING -->
+<div class="panel" id="tracking">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-04 Tracking — :8084</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar guias</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/guias','rGuias')">Listar</button>
+      <div class="res" id="rGuias"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Buscar guia por tracking</h3>
+      <label>Codigo tracking</label><input id="tCode" placeholder="ABC123456789">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/guias/buscar?codigoTracking='+v('tCode'),'rGuiaBuscar')">Buscar</button>
+      <div class="res" id="rGuiaBuscar"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Historial por guia</h3>
+      <label>ID guia</label><input id="tGuiaId" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/historial/'+v('tGuiaId'),'rHist')">Ver historial</button>
+      <div class="res" id="rHist"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Estado actual de guia</h3>
+      <label>ID guia</label><input id="tEstadoId" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/historial/estado-actual/'+v('tEstadoId'),'rEstadoActual')">Consultar</button>
+      <div class="res" id="rEstadoActual"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAQUETES -->
+<div class="panel" id="paquetes">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-05 Inventario Paquetes — :8085</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method post">POST</span> Registrar ingreso</h3>
+      <label>ID guia</label><input id="pGuia" type="number" placeholder="1">
+      <label>ID sucursal</label><input id="pSuc" type="number" placeholder="1">
+      <label>Fecha ingreso</label><input id="pFecha" type="date">
+      <button class="btn btn-go" onclick="doPost('/api/v1/inventario/ingreso',{idGuia:num('pGuia'),idSucursal:num('pSuc'),fechaIngreso:v('pFecha')},'rPaqIng')">Registrar</button>
+      <div class="res" id="rPaqIng"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> En bodega</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/inventario/en-bodega','rPaqBod')">Listar</button>
+      <div class="res" id="rPaqBod"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method patch">PATCH</span> Registrar salida</h3>
+      <label>ID inventario</label><input id="pSalId" type="number" placeholder="1">
+      <button class="btn btn-go" onclick="doPatch('/api/v1/inventario/'+v('pSalId')+'/salida',null,'rPaqSal')">Salida</button>
+      <div class="res" id="rPaqSal"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Por sucursal</h3>
+      <label>ID sucursal</label><input id="pSucId" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/inventario/sucursal/'+v('pSucId'),'rPaqSuc')">Buscar</button>
+      <div class="res" id="rPaqSuc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EMBALAJE -->
+<div class="panel" id="embalaje">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-06 Embalaje — :8086</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Categorias</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/categorias','rCats')">Listar</button>
+      <div class="res" id="rCats"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Crear categoria</h3>
+      <label>Nombre</label><input id="eCatNom" placeholder="Cajas">
+      <button class="btn btn-go" onclick="doPost('/api/v1/categorias',{nombreCategoria:v('eCatNom')},'rCatNew')">Crear</button>
+      <div class="res" id="rCatNew"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Articulos</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/articulos','rArts')">Listar</button>
+      <div class="res" id="rArts"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Crear articulo</h3>
+      <label>ID categoria</label><input id="eArtCat" type="number" placeholder="1">
+      <label>Nombre</label><input id="eArtNom" placeholder="Caja mediana">
+      <label>Descripcion</label><input id="eArtDesc" placeholder="Opcional">
+      <label>Precio venta</label><input id="eArtPre" type="number" step="0.01" placeholder="1500">
+      <button class="btn btn-go" onclick="doPost('/api/v1/articulos',{idCat:num('eArtCat'),nombre:v('eArtNom'),descripcion:v('eArtDesc')||null,precioVta:num('eArtPre')},'rArtNew')">Crear</button>
+      <div class="res" id="rArtNew"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Stock por sucursal</h3>
+      <label>ID sucursal</label><input id="eStSuc" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/stock/sucursal/'+v('eStSuc'),'rStSuc')">Buscar</button>
+      <div class="res" id="rStSuc"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Crear stock</h3>
+      <label>ID articulo</label><input id="eStArt" type="number" placeholder="1">
+      <label>ID sucursal</label><input id="eStSuc2" type="number" placeholder="1">
+      <label>Cantidad</label><input id="eStCant" type="number" placeholder="100">
+      <button class="btn btn-go" onclick="doPost('/api/v1/stock',{idArt:num('eStArt'),idSucursal:num('eStSuc2'),cantidadDisponible:num('eStCant')},'rStNew')">Crear</button>
+      <div class="res" id="rStNew"></div>
+    </div>
+  </div>
+</div>
+
+<!-- VENTAS -->
+<div class="panel" id="ventas">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-07 Ventas POS — :8087</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar ventas</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/ventas','rVentas')">Listar</button>
+      <div class="res" id="rVentas"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Ventas por sucursal</h3>
+      <label>ID sucursal</label><input id="vSuc" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/ventas/sucursal/'+v('vSuc'),'rVtaSuc')">Buscar</button>
+      <div class="res" id="rVtaSuc"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Detalles de venta</h3>
+      <label>ID venta</label><input id="vDetId" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/detalles/venta/'+v('vDetId'),'rDetalles')">Ver detalles</button>
+      <div class="res" id="rDetalles"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANZAS -->
+<div class="panel" id="finanzas">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-08 Finanzas — :8088</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar cajas</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/cajas','rCajas')">Listar</button>
+      <div class="res" id="rCajas"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Crear caja</h3>
+      <label>ID sucursal</label><input id="fCajaSuc" type="number" placeholder="1">
+      <button class="btn btn-go" onclick="doPost('/api/v1/cajas',{idSucursal:num('fCajaSuc')},'rCajaNew')">Crear</button>
+      <div class="res" id="rCajaNew"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Abrir caja</h3>
+      <label>ID caja</label><input id="fApCaja" type="number" placeholder="1">
+      <label>ID usuario</label><input id="fApUser" type="number" placeholder="1">
+      <label>Monto apertura</label><input id="fApMonto" type="number" step="0.01" placeholder="50000">
+      <button class="btn btn-go" onclick="doPost('/api/v1/aperturas/abrir',{idCaja:num('fApCaja'),idUsuario:num('fApUser'),montoApertura:num('fApMonto')},'rAbrir')">Abrir</button>
+      <div class="res" id="rAbrir"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method patch">PATCH</span> Cerrar caja</h3>
+      <label>ID sesion</label><input id="fCiId" type="number" placeholder="1">
+      <label>Monto cierre</label><input id="fCiMonto" type="number" step="0.01" placeholder="75000">
+      <button class="btn btn-go" onclick="doPatch('/api/v1/aperturas/'+v('fCiId')+'/cerrar?montoCierre='+v('fCiMonto'),null,'rCerrar')">Cerrar</button>
+      <div class="res" id="rCerrar"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Registrar movimiento</h3>
+      <label>ID sesion</label><input id="fMovSes" type="number" placeholder="1">
+      <label>Tipo</label>
+      <select id="fMovTipo"><option value="INGRESO">INGRESO</option><option value="EGRESO">EGRESO</option></select>
+      <label>Monto</label><input id="fMovMonto" type="number" step="0.01" placeholder="15000">
+      <label>Concepto</label><input id="fMovConc" placeholder="Venta embalaje">
+      <button class="btn btn-go" onclick="doPost('/api/v1/movimientos',{idSesion:num('fMovSes'),tipo:v('fMovTipo'),monto:num('fMovMonto'),concepto:v('fMovConc')||null,idVenta:null},'rMovNew')">Registrar</button>
+      <div class="res" id="rMovNew"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Movimientos por sesion</h3>
+      <label>ID sesion</label><input id="fMovList" type="number" placeholder="1">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/movimientos/sesion/'+v('fMovList'),'rMovList')">Listar</button>
+      <div class="res" id="rMovList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div class="panel" id="portal">
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">MS-10 Portal Cliente — :8090</p>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="method get">GET</span> Consultar tracking</h3>
+      <label>Codigo tracking</label><input id="poCode" placeholder="ABC123456789">
+      <button class="btn btn-ok" onclick="doGet('/api/v1/consultas/search?codigoTracking='+v('poCode'),'rPoTrack')">Consultar</button>
+      <div class="res" id="rPoTrack"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method post">POST</span> Dejar feedback</h3>
+      <label>ID guia</label><input id="poGuia" type="number" placeholder="1">
+      <label>Calificacion (1-5)</label><input id="poCal" type="number" min="1" max="5" placeholder="5">
+      <label>Comentario (opcional)</label><input id="poComent" placeholder="Excelente servicio">
+      <button class="btn btn-go" onclick="doPost('/api/v1/feedbacks',{idGuiaTracking:num('poGuia'),calificacion:num('poCal'),comentario:v('poComent')||null},'rPoFeed')">Enviar</button>
+      <div class="res" id="rPoFeed"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Listar feedbacks</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/feedbacks','rPoFeedList')">Listar</button>
+      <div class="res" id="rPoFeedList"></div>
+    </div>
+    <div class="card">
+      <h3><span class="method get">GET</span> Consultas publicas</h3>
+      <button class="btn btn-ok" onclick="doGet('/api/v1/consultas','rPoConsList')">Listar</button>
+      <div class="res" id="rPoConsList"></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const GW='http://localhost:8080';
+const EU='http://localhost:8761';
+
+function v(id){return document.getElementById(id).value.trim()}
+function num(id){const n=Number(v(id));return isNaN(n)?null:n}
+function show(id,data,ok){const el=document.getElementById(id);el.className='res '+(ok?'ok':'err');el.textContent=typeof data==='string'?data:JSON.stringify(data,null,2)}
+
+async function doGet(p,id){try{const r=await fetch(GW+p);const d=await r.json();show(id,d,r.ok)}catch(e){show(id,'Error: '+e.message,false)}}
+async function doPost(p,b,id){try{const r=await fetch(GW+p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});const d=await r.json();show(id,d,r.ok)}catch(e){show(id,'Error: '+e.message,false)}}
+async function doPatch(p,b,id){try{const o={method:'PATCH',headers:{'Content-Type':'application/json'}};if(b)o.body=JSON.stringify(b);const r=await fetch(GW+p,o);const d=await r.json();show(id,d,r.ok)}catch(e){show(id,'Error: '+e.message,false)}}
+
+const EXPECTED=['GATEWAY','MS-AUTH','MS-SUCURSALES','MS-ADMISION','MS-TRACKING','MS-PAQUETES','MS-EMBALAJE','MS-VENTAS','MS-FINANZAS','MS-CLIENTES','MS-PORTAL'];
+const PORTS={GATEWAY:8080,'MS-AUTH':8081,'MS-SUCURSALES':8082,'MS-ADMISION':8083,'MS-TRACKING':8084,'MS-PAQUETES':8085,'MS-EMBALAJE':8086,'MS-VENTAS':8087,'MS-FINANZAS':8088,'MS-CLIENTES':8089,'MS-PORTAL':8090};
+
+async function loadEureka(){
+  const grid=document.getElementById('svcGrid');
+  try{
+    const r=await fetch(EU+'/eureka/apps',{headers:{Accept:'application/json'}});
+    const d=await r.json();
+    const apps=d.applications?.application||[];
+    const registered=new Set(apps.map(a=>a.name));
+    grid.innerHTML=EXPECTED.map(name=>{
+      const up=registered.has(name);
+      return`<div class="svc-card ${up?'up':'down'}"><div class="svc-name">${name}</div><div class="svc-port">:${PORTS[name]||'?'}</div><span class="svc-status ${up?'up':'down'}">${up?'UP':'DOWN'}</span></div>`;
+    }).join('');
+    document.getElementById('dEu').className='dot ok';
+    document.getElementById('tEu').textContent='Eureka :8761';
+  }catch(e){
+    grid.innerHTML='<p style="color:#fca5a5">Error: '+e.message+'</p>';
+    document.getElementById('dEu').className='dot';
+    document.getElementById('tEu').textContent='Eureka offline';
+  }
+}
+
+async function checkInfra(){
+  try{await fetch(GW+'/api/v1/sucursales',{signal:AbortSignal.timeout(3000)});document.getElementById('dGw').className='dot ok';document.getElementById('tGw').textContent='Gateway :8080'}catch{document.getElementById('dGw').className='dot';document.getElementById('tGw').textContent='Gateway offline'}
+  try{await fetch(EU+'/eureka/apps',{signal:AbortSignal.timeout(3000)});document.getElementById('dEu').className='dot ok';document.getElementById('tEu').textContent='Eureka :8761'}catch{document.getElementById('dEu').className='dot';document.getElementById('tEu').textContent='Eureka offline'}
+  document.getElementById('dDb').className='dot ok';document.getElementById('tDb').textContent='MariaDB :3306';
+}
+
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.p).classList.add('active')})});
+
+document.querySelectorAll('input[type=date]').forEach(i=>{i.value=new Date().toISOString().split('T')[0]});
+checkInfra();
+loadEureka();
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+# SIVEBO — Ecosistema completo: 10 microservicios + Eureka + Gateway + MariaDB
+#
+# Uso:
+#   docker compose up --build        # primera vez / tras cambios de codigo
+#   docker compose up -d             # arranque normal en segundo plano
+#   docker compose logs -f gateway   # ver logs de un servicio puntual
+#   docker compose down              # apagar todo (-v para borrar tambien la BD)
+
+services:
+
+  mariadb:
+    image: mariadb:11
+    container_name: sivebo-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ""
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - sivebo-net
+
+  eureka-server:
+    build: ./eureka_server
+    container_name: sivebo-eureka
+    ports:
+      - "8761:8761"
+    environment:
+      EUREKA_HOSTNAME: eureka-server
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8761/eureka/apps || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
+    networks:
+      - sivebo-net
+
+  gateway:
+    build: ./gateway
+    container_name: sivebo-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-auth:
+    build: ./ms_auth
+    container_name: sivebo-ms-auth
+    ports:
+      - "8081:8081"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_auth?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-sucursales:
+    build: ./ms_sucursales
+    container_name: sivebo-ms-sucursales
+    ports:
+      - "8082:8082"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_sucursales?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-admision:
+    build: ./ms_admision
+    container_name: sivebo-ms-admision
+    ports:
+      - "8083:8083"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_admision?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-tracking:
+    build: ./ms_tracking
+    container_name: sivebo-ms-tracking
+    ports:
+      - "8084:8084"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_tracking?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-paquetes:
+    build: ./ms_paquetes
+    container_name: sivebo-ms-paquetes
+    ports:
+      - "8085:8085"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_paquetes?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-embalaje:
+    build: ./ms_embalaje
+    container_name: sivebo-ms-embalaje
+    ports:
+      - "8086:8086"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_embalaje?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-ventas:
+    build: ./ms_ventas
+    container_name: sivebo-ms-ventas
+    ports:
+      - "8087:8087"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_ventas?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-finanzas:
+    build: ./ms_finanzas
+    container_name: sivebo-ms-finanzas
+    ports:
+      - "8088:8088"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_finanzas?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-clientes:
+    build: ./ms_clientes
+    container_name: sivebo-ms-clientes
+    ports:
+      - "8089:8089"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_clientes?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+  ms-portal:
+    build: ./ms_portal
+    container_name: sivebo-ms-portal
+    ports:
+      - "8090:8090"
+    environment:
+      DB_URL: jdbc:mariadb://mariadb:3306/db_ms_portal?createDatabaseIfNotExist=true
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - sivebo-net
+
+networks:
+  sivebo-net:
+    driver: bridge
+
+volumes:
+  mariadb_data:
