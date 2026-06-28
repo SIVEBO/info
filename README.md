@@ -250,6 +250,7 @@ Las historias de usuario describen las necesidades del negocio desde la perspect
 - **Motor de Base de Datos:** **MariaDB**, con modelo relacional en **Tercera Forma Normal (3FN)**, `AUTO_INCREMENT` para autoincremento y constraints de negocio declarados explícitamente.
 - **Patrón de Diseño:** Implementación del patrón **CSR (Controller-Service-Repository)** y uso de **DTOs**.
 - **Documentación de API:** Cada microservicio integra **SpringDoc OpenAPI (Swagger UI)** para la documentación interactiva de sus endpoints REST.
+- **Plataforma de Despliegue:** **Railway** (PaaS) como entorno de hospedaje en la nube. Cada microservicio y su base de datos MariaDB se despliegan como servicios independientes dentro de un mismo proyecto Railway, usando variables de entorno para la configuración.
 
 ---
 
@@ -286,10 +287,10 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `ROL` | id_rol `PK`, nombre_rol `UK`, descripcion |
-| `USUARIO` | id_usuario `PK`, username `UK`, password_hash `CHAR(60)`, email `UK`, id_rol `FK`, id_sucursal_asignada `Ref Ext`·`?`, activo, created_at |
-| `TOKEN_SESION` | id_token `PK`, id_usuario `FK`, token `UK`, fecha_expiracion, created_at |
+| `USUARIO` | id_usuario `PK`, username `UK`, password_hash `CHAR(60)`, email `UK`, nombre_rol `FK`, nombre_sucursal `Ref Ext`·`?`, activo, created_at |
+| `TOKEN_SESION` | id_token `PK`, username `FK`, token `UK`, fecha_expiracion, created_at |
 
-**Ref Ext:** `USUARIO.id_sucursal_asignada` → `db_ms_sucursales.SUCURSAL`
+**Ref Ext:** `USUARIO.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
 
 ---
 
@@ -298,8 +299,8 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `REGION` | id_region `PK`, nombre_region `UK` |
-| `COMUNA` | id_comuna `PK`, nombre_comuna `UK`, id_region `FK` |
-| `SUCURSAL` | id_sucursal `PK`, nombre_sucursal `UK`, id_comuna `FK`, direccion_fisica `UK`, telefono_contacto `UK`·`?`, estado |
+| `COMUNA` | id_comuna `PK`, nombre_comuna `UK`, nombre_region `FK` |
+| `SUCURSAL` | id_sucursal `PK`, nombre_sucursal `UK`, nombre_comuna `FK`, direccion_fisica `UK`, telefono_contacto `UK`·`?`, estado |
 
 **Ref Ext:** Ninguna. Fuente de verdad de la red geográfica.
 
@@ -310,9 +311,9 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `TIPO_CARGA` | id_tipo `PK`, nombre_tipo `UK` (Documento, Encomienda…), descripcion |
-| `ADMISION` | id_admision `PK`, id_cliente_rem `Ref Ext`, id_cliente_dest `Ref Ext`, id_sucursal_origen `Ref Ext`, id_sucursal_dest `Ref Ext`, id_tipo `FK`, peso_kg, fecha_creacion, id_usuario_reg `Ref Ext` |
+| `ADMISION` | id_admision `PK`, codigo_admision `UK`, nro_doc_rem `Ref Ext`, nro_doc_dest `Ref Ext`, nombre_sucursal_origen `Ref Ext`, nombre_sucursal_dest `Ref Ext`, nombre_tipo `FK`, peso_kg, fecha_creacion, username_reg `Ref Ext` |
 
-**Ref Ext:** `id_cliente_rem` / `id_cliente_dest` → `db_ms_clientes.CLIENTE` · `id_sucursal_origen` / `id_sucursal_dest` → `db_ms_sucursales.SUCURSAL` · `id_usuario_reg` → `db_ms_auth.USUARIO`
+**Ref Ext:** `nro_doc_rem` / `nro_doc_dest` → `db_ms_clientes.CLIENTE.nro_documento` · `nombre_sucursal_origen` / `nombre_sucursal_dest` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `username_reg` → `db_ms_auth.USUARIO.username`
 
 ---
 
@@ -321,12 +322,12 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `ESTADO_MAESTRO` | id_estado `PK`, nombre_estado `UK` (Recibido, En Tránsito, Entregado…), orden |
-| `GUIA_DESPACHO` | id_guia `PK`, codigo_tracking `UK`, id_admision `Ref Ext`, fecha_creacion |
-| `HISTORIAL_LOGISTICO` | id_hist `PK`, id_guia `FK`, id_estado `FK`, id_sucursal_actual `Ref Ext`, id_usuario `Ref Ext`, fecha_hora, comentario`?` |
+| `GUIA_DESPACHO` | id_guia `PK`, codigo_tracking `UK`, codigo_admision `Ref Ext`, fecha_creacion |
+| `HISTORIAL_LOGISTICO` | id_hist `PK`, codigo_tracking `FK`, nombre_estado `FK`, nombre_sucursal_actual `Ref Ext`, username `Ref Ext`, fecha_hora, comentario`?` |
 
 **Vista:** `V_ESTADO_ACTUAL_GUIA` — estado vigente por guía (último registro del historial).
 
-**Ref Ext:** `GUIA_DESPACHO.id_admision` → `db_ms_admision.ADMISION` · `HISTORIAL_LOGISTICO.id_sucursal_actual` → `db_ms_sucursales.SUCURSAL` · `HISTORIAL_LOGISTICO.id_usuario` → `db_ms_auth.USUARIO`
+**Ref Ext:** `GUIA_DESPACHO.codigo_admision` → `db_ms_admision.ADMISION.codigo_admision` · `HISTORIAL_LOGISTICO.nombre_sucursal_actual` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `HISTORIAL_LOGISTICO.username` → `db_ms_auth.USUARIO.username`
 
 ---
 
@@ -334,11 +335,11 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 | Entidad | Atributos |
 | --- | --- |
-| `INVENTARIO_PAQUETE` | id_inv `PK`, id_guia `Ref Ext`, id_sucursal `Ref Ext`, fecha_ingreso, fecha_salida`?` |
+| `INVENTARIO_PAQUETE` | id_inv `PK`, codigo_tracking `Ref Ext`, nombre_sucursal `Ref Ext`, fecha_ingreso, fecha_salida`?` |
 
 > **Nota de diseño:** La entidad `UBICACION_BODEGA` fue eliminada por no corresponder a un concepto del negocio. La ubicación física de un paquete queda expresada únicamente por la sucursal donde está almacenado.
 
-**Ref Ext:** `id_guia` → `db_ms_tracking.GUIA_DESPACHO` · `id_sucursal` → `db_ms_sucursales.SUCURSAL`
+**Ref Ext:** `codigo_tracking` → `db_ms_tracking.GUIA_DESPACHO.codigo_tracking` · `nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
 
 ---
 
@@ -347,10 +348,10 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `CATEGORIA_EMBALAJE` | id_cat `PK`, nombre_categoria `UK` (Cajas, Sobres…) |
-| `ARTICULO_EMBALAJE` | id_art `PK`, id_cat `FK`, nombre, descripcion`?`, precio_vta, activo |
-| `STOCK_SUCURSAL` | id_stock `PK`, id_art `FK`, id_sucursal `Ref Ext`, cantidad_disponible, updated_at · `UK(id_art, id_sucursal)` |
+| `ARTICULO_EMBALAJE` | id_art `PK`, nombre_categoria `FK`, nombre `UK`, descripcion`?`, precio_vta, activo |
+| `STOCK_SUCURSAL` | id_stock `PK`, nombre_art `FK`, nombre_sucursal `Ref Ext`, cantidad_disponible, updated_at · `UK(nombre_art, nombre_sucursal)` |
 
-**Ref Ext:** `STOCK_SUCURSAL.id_sucursal` → `db_ms_sucursales.SUCURSAL`
+**Ref Ext:** `STOCK_SUCURSAL.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
 
 ---
 
@@ -358,12 +359,12 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 | Entidad | Atributos |
 | --- | --- |
-| `VENTA` | id_venta `PK`, nro_boleta `UK`, id_usuario `Ref Ext`, id_sucursal `Ref Ext`, fecha_vta, subtotal, iva, total, estado |
-| `DETALLE_VENTA` | id_det `PK`, id_venta `FK`, id_articulo `Ref Ext`, id_admision `Ref Ext`·`?`, cantidad_art, precio_unit_historico_art, precio_admision`?` |
+| `VENTA` | id_venta `PK`, nro_boleta `UK`, username `Ref Ext`, nombre_sucursal `Ref Ext`, fecha_vta, subtotal, iva, total, estado |
+| `DETALLE_VENTA` | id_det `PK`, nro_boleta `FK`, nombre_art `Ref Ext`, codigo_admision `Ref Ext`·`?`, cantidad_art, precio_unit_historico_art, precio_admision`?` |
 
-> **Nota de diseño:** `DETALLE_VENTA` permite registrar tanto líneas de embalaje como líneas de servicio de envío en la misma boleta. `id_admision` y `precio_admision` son nullable cuando la línea corresponde solo a embalaje.
+> **Nota de diseño:** `DETALLE_VENTA` permite registrar tanto líneas de embalaje como líneas de servicio de envío en la misma boleta. `codigo_admision` y `precio_admision` son nullable cuando la línea corresponde solo a embalaje.
 
-**Ref Ext:** `VENTA.id_usuario` → `db_ms_auth.USUARIO` · `VENTA.id_sucursal` → `db_ms_sucursales.SUCURSAL` · `DETALLE_VENTA.id_articulo` → `db_ms_inv_embalaje.ARTICULO_EMBALAJE` · `DETALLE_VENTA.id_admision` → `db_ms_admision.ADMISION`
+**Ref Ext:** `VENTA.username` → `db_ms_auth.USUARIO.username` · `VENTA.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `DETALLE_VENTA.nombre_art` → `db_ms_inv_embalaje.ARTICULO_EMBALAJE.nombre` · `DETALLE_VENTA.codigo_admision` → `db_ms_admision.ADMISION.codigo_admision`
 
 ---
 
@@ -371,11 +372,11 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 | Entidad | Atributos |
 | --- | --- |
-| `CAJA_SUCURSAL` | id_caja `PK`, id_sucursal `Ref Ext` `UK`, estado_actual |
-| `APERTURA_CIERRE` | id_sesion `PK`, id_caja `FK`, id_usuario `Ref Ext`, monto_apertura, monto_cierre`?`, fecha_hora_ap, fecha_hora_ci`?` |
-| `MOVIMIENTO_CAJA` | id_mov `PK`, id_sesion `FK`, tipo (INGRESO/EGRESO), monto, id_venta `Ref Ext`·`?`, concepto`?` |
+| `CAJA_SUCURSAL` | id_caja `PK`, nombre_sucursal `Ref Ext` `UK`, estado_actual |
+| `APERTURA_CIERRE` | id_sesion `PK`, cod_sesion `UK`, nombre_sucursal `FK`, username `Ref Ext`, monto_apertura, monto_cierre`?`, fecha_hora_ap, fecha_hora_ci`?` |
+| `MOVIMIENTO_CAJA` | id_mov `PK`, cod_sesion `FK`, tipo (INGRESO/EGRESO), monto, nro_boleta `Ref Ext`·`?`, concepto`?` |
 
-**Ref Ext:** `CAJA_SUCURSAL.id_sucursal` → `db_ms_sucursales.SUCURSAL` · `APERTURA_CIERRE.id_usuario` → `db_ms_auth.USUARIO` · `MOVIMIENTO_CAJA.id_venta` → `db_ms_ventas.VENTA`
+**Ref Ext:** `CAJA_SUCURSAL.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `APERTURA_CIERRE.username` → `db_ms_auth.USUARIO.username` · `MOVIMIENTO_CAJA.nro_boleta` → `db_ms_ventas.VENTA.nro_boleta`
 
 ---
 
@@ -384,7 +385,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Entidad | Atributos |
 | --- | --- |
 | `TIPO_DOCUMENTO` | id_tipo_doc `PK`, codigo `UK` (RUT, Pasaporte…), descripcion |
-| `CLIENTE` | id_cliente `PK`, id_tipo_doc `FK`, nro_documento `UK`, nombre, apellido, email`?`, telefono`?` |
+| `CLIENTE` | id_cliente `PK`, cod_tipo_doc `FK`, nro_documento `UK`, nombre, apellido, email`?`, telefono`?` |
 
 **Ref Ext:** Ninguna. Fuente de verdad de personas.
 
@@ -394,12 +395,12 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 | Entidad | Atributos |
 | --- | --- |
-| `CONSULTA_PUBLICA` | id_cons `PK`, codigo_tracking_consultado, id_guia `Ref Ext`·`?`, ip_usuario, fecha_hora |
-| `FEEDBACK_CLIENTE` | id_feed `PK`, id_guia `Ref Ext`, id_cliente `Ref Ext`·`?`, calificacion (1–5), comentario`?`, fecha_hora |
+| `CONSULTA_PUBLICA` | id_cons `PK`, codigo_tracking_consultado, codigo_tracking `Ref Ext`·`?`, ip_usuario, fecha_hora |
+| `FEEDBACK_CLIENTE` | id_feed `PK`, codigo_tracking `Ref Ext`, nro_documento `Ref Ext`·`?`, calificacion (1–5), comentario`?`, fecha_hora |
 
-**Vista:** `V_CONSULTA_PUBLICA` — expone `guia_encontrada` como booleano derivado de `id_guia IS NOT NULL`.
+**Vista:** `V_CONSULTA_PUBLICA` — expone `guia_encontrada` como booleano derivado de `codigo_tracking IS NOT NULL`.
 
-**Ref Ext:** `id_guia` → `db_ms_tracking.GUIA_DESPACHO` · `FEEDBACK_CLIENTE.id_cliente` → `db_ms_clientes.CLIENTE`
+**Ref Ext:** `codigo_tracking` → `db_ms_tracking.GUIA_DESPACHO.codigo_tracking` · `FEEDBACK_CLIENTE.nro_documento` → `db_ms_clientes.CLIENTE.nro_documento`
 
 ---
 
@@ -407,11 +408,11 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 - **Control de Stock:** No se puede realizar una venta en MS-07 si MS-06 indica stock insuficiente del artículo de embalaje solicitado.
 - **Generación de Tracking:** Todo paquete admitido en MS-03 debe generar automáticamente una `GUIA_DESPACHO` con un estado inicial en MS-04.
-- **Registro de Destino:** Toda admisión debe registrar explícitamente la sucursal de origen (`id_sucursal_origen`) y la sucursal de destino (`id_sucursal_dest`).
+- **Registro de Destino:** Toda admisión debe registrar explícitamente la sucursal de origen (`nombre_sucursal_origen`) y la sucursal de destino (`nombre_sucursal_dest`).
 - **Cierre de Caja:** MS-08 debe cuadrar las ventas registradas en MS-07 antes de permitir el cierre de sesión de caja.
 - **Validación de Roles:** Solo un usuario con rol `Admin` o `Supervisor` puede anular una venta (cambiar `estado` a `ANULADA`).
-- **Feedback anónimo:** MS-10 permite registrar feedback sin identificar al cliente (`id_cliente` nullable). Si el `codigo_tracking_consultado` no existe, `id_guia` queda `NULL` en `CONSULTA_PUBLICA`.
-- **Una caja por sucursal:** La restricción `UNIQUE(id_sucursal)` en `CAJA_SUCURSAL` garantiza que cada sucursal tenga exactamente una caja asignada.
+- **Feedback anónimo:** MS-10 permite registrar feedback sin identificar al cliente (`nro_documento` nullable). Si el `codigo_tracking_consultado` no existe, `codigo_tracking` queda `NULL` en `CONSULTA_PUBLICA`.
+- **Una caja por sucursal:** La restricción `UNIQUE(nombre_sucursal)` en `CAJA_SUCURSAL` garantiza que cada sucursal tenga exactamente una caja asignada.
 
 ---
 
@@ -419,7 +420,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 - **Repositorio:** Uso obligatorio de **GitHub** para evidenciar el avance progresivo, la participación del equipo, el historial de cambios, y el uso de ramas de desarrollo con commits frecuentes.
 - **Pruebas y Documentación:** Se desarrollará documentación técnica del sistema y pruebas unitarias de los módulos principales. Cada microservicio expondrá su API mediante **Swagger UI (SpringDoc OpenAPI)**, accesible en `/swagger-ui.html`, permitiendo explorar y probar los endpoints de forma interactiva.
-- **Despliegue:** Despliegue en entorno local exponiendo los servicios a través del API Gateway, dejando el sistema disponible mediante una URL para el consumo de las APIs.
+- **Despliegue:** Despliegue en **Railway** (PaaS) como plataforma de hospedaje en la nube. Cada microservicio se despliega como un servicio independiente en Railway, con variables de entorno configuradas por servicio. Railway provee las bases de datos MariaDB como plugins adjuntos a cada servicio. El API Gateway queda expuesto mediante una URL pública generada por Railway para el consumo de las APIs.
 
 ---
 

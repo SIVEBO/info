@@ -380,7 +380,7 @@ VARCHAR2 (120)
 F
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_rol
+nombre_rol
 </text>
 <text x="116" y="88" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -392,7 +392,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="102" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal
+nombre_sucursal
 </text>
 <text x="116" y="102" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -431,18 +431,18 @@ uq_usuario_email (email)
 <line x1="0" y1="184" x2="279" y2="184" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="191" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#19935F85-D13C7FC86503" >
 <text x="16" y="198" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_usuario_rol (id_rol)
+fk_usuario_rol (nombre_rol)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="205" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="212" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_usuario_sucursal (id_sucursal)
+fk_usuario_sucursal (nombre_sucursal)
 </text></a>
 <line x1="0" y1="218" x2="279" y2="218" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="232" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_usuario_rol (id_rol)
+idx_usuario_rol (nombre_rol)
 </text>
 <text x="16" y="246" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_usuario_sucursal (id_sucursal)
+idx_usuario_sucursal (nombre_sucursal)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath22_0_)" transform="translate(438,1133)" >
@@ -470,7 +470,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario
+username
 </text>
 <text x="129" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -517,11 +517,11 @@ uq_token_sesion_token (token)
 <line x1="0" y1="128" x2="292" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F9A707-3D4E35F31105" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_token_sesion_usuario (id_usuario)
+fk_token_sesion_usuario (username)
 </text></a>
 <line x1="0" y1="148" x2="292" y2="148" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_token_usuario (id_usuario)
+idx_token_usuario (username)
 </text>
 <text x="16" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_token_expiracion (fecha_expiracion)
@@ -601,7 +601,7 @@ VARCHAR2 (80)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_region
+nombre_region
 </text>
 <text x="127" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -614,11 +614,11 @@ pk_comuna (id_comuna)
 <line x1="0" y1="86" x2="214" y2="86" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#6AA6C800-CAE56A248962" >
 <text x="16" y="100" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_comuna_region (id_region)
+fk_comuna_region (nombre_region)
 </text></a>
 <line x1="0" y1="106" x2="214" y2="106" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="120" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_comuna_region (id_region)
+idx_comuna_region (nombre_region)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath19_0_)" transform="translate(1539,1206)" >
@@ -655,7 +655,7 @@ VARCHAR2 (100)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_comuna
+nombre_comuna
 </text>
 <text x="133" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -695,11 +695,11 @@ pk_sucursal (id_sucursal)
 <line x1="0" y1="128" x2="226" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#581F3553-CC9122DC1C9B" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_sucursal_comuna (id_comuna)
+fk_sucursal_comuna (nombre_comuna)
 </text></a>
 <line x1="0" y1="148" x2="226" y2="148" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_sucursal_comuna (id_comuna)
+idx_sucursal_comuna (nombre_comuna)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath21_0_)" transform="translate(484,83)" >
@@ -776,7 +776,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_tipo_doc
+cod_tipo_doc
 </text>
 <text x="121" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -841,11 +841,11 @@ uq_cliente_documento (nro_documento)
 <line x1="0" y1="156" x2="228" y2="156" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="163" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EA11BBE7-75F131052B15" >
 <text x="16" y="170" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_cliente_tipo_doc (id_tipo_doc)
+fk_cliente_tipo_doc (cod_tipo_doc)
 </text></a>
 <line x1="0" y1="176" x2="228" y2="176" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="190" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_cliente_tipo_doc (id_tipo_doc)
+idx_cliente_tipo_doc (cod_tipo_doc)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath20_0_)" transform="translate(854,310)" >
@@ -922,7 +922,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_cliente_rem
+nro_doc_rem
 </text>
 <text x="135" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -934,7 +934,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_cliente_dest
+nro_doc_dest
 </text>
 <text x="135" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -946,7 +946,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="74" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal_origen
+nombre_sucursal_origen
 </text>
 <text x="135" y="74" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -958,7 +958,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_tipo
+nombre_tipo
 </text>
 <text x="135" y="88" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -988,7 +988,7 @@ TIMESTAMP WITH TIME ZONE
 F
 </text>
 <text x="26" y="130" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario_reg
+username_reg
 </text>
 <text x="135" y="130" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1000,7 +1000,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="144" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal_dest
+nombre_sucursal_dest
 </text>
 <text x="135" y="144" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1013,37 +1013,37 @@ pk_admision (id_admision)
 <line x1="0" y1="170" x2="298" y2="170" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="177" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#4EC7CF8A-9DB499390F34" >
 <text x="16" y="184" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_cliente_rem (id_cliente_rem)
+fk_admision_cliente_rem (nro_doc_rem)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="191" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#4EC7CF8A-9DB499390F34" >
 <text x="16" y="198" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_cliente_dest (id_cliente_dest)
+fk_admision_cliente_dest (nro_doc_dest)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="205" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="212" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_sucursal_origen (id_sucursal_origen)
+fk_admision_sucursal_origen (nombre_sucursal_origen)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="219" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#3CAB8E71-2F9269C7FE67" >
 <text x="16" y="226" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_tipo_carga (id_tipo)
+fk_admision_tipo_carga (nombre_tipo)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="233" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F9A707-3D4E35F31105" >
 <text x="16" y="240" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_usuario_reg (id_usuario_reg)
+fk_admision_usuario_reg (username_reg)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="247" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="254" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_admision_sucursal_dest (id_sucursal_dest)
+fk_admision_sucursal_dest (nombre_sucursal_dest)
 </text></a>
 <line x1="0" y1="260" x2="298" y2="260" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="274" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_admision_rem (id_cliente_rem)
+idx_admision_rem (nro_doc_rem)
 </text>
 <text x="16" y="288" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_admision_dest (id_cliente_dest)
+idx_admision_dest (nro_doc_dest)
 </text>
 <text x="16" y="302" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_admision_sucursal (id_sucursal_origen)
+idx_admision_sucursal (nombre_sucursal_origen)
 </text>
 <text x="16" y="316" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_admision_fecha (fecha_creacion)
@@ -1126,7 +1126,7 @@ VARCHAR2 (30)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_admision
+codigo_admision
 </text>
 <text x="122" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1152,11 +1152,11 @@ uq_guia_despacho_tracking (codigo_tracking)
 <line x1="0" y1="114" x2="285" y2="114" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="121" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#71C12E06-F111C92B2E9B" >
 <text x="16" y="128" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_guia_despacho_admision (id_admision)
+fk_guia_despacho_admision (codigo_admision)
 </text></a>
 <line x1="0" y1="134" x2="285" y2="134" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="148" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_guia_admision (id_admision)
+idx_guia_admision (codigo_admision)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath13_0_)" transform="translate(1224,530)" >
@@ -1184,7 +1184,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="135" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1196,7 +1196,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_estado
+nombre_estado
 </text>
 <text x="135" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1208,7 +1208,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="74" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal_actual
+nombre_sucursal_actual
 </text>
 <text x="135" y="74" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1220,7 +1220,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario
+username
 </text>
 <text x="135" y="88" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1251,32 +1251,32 @@ pk_historial_logistico (id_hist)
 <line x1="0" y1="142" x2="298" y2="142" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EE4022E4-EEDE36CF9DB3" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_hist_guia (id_guia)
+fk_hist_guia (codigo_tracking)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="163" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#5895495A-8456EC3EF8A3" >
 <text x="16" y="170" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_hist_estado (id_estado)
+fk_hist_estado (nombre_estado)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="177" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="184" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_hist_sucursal (id_sucursal_actual)
+fk_hist_sucursal (nombre_sucursal_actual)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="191" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F9A707-3D4E35F31105" >
 <text x="16" y="198" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_hist_usuario (id_usuario)
+fk_hist_usuario (username)
 </text></a>
 <line x1="0" y1="204" x2="298" y2="204" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="218" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_hist_guia (id_guia)
+idx_hist_guia (codigo_tracking)
 </text>
 <text x="16" y="232" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_hist_estado (id_estado)
+idx_hist_estado (nombre_estado)
 </text>
 <text x="16" y="246" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_hist_fecha (fecha_hora)
 </text>
 <text x="16" y="260" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_hist_sucursal (id_sucursal_actual)
+idx_hist_sucursal (nombre_sucursal_actual)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath14_0_)" transform="translate(1888,1094)" >
@@ -1304,7 +1304,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="113" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1344,11 +1344,11 @@ pk_inventario_paquete (id_inv)
 <line x1="0" y1="114" x2="276" y2="114" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="121" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EE4022E4-EEDE36CF9DB3" >
 <text x="16" y="128" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_inv_paquete_guia (id_guia)
+fk_inv_paquete_guia (codigo_tracking)
 </text></a>
 <line x1="0" y1="134" x2="276" y2="134" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="148" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_inv_guia (id_guia)
+idx_inv_guia (codigo_tracking)
 </text>
 <text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_inv_ubicacion (id_ubicacion)
@@ -1419,7 +1419,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_cat
+nombre_categoria
 </text>
 <text x="101" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1468,11 +1468,11 @@ pk_articulo_embalaje (id_art)
 <line x1="0" y1="128" x2="223" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#92F55B0E-63EC6105FE09" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_articulo_embalaje_categoria (id_cat)
+fk_articulo_embalaje_categoria (nombre_categoria)
 </text></a>
 <line x1="0" y1="148" x2="223" y2="148" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_art_categoria (id_cat)
+idx_art_categoria (nombre_categoria)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath18_0_)" transform="translate(1499,110)" >
@@ -1500,7 +1500,7 @@ NUMBER (10)
 UF
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_art
+nombre_art
 </text>
 <text x="143" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1512,7 +1512,7 @@ NUMBER (10)
 UF
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal
+nombre_sucursal
 </text>
 <text x="143" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1542,20 +1542,20 @@ pk_stock_sucursal (id_stock)
 </text>
 <use xlink:href="#uk_sym" x="4" y="115" width="8" height="8" fill-opacity="1.0"/>
 <text x="16" y="122" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-uq_stock_sucursal_art_suc (id_art, id_sucursal)
+uq_stock_sucursal_art_suc (nombre_art, nombre_sucursal)
 </text>
 <line x1="0" y1="128" x2="306" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#821D6F47-0D3276D51A90" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_stock_sucursal_articulo (id_art)
+fk_stock_sucursal_articulo (nombre_art)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_stock_sucursal_sucursal (id_sucursal)
+fk_stock_sucursal_sucursal (nombre_sucursal)
 </text></a>
 <line x1="0" y1="162" x2="306" y2="162" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_stock_sucursal (id_sucursal)
+idx_stock_sucursal (nombre_sucursal)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath24_0_)" transform="translate(280,1632)" >
@@ -1595,7 +1595,7 @@ VARCHAR2 (20)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario
+username
 </text>
 <text x="99" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1607,7 +1607,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="74" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal
+nombre_sucursal
 </text>
 <text x="99" y="74" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1669,18 +1669,18 @@ uq_venta_boleta (nro_boleta)
 <line x1="0" y1="184" x2="262" y2="184" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="191" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F9A707-3D4E35F31105" >
 <text x="16" y="198" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_venta_usuario (id_usuario)
+fk_venta_usuario (username)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="205" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="212" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_venta_sucursal (id_sucursal)
+fk_venta_sucursal (nombre_sucursal)
 </text></a>
 <line x1="0" y1="218" x2="262" y2="218" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="232" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_venta_usuario (id_usuario)
+idx_venta_usuario (username)
 </text>
 <text x="16" y="246" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_venta_sucursal (id_sucursal)
+idx_venta_sucursal (nombre_sucursal)
 </text>
 <text x="16" y="260" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_venta_fecha (fecha_vta)
@@ -1711,7 +1711,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_venta
+nro_boleta
 </text>
 <text x="164" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1723,7 +1723,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_articulo
+nombre_art
 </text>
 <text x="164" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1735,7 +1735,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="74" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_admision
+codigo_admision
 </text>
 <text x="164" y="74" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1775,22 +1775,22 @@ pk_detalle_venta (id_det)
 <line x1="0" y1="142" x2="321" y2="142" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EDE6012D-2F24E4088FAF" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_detalle_venta_venta (id_venta)
+fk_detalle_venta_venta (nro_boleta)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="163" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#821D6F47-0D3276D51A90" >
 <text x="16" y="170" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_detalle_venta_articulo (id_articulo)
+fk_detalle_venta_articulo (nombre_art)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="177" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#71C12E06-F111C92B2E9B" >
 <text x="16" y="184" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-DETALLE_VENTA_ADMISION_FK (id_admision)
+DETALLE_VENTA_ADMISION_FK (codigo_admision)
 </text></a>
 <line x1="0" y1="190" x2="321" y2="190" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="204" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_det_venta (id_venta)
+idx_det_venta (nro_boleta)
 </text>
 <text x="16" y="218" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_det_articulo (id_articulo)
+idx_det_articulo (nombre_art)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath4_0_)" transform="translate(1209,1587)" >
@@ -1806,7 +1806,7 @@ CAJA_SUCURSAL
 P
 </text>
 <text x="26" y="32" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_caja
+nombre_sucursal
 </text>
 <text x="113" y="32" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1818,7 +1818,7 @@ NUMBER (10)
 UF
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal
+nombre_sucursal
 </text>
 <text x="113" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1839,16 +1839,16 @@ pk_caja_sucursal (id_caja)
 </text>
 <use xlink:href="#uk_sym" x="4" y="87" width="8" height="8" fill-opacity="1.0"/>
 <text x="16" y="94" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-uq_caja_sucursal_sucursal (id_sucursal)
+uq_caja_sucursal_sucursal (nombre_sucursal)
 </text>
 <line x1="0" y1="100" x2="222" y2="100" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="107" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#1D7C3F45-FB8CC6F7A8EF" >
 <text x="16" y="114" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_caja_sucursal_sucursal (id_sucursal)
+fk_caja_sucursal_sucursal (nombre_sucursal)
 </text></a>
 <line x1="0" y1="120" x2="222" y2="120" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="134" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_caja_sucursal (id_sucursal)
+idx_caja_sucursal (nombre_sucursal)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath2_0_)" transform="translate(1012,1906)" >
@@ -1876,7 +1876,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_caja
+nombre_sucursal
 </text>
 <text x="121" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1888,7 +1888,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario
+username
 </text>
 <text x="121" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -1937,15 +1937,15 @@ pk_apertura_cierre (id_sesion)
 <line x1="0" y1="142" x2="284" y2="142" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#C1A2C9AE-3791276F281F" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_apertura_cierre_caja (id_caja)
+fk_apertura_cierre_caja (nombre_sucursal)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="163" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F9A707-3D4E35F31105" >
 <text x="16" y="170" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_apertura_cierre_usuario (id_usuario)
+fk_apertura_cierre_usuario (username)
 </text></a>
 <line x1="0" y1="176" x2="284" y2="176" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="190" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_apertura_caja (id_caja)
+idx_apertura_caja (nombre_sucursal)
 </text>
 <text x="16" y="204" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_apertura_fecha (fecha_hora_ap)
@@ -1976,7 +1976,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sesion
+cod_sesion
 </text>
 <text x="90" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2006,7 +2006,7 @@ NUMBER (12,2)
 F
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_venta
+nro_boleta
 </text>
 <text x="90" y="88" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2028,18 +2028,18 @@ pk_movimiento_caja (id_mov)
 <line x1="0" y1="128" x2="217" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#B6623341-A62BBFB75DA6" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_movimiento_caja_sesion (id_sesion)
+fk_movimiento_caja_sesion (cod_sesion)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EDE6012D-2F24E4088FAF" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_movimiento_caja_venta (id_venta)
+fk_movimiento_caja_venta (nro_boleta)
 </text></a>
 <line x1="0" y1="162" x2="217" y2="162" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_mov_sesion (id_sesion)
+idx_mov_sesion (cod_sesion)
 </text>
 <text x="16" y="190" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_mov_venta (id_venta)
+idx_mov_venta (nro_boleta)
 </text>
 </g>
 <g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath8_0_)" transform="translate(2278,898)" >
@@ -2076,7 +2076,7 @@ VARCHAR2 (30)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="180" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2107,11 +2107,11 @@ pk_consulta_publica (id_cons)
 <line x1="0" y1="114" x2="343" y2="114" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="121" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EE4022E4-EEDE36CF9DB3" >
 <text x="16" y="128" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_consulta_publica_guia (id_guia)
+fk_consulta_publica_guia (codigo_tracking)
 </text></a>
 <line x1="0" y1="134" x2="343" y2="134" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="148" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_consulta_guia (id_guia)
+idx_consulta_guia (codigo_tracking)
 </text>
 <text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 idx_consulta_tracking (codigo_tracking_consultado)
@@ -2145,7 +2145,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="103" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2157,7 +2157,7 @@ NUMBER (10)
 F
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_cliente
+nro_documento
 </text>
 <text x="103" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2197,18 +2197,18 @@ pk_feedback_cliente (id_feed)
 <line x1="0" y1="128" x2="266" y2="128" fill="none" stroke="rgb(0,0,255)"/>
 <use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#EE4022E4-EEDE36CF9DB3" >
 <text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_feedback_cliente_guia (id_guia)
+fk_feedback_cliente_guia (codigo_tracking)
 </text></a>
 <use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#4EC7CF8A-9DB499390F34" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-fk_feedback_cliente_cliente (id_cliente)
+fk_feedback_cliente_cliente (nro_documento)
 </text></a>
 <line x1="0" y1="162" x2="266" y2="162" fill="none" stroke="rgb(0,0,255)"/>
 <text x="16" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_feedback_guia (id_guia)
+idx_feedback_guia (codigo_tracking)
 </text>
 <text x="16" y="190" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-idx_feedback_cliente (id_cliente)
+idx_feedback_cliente (nro_documento)
 </text>
 </g>
 <g  fill="rgb(150,255,150)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath25_0_)" transform="translate(2080,1833)" >
@@ -2239,7 +2239,7 @@ VARCHAR2 (30)
 
 </text>
 <text x="26" y="60" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="180" y="60" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2286,7 +2286,7 @@ V_ESTADO_ACTUAL_GUIA
 
 </text>
 <text x="26" y="32" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_guia
+codigo_tracking
 </text>
 <text x="157" y="32" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2295,7 +2295,7 @@ NUMBER (10)
 
 </text>
 <text x="26" y="46" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_estado
+nombre_estado
 </text>
 <text x="157" y="46" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2322,7 +2322,7 @@ TIMESTAMP WITH TIME ZONE
 
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_sucursal_actual
+nombre_sucursal_actual
 </text>
 <text x="157" y="88" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
@@ -2331,7 +2331,7 @@ NUMBER (10)
 
 </text>
 <text x="26" y="102" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-id_usuario_responsable
+username_responsable
 </text>
 <text x="157" y="102" fill="rgb(0,128,0)" fill-opacity="1.0" font-size="10" stroke="none">
 NUMBER (10)
