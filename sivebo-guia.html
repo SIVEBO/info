@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIVEBO — Guia completa: Java, Spring Boot y Microservicios</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #cbd5e1; line-height: 1.7; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100vh; background: #1e293b; border-right: 1px solid #334155; overflow-y: auto; padding: 1.5rem 0; z-index: 100; }
+  .sidebar h2 { color: #60a5fa; font-size: 1.1rem; padding: 0 1.25rem; margin-bottom: 1rem; }
+  .sidebar a { display: block; padding: 0.4rem 1.25rem; color: #94a3b8; text-decoration: none; font-size: 0.85rem; border-left: 3px solid transparent; transition: all 0.15s; }
+  .sidebar a:hover { color: #e2e8f0; background: #334155; }
+  .sidebar a.active { color: #60a5fa; border-left-color: #3b82f6; background: #1a2744; }
+  .sidebar .section-label { color: #475569; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 1rem 1.25rem 0.3rem; font-weight: 700; }
+
+  /* CONTENT */
+  .content { margin-left: 280px; max-width: 900px; padding: 2rem 3rem 4rem; }
+
+  h1 { color: #f1f5f9; font-size: 2rem; margin-bottom: 0.5rem; }
+  h1 + p { color: #64748b; font-size: 1rem; margin-bottom: 2rem; }
+  h2 { color: #60a5fa; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid #1e293b; }
+  h3 { color: #f1f5f9; font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+  h4 { color: #94a3b8; font-size: 0.95rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+
+  p { margin-bottom: 1rem; }
+  strong { color: #e2e8f0; }
+  em { color: #fbbf24; font-style: normal; }
+
+  ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.35rem; }
+
+  code { background: #1e293b; color: #a78bfa; padding: 2px 6px; border-radius: 4px; font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; font-size: 0.85em; }
+
+  pre { background: #0c1222; border: 1px solid #1e293b; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; font-size: 0.82rem; line-height: 1.6; color: #e2e8f0; }
+  pre .kw { color: #c084fc; }
+  pre .str { color: #4ade80; }
+  pre .ann { color: #fbbf24; }
+  pre .cm { color: #64748b; }
+  pre .type { color: #60a5fa; }
+  pre .num { color: #f472b6; }
+
+  .tip { background: #1a2744; border-left: 4px solid #3b82f6; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+  .tip strong { color: #60a5fa; }
+  .warn { background: #2a1f0a; border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+  .warn strong { color: #fbbf24; }
+
+  .diagram { background: #0c1222; border: 1px solid #1e293b; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; font-family: monospace; white-space: pre; font-size: 0.8rem; color: #94a3b8; line-height: 1.4; overflow-x: auto; }
+  .diagram .highlight { color: #60a5fa; }
+  .diagram .green { color: #4ade80; }
+  .diagram .yellow { color: #fbbf24; }
+
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th { background: #1e293b; color: #60a5fa; text-align: left; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 2px solid #334155; }
+  td { padding: 0.5rem 1rem; border-bottom: 1px solid #1e293b; font-size: 0.85rem; }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .content { margin-left: 0; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h2>SIVEBO Guia</h2>
+
+  <div class="section-label">Java desde cero</div>
+  <a href="#java-que-es">Que es Java</a>
+  <a href="#java-tipos">Tipos de datos</a>
+  <a href="#java-oop">POO: Clases y objetos</a>
+  <a href="#java-herencia">Herencia e interfaces</a>
+  <a href="#java-collections">Collections y Streams</a>
+  <a href="#java-excepciones">Excepciones</a>
+  <a href="#java-anotaciones">Anotaciones</a>
+  <a href="#java-generics">Generics</a>
+  <a href="#java-optional">Optional</a>
+  <a href="#java-lombok">Lombok</a>
+
+  <div class="section-label">Spring Boot</div>
+  <a href="#spring-que-es">Que es Spring Boot</a>
+  <a href="#spring-capas">Arquitectura en capas</a>
+  <a href="#spring-entity">Entity (Modelo)</a>
+  <a href="#spring-repository">Repository</a>
+  <a href="#spring-service">Service</a>
+  <a href="#spring-dto">DTOs (Request/Response)</a>
+  <a href="#spring-controller">Controller</a>
+  <a href="#spring-exceptions">Manejo de excepciones</a>
+  <a href="#spring-properties">Configuracion</a>
+  <a href="#spring-pom">pom.xml</a>
+
+  <div class="section-label">Microservicios</div>
+  <a href="#ms-que-son">Que son microservicios</a>
+  <a href="#ms-eureka">Eureka (Discovery)</a>
+  <a href="#ms-gateway">Gateway</a>
+  <a href="#ms-comunicacion">Comunicacion entre MS</a>
+
+  <div class="section-label">Docker</div>
+  <a href="#docker-que-es">Que es Docker</a>
+  <a href="#docker-dockerfile">Dockerfile</a>
+  <a href="#docker-compose">Docker Compose</a>
+  <a href="#docker-comandos">Comandos utiles</a>
+
+  <div class="section-label">SIVEBO</div>
+  <a href="#sivebo-arquitectura">Arquitectura del proyecto</a>
+  <a href="#sivebo-embalaje">ms_embalaje</a>
+  <a href="#sivebo-finanzas">ms_finanzas</a>
+  <a href="#sivebo-paquetes">ms_paquetes</a>
+  <a href="#sivebo-flujo">Flujo completo</a>
+  <a href="#sivebo-defensa">Preguntas de defensa</a>
+</nav>
+
+<div class="content">
+
+<h1>SIVEBO — Guia completa</h1>
+<p>Java, Spring Boot, Microservicios, Docker y todo lo que necesitas para dominar y defender tu proyecto.</p>
+
+<!-- ============================================================== -->
+<!-- JAVA DESDE CERO                                                -->
+<!-- ============================================================== -->
+
+<h2 id="java-que-es">Que es Java</h2>
+<p>Java es un lenguaje de programacion <strong>orientado a objetos</strong>, compilado y tipado estaticamente. Tu codigo <code>.java</code> se compila a <strong>bytecode</strong> (<code>.class</code>) que corre en la <strong>JVM</strong> (Java Virtual Machine), lo que lo hace multiplataforma.</p>
+
+<pre>
+<span class="cm">// Todo programa Java vive dentro de una clase</span>
+<span class="kw">public class</span> <span class="type">HolaMundo</span> {
+    <span class="kw">public static void</span> main(<span class="type">String</span>[] args) {
+        <span class="type">System</span>.out.println(<span class="str">"Hola mundo"</span>);
+    }
+}
+</pre>
+
+<div class="tip">
+<strong>Dato clave:</strong> En SIVEBO usamos Java 25 con Spring Boot 4.0.6. Spring Boot elimina toda la configuracion manual que Java EE necesitaba.
+</div>
+
+<h2 id="java-tipos">Tipos de datos</h2>
+<p>Java tiene <strong>tipos primitivos</strong> (minusculas) y sus <strong>wrappers</strong> (objetos):</p>
+
+<table>
+<tr><th>Primitivo</th><th>Wrapper</th><th>Que guarda</th><th>Ejemplo</th></tr>
+<tr><td><code>int</code></td><td><code>Integer</code></td><td>Numero entero</td><td><code>42</code></td></tr>
+<tr><td><code>long</code></td><td><code>Long</code></td><td>Entero grande</td><td><code>1234567890L</code></td></tr>
+<tr><td><code>double</code></td><td><code>Double</code></td><td>Decimal</td><td><code>3.14</code></td></tr>
+<tr><td><code>boolean</code></td><td><code>Boolean</code></td><td>Verdadero/falso</td><td><code>true</code></td></tr>
+<tr><td><code>char</code></td><td><code>Character</code></td><td>Un caracter</td><td><code>'A'</code></td></tr>
+</table>
+
+<p>Tipos de referencia importantes:</p>
+<pre>
+<span class="type">String</span> nombre = <span class="str">"SIVEBO"</span>;                 <span class="cm">// Cadena de texto</span>
+<span class="type">BigDecimal</span> precio = <span class="kw">new</span> <span class="type">BigDecimal</span>(<span class="str">"1500.00"</span>); <span class="cm">// Para dinero (preciso)</span>
+<span class="type">LocalDate</span> hoy = <span class="type">LocalDate</span>.now();           <span class="cm">// Fecha sin hora</span>
+<span class="type">LocalDateTime</span> ahora = <span class="type">LocalDateTime</span>.now(); <span class="cm">// Fecha + hora</span>
+</pre>
+
+<div class="warn">
+<strong>Nunca uses double para dinero.</strong> Usa <code>BigDecimal</code>. Los decimales flotantes pierden precision: <code>0.1 + 0.2 = 0.30000000000000004</code>. En SIVEBO todos los montos usan <code>BigDecimal</code>.
+</div>
+
+<h2 id="java-oop">POO: Clases y objetos</h2>
+<p>Todo en Java es una <strong>clase</strong>. Una clase es un plano; un <strong>objeto</strong> es una instancia de ese plano.</p>
+
+<pre>
+<span class="kw">public class</span> <span class="type">CategoriaEmbalaje</span> {
+
+    <span class="cm">// Atributos (estado)</span>
+    <span class="kw">private</span> <span class="type">Long</span> idCat;
+    <span class="kw">private</span> <span class="type">String</span> nombreCategoria;
+
+    <span class="cm">// Constructor</span>
+    <span class="kw">public</span> CategoriaEmbalaje(<span class="type">Long</span> idCat, <span class="type">String</span> nombreCategoria) {
+        <span class="kw">this</span>.idCat = idCat;
+        <span class="kw">this</span>.nombreCategoria = nombreCategoria;
+    }
+
+    <span class="cm">// Getters y Setters (acceso controlado)</span>
+    <span class="kw">public</span> <span class="type">Long</span> getIdCat() { <span class="kw">return</span> idCat; }
+    <span class="kw">public void</span> setIdCat(<span class="type">Long</span> idCat) { <span class="kw">this</span>.idCat = idCat; }
+
+    <span class="kw">public</span> <span class="type">String</span> getNombreCategoria() { <span class="kw">return</span> nombreCategoria; }
+    <span class="kw">public void</span> setNombreCategoria(<span class="type">String</span> n) { <span class="kw">this</span>.nombreCategoria = n; }
+}
+</pre>
+
+<p>Los <strong>4 pilares de la POO</strong>:</p>
+<ol>
+  <li><strong>Encapsulamiento</strong> — atributos <code>private</code>, acceso via getters/setters</li>
+  <li><strong>Herencia</strong> — una clase hija hereda de una padre con <code>extends</code></li>
+  <li><strong>Polimorfismo</strong> — un mismo metodo se comporta diferente segun la clase</li>
+  <li><strong>Abstraccion</strong> — interfaces y clases abstractas definen el "que" sin el "como"</li>
+</ol>
+
+<h2 id="java-herencia">Herencia e interfaces</h2>
+
+<pre>
+<span class="cm">// INTERFAZ: define un contrato (el "que")</span>
+<span class="kw">public interface</span> <span class="type">ArticuloEmbalajeService</span> {
+    <span class="type">ArticuloEmbalajeResponse</span> crear(<span class="type">ArticuloEmbalajeRequest</span> request);
+    <span class="type">ArticuloEmbalajeResponse</span> obtenerPorId(<span class="type">Long</span> id);
+    <span class="type">List</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt; listarTodos();
+}
+
+<span class="cm">// IMPLEMENTACION: cumple el contrato (el "como")</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalajeServiceImpl</span> <span class="kw">implements</span> <span class="type">ArticuloEmbalajeService</span> {
+
+    <span class="ann">@Override</span>
+    <span class="kw">public</span> <span class="type">ArticuloEmbalajeResponse</span> crear(<span class="type">ArticuloEmbalajeRequest</span> request) {
+        <span class="cm">// aqui va la logica real</span>
+    }
+}
+</pre>
+
+<div class="tip">
+<strong>Por que usamos interfaz + impl en SIVEBO:</strong> El controller depende de la interfaz, no de la implementacion. Si manana quieres cambiar la logica, creas otra impl sin tocar el controller. Este es el <em>Principio de Inversion de Dependencias</em> (la D de SOLID).
+</div>
+
+<h2 id="java-collections">Collections y Streams</h2>
+<p>Las estructuras de datos mas usadas:</p>
+
+<pre>
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; nombres = <span class="kw">new</span> <span class="type">ArrayList</span>&lt;&gt;(); <span class="cm">// Lista ordenada</span>
+nombres.add(<span class="str">"Caja"</span>);
+nombres.add(<span class="str">"Sobre"</span>);
+
+<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; errores = <span class="kw">new</span> <span class="type">HashMap</span>&lt;&gt;(); <span class="cm">// Clave-valor</span>
+errores.put(<span class="str">"nombre"</span>, <span class="str">"El nombre es obligatorio"</span>);
+</pre>
+
+<p><strong>Streams</strong> — procesan colecciones de forma funcional. Los usamos mucho en SIVEBO:</p>
+
+<pre>
+<span class="cm">// Convertir lista de entidades a lista de DTOs</span>
+<span class="type">List</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt; respuesta = repository.findAll()
+    .stream()                          <span class="cm">// abrir el stream</span>
+    .map(<span class="kw">this</span>::toResponse)              <span class="cm">// transformar cada elemento</span>
+    .collect(<span class="type">Collectors</span>.toList());      <span class="cm">// recolectar en lista</span>
+
+<span class="cm">// Filtrar: solo activos</span>
+<span class="type">List</span>&lt;<span class="type">Articulo</span>&gt; activos = articulos.stream()
+    .filter(a -&gt; a.getActivo())
+    .collect(<span class="type">Collectors</span>.toList());
+</pre>
+
+<h2 id="java-excepciones">Excepciones</h2>
+<p>Las excepciones manejan errores sin crashear la app:</p>
+
+<pre>
+<span class="cm">// Excepcion personalizada (la creamos nosotros)</span>
+<span class="kw">public class</span> <span class="type">RecursoNoEncontradoException</span> <span class="kw">extends</span> <span class="type">RuntimeException</span> {
+    <span class="kw">public</span> RecursoNoEncontradoException(<span class="type">String</span> mensaje) {
+        <span class="kw">super</span>(mensaje);
+    }
+}
+
+<span class="cm">// Como se usa:</span>
+<span class="type">ArticuloEmbalaje</span> articulo = repository.findById(id)
+    .orElseThrow(() -&gt; <span class="kw">new</span> <span class="type">RecursoNoEncontradoException</span>(<span class="str">"Articulo no encontrado con id: "</span> + id));
+</pre>
+
+<p><strong>Checked vs Unchecked:</strong></p>
+<ul>
+  <li><code>RuntimeException</code> (unchecked) — no obliga a hacer try/catch. Nuestras excepciones heredan de esta.</li>
+  <li><code>Exception</code> (checked) — obliga al llamador a manejarla. Ejemplo: <code>IOException</code>.</li>
+</ul>
+
+<h2 id="java-anotaciones">Anotaciones</h2>
+<p>Las anotaciones (<code>@algo</code>) agregan metadatos a tu codigo. Spring las lee en tiempo de ejecucion para configurar todo automaticamente.</p>
+
+<table>
+<tr><th>Anotacion</th><th>Donde</th><th>Que hace</th></tr>
+<tr><td><code>@Entity</code></td><td>Clase</td><td>Marca como tabla de BD</td></tr>
+<tr><td><code>@Id</code></td><td>Campo</td><td>Clave primaria</td></tr>
+<tr><td><code>@GeneratedValue</code></td><td>Campo</td><td>Auto-incrementable</td></tr>
+<tr><td><code>@ManyToOne</code></td><td>Campo</td><td>Relacion N:1</td></tr>
+<tr><td><code>@Repository</code></td><td>Interfaz</td><td>Acceso a datos</td></tr>
+<tr><td><code>@Service</code></td><td>Clase</td><td>Logica de negocio</td></tr>
+<tr><td><code>@RestController</code></td><td>Clase</td><td>Endpoints REST</td></tr>
+<tr><td><code>@GetMapping</code></td><td>Metodo</td><td>Endpoint HTTP GET</td></tr>
+<tr><td><code>@PostMapping</code></td><td>Metodo</td><td>Endpoint HTTP POST</td></tr>
+<tr><td><code>@Valid</code></td><td>Parametro</td><td>Activa validaciones del DTO</td></tr>
+<tr><td><code>@NotNull</code></td><td>Campo</td><td>No puede ser null</td></tr>
+<tr><td><code>@NotBlank</code></td><td>Campo</td><td>No puede ser vacio ni null</td></tr>
+</table>
+
+<h2 id="java-generics">Generics</h2>
+<p>Permiten crear clases/interfaces que trabajan con cualquier tipo:</p>
+
+<pre>
+<span class="cm">// JpaRepository usa generics: &lt;TipoEntidad, TipoDeLaPK&gt;</span>
+<span class="kw">public interface</span> <span class="type">ArticuloEmbalajeRepository</span>
+    <span class="kw">extends</span> <span class="type">JpaRepository</span>&lt;<span class="type">ArticuloEmbalaje</span>, <span class="type">Long</span>&gt; {
+}
+
+<span class="cm">// List&lt;T&gt; es otro generico</span>
+<span class="type">List</span>&lt;<span class="type">ArticuloEmbalaje</span>&gt; articulos = repository.findAll();
+
+<span class="cm">// ResponseEntity&lt;T&gt; envuelve la respuesta HTTP</span>
+<span class="type">ResponseEntity</span>&lt;<span class="type">List</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt;&gt; response = <span class="type">ResponseEntity</span>.ok(lista);
+</pre>
+
+<h2 id="java-optional">Optional</h2>
+<p>Evita <code>NullPointerException</code>. Envuelve un valor que puede o no existir:</p>
+
+<pre>
+<span class="cm">// findById retorna Optional&lt;T&gt;</span>
+<span class="type">Optional</span>&lt;<span class="type">ArticuloEmbalaje</span>&gt; maybe = repository.findById(<span class="num">1</span>L);
+
+<span class="cm">// Forma segura: lanza excepcion si no existe</span>
+<span class="type">ArticuloEmbalaje</span> art = repository.findById(id)
+    .orElseThrow(() -&gt; <span class="kw">new</span> <span class="type">RecursoNoEncontradoException</span>(<span class="str">"No encontrado"</span>));
+
+<span class="cm">// Otras formas:</span>
+maybe.isPresent();            <span class="cm">// true si tiene valor</span>
+maybe.orElse(valorDefault);   <span class="cm">// retorna default si vacio</span>
+maybe.ifPresent(a -&gt; ...);    <span class="cm">// ejecuta lambda si tiene valor</span>
+</pre>
+
+<h2 id="java-lombok">Lombok</h2>
+<p>Lombok genera codigo repetitivo en tiempo de compilacion. Lo usamos en todo SIVEBO:</p>
+
+<table>
+<tr><th>Anotacion Lombok</th><th>Que genera</th></tr>
+<tr><td><code>@Getter</code></td><td>Getters para todos los campos</td></tr>
+<tr><td><code>@Setter</code></td><td>Setters para todos los campos</td></tr>
+<tr><td><code>@Data</code></td><td>Getter + Setter + toString + equals + hashCode</td></tr>
+<tr><td><code>@NoArgsConstructor</code></td><td>Constructor vacio</td></tr>
+<tr><td><code>@AllArgsConstructor</code></td><td>Constructor con todos los campos</td></tr>
+<tr><td><code>@RequiredArgsConstructor</code></td><td>Constructor solo con campos <code>final</code></td></tr>
+</table>
+
+<pre>
+<span class="cm">// SIN Lombok (30 lineas):</span>
+<span class="kw">public class</span> <span class="type">CategoriaEmbalajeRequest</span> {
+    <span class="kw">private</span> <span class="type">String</span> nombreCategoria;
+    <span class="kw">public</span> <span class="type">String</span> getNombreCategoria() { <span class="kw">return</span> nombreCategoria; }
+    <span class="kw">public void</span> setNombreCategoria(<span class="type">String</span> n) { <span class="kw">this</span>.nombreCategoria = n; }
+    <span class="cm">// + toString, equals, hashCode...</span>
+}
+
+<span class="cm">// CON Lombok (4 lineas):</span>
+<span class="ann">@Data</span>
+<span class="kw">public class</span> <span class="type">CategoriaEmbalajeRequest</span> {
+    <span class="kw">private</span> <span class="type">String</span> nombreCategoria;
+}
+</pre>
+
+<!-- ============================================================== -->
+<!-- SPRING BOOT                                                     -->
+<!-- ============================================================== -->
+
+<h2 id="spring-que-es">Que es Spring Boot</h2>
+<p>Spring Boot es un framework que simplifica la creacion de aplicaciones Java. Provee:</p>
+<ul>
+  <li><strong>Auto-configuracion</strong> — detecta tus dependencias y configura todo solo</li>
+  <li><strong>Servidor embebido</strong> — incluye Tomcat, no necesitas instalar nada aparte</li>
+  <li><strong>Starter dependencies</strong> — paquetes predefinidos que agrupan todo lo que necesitas</li>
+  <li><strong>Inyeccion de dependencias</strong> — Spring crea y conecta los objetos por ti</li>
+</ul>
+
+<pre>
+<span class="ann">@SpringBootApplication</span>  <span class="cm">// Punto de entrada</span>
+<span class="ann">@EnableDiscoveryClient</span> <span class="cm">// Se registra en Eureka</span>
+<span class="kw">public class</span> <span class="type">MsEmbalajeApplication</span> {
+    <span class="kw">public static void</span> main(<span class="type">String</span>[] args) {
+        <span class="type">SpringApplication</span>.run(<span class="type">MsEmbalajeApplication</span>.<span class="kw">class</span>, args);
+    }
+}
+</pre>
+
+<div class="tip">
+<strong>Inyeccion de dependencias explicada:</strong> Cuando escribes <code>@RequiredArgsConstructor</code> en un Service y declaras <code>private final ArticuloEmbalajeRepository repository;</code>, Spring automaticamente busca una implementacion de ese tipo, la crea, y la inyecta en tu clase. Tu nunca haces <code>new ArticuloEmbalajeRepository()</code>.
+</div>
+
+<h2 id="spring-capas">Arquitectura en capas</h2>
+<p>Cada microservicio de SIVEBO sigue esta arquitectura:</p>
+
+<div class="diagram">
+  <span class="yellow">Cliente (HTML / Postman / otro MS)</span>
+         |
+         v
+  <span class="highlight">Controller</span>  ← Recibe HTTP, valida, delega
+         |
+         v
+  <span class="highlight">Service</span>     ← Logica de negocio
+         |
+         v
+  <span class="highlight">Repository</span>  ← Acceso a base de datos (JPA)
+         |
+         v
+  <span class="green">Base de datos (MariaDB)</span>
+</div>
+
+<p>Ademas, usamos <strong>DTOs</strong> para separar lo que entra/sale de la API vs lo que se guarda en BD:</p>
+
+<div class="diagram">
+  Request DTO  →  Controller  →  Service  →  Entity  →  BD
+                                    ↓
+  Response DTO ←  Controller  ←  Service  ←  Entity  ←  BD
+</div>
+
+<h2 id="spring-entity">Entity (Modelo)</h2>
+<p>Representa una <strong>tabla</strong> en la base de datos. Cada instancia es una <strong>fila</strong>.</p>
+
+<pre>
+<span class="ann">@Getter</span>
+<span class="ann">@Setter</span>
+<span class="ann">@NoArgsConstructor</span>
+<span class="ann">@AllArgsConstructor</span>
+<span class="ann">@Entity</span>                                    <span class="cm">// "Esta clase es una tabla"</span>
+<span class="ann">@Table</span>(name = <span class="str">"articulo_embalaje"</span>)         <span class="cm">// nombre de la tabla en BD</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalaje</span> {
+
+    <span class="ann">@Id</span>                                    <span class="cm">// clave primaria</span>
+    <span class="ann">@GeneratedValue</span>(strategy = <span class="type">GenerationType</span>.IDENTITY) <span class="cm">// autoincrement</span>
+    <span class="ann">@Column</span>(name = <span class="str">"id_art"</span>)
+    <span class="kw">private</span> <span class="type">Long</span> idArt;
+
+    <span class="ann">@ManyToOne</span>                             <span class="cm">// muchos articulos → una categoria</span>
+    <span class="ann">@JoinColumn</span>(name = <span class="str">"id_cat"</span>, nullable = <span class="kw">false</span>)
+    <span class="kw">private</span> <span class="type">CategoriaEmbalaje</span> categoria;
+
+    <span class="ann">@Column</span>(name = <span class="str">"nombre"</span>, nullable = <span class="kw">false</span>, length = <span class="num">100</span>)
+    <span class="kw">private</span> <span class="type">String</span> nombre;
+
+    <span class="ann">@Column</span>(name = <span class="str">"descripcion"</span>, length = <span class="num">255</span>)
+    <span class="kw">private</span> <span class="type">String</span> descripcion;
+
+    <span class="ann">@Column</span>(name = <span class="str">"precio_vta"</span>, nullable = <span class="kw">false</span>)
+    <span class="kw">private</span> <span class="type">BigDecimal</span> precioVta;
+
+    <span class="ann">@Column</span>(name = <span class="str">"activo"</span>, nullable = <span class="kw">false</span>)
+    <span class="kw">private</span> <span class="type">Boolean</span> activo = <span class="kw">true</span>;
+}
+</pre>
+
+<div class="tip">
+<strong>@ManyToOne:</strong> Muchos ArticuloEmbalaje pertenecen a una CategoriaEmbalaje. JPA crea automaticamente el JOIN con la FK <code>id_cat</code>.
+</div>
+
+<h2 id="spring-repository">Repository</h2>
+<p>Interfaz que hereda de <code>JpaRepository</code>. Spring genera toda la implementacion SQL automaticamente.</p>
+
+<pre>
+<span class="ann">@Repository</span>
+<span class="kw">public interface</span> <span class="type">ArticuloEmbalajeRepository</span>
+    <span class="kw">extends</span> <span class="type">JpaRepository</span>&lt;<span class="type">ArticuloEmbalaje</span>, <span class="type">Long</span>&gt; {
+
+    <span class="cm">// Spring genera el SQL solo por el nombre del metodo:</span>
+    <span class="cm">// SELECT * FROM articulo_embalaje WHERE id_cat = ?</span>
+    <span class="type">List</span>&lt;<span class="type">ArticuloEmbalaje</span>&gt; findByCategoria_IdCat(<span class="type">Long</span> idCat);
+}
+</pre>
+
+<p>Metodos que ya tienes gratis por heredar de <code>JpaRepository</code>:</p>
+<table>
+<tr><th>Metodo</th><th>SQL equivalente</th></tr>
+<tr><td><code>findAll()</code></td><td><code>SELECT * FROM tabla</code></td></tr>
+<tr><td><code>findById(id)</code></td><td><code>SELECT * FROM tabla WHERE id = ?</code></td></tr>
+<tr><td><code>save(entity)</code></td><td><code>INSERT</code> o <code>UPDATE</code> (detecta si es nuevo)</td></tr>
+<tr><td><code>deleteById(id)</code></td><td><code>DELETE FROM tabla WHERE id = ?</code></td></tr>
+<tr><td><code>count()</code></td><td><code>SELECT COUNT(*) FROM tabla</code></td></tr>
+</table>
+
+<h3>Query methods (consultas por nombre)</h3>
+<p>Spring interpreta el nombre del metodo y genera el SQL:</p>
+<pre>
+findBy<span class="type">IdSucursal</span>(<span class="type">Long</span> id)              <span class="cm">// WHERE id_sucursal = ?</span>
+findBy<span class="type">Articulo_IdArt</span>And<span class="type">IdSucursal</span>(...)  <span class="cm">// WHERE id_art = ? AND id_sucursal = ?</span>
+findBy<span class="type">Nombre</span>Containing(<span class="type">String</span> texto)    <span class="cm">// WHERE nombre LIKE '%texto%'</span>
+</pre>
+
+<h2 id="spring-service">Service</h2>
+<p>Contiene la <strong>logica de negocio</strong>. Es donde vive el cerebro de tu aplicacion.</p>
+
+<pre>
+<span class="ann">@Service</span>
+<span class="ann">@RequiredArgsConstructor</span>  <span class="cm">// inyecta repos via constructor</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalajeServiceImpl</span> <span class="kw">implements</span> <span class="type">ArticuloEmbalajeService</span> {
+
+    <span class="kw">private final</span> <span class="type">ArticuloEmbalajeRepository</span> repository;
+    <span class="kw">private final</span> <span class="type">CategoriaEmbalajeRepository</span> categoriaRepository;
+
+    <span class="ann">@Override</span>
+    <span class="kw">public</span> <span class="type">ArticuloEmbalajeResponse</span> crear(<span class="type">ArticuloEmbalajeRequest</span> request) {
+
+        <span class="cm">// 1. Buscar la categoria (validar que existe)</span>
+        <span class="type">CategoriaEmbalaje</span> categoria = categoriaRepository.findById(request.getIdCat())
+            .orElseThrow(() -&gt; <span class="kw">new</span> <span class="type">RecursoNoEncontradoException</span>(<span class="str">"Categoria no encontrada"</span>));
+
+        <span class="cm">// 2. Mapear DTO → Entity</span>
+        <span class="type">ArticuloEmbalaje</span> articulo = <span class="kw">new</span> <span class="type">ArticuloEmbalaje</span>();
+        articulo.setCategoria(categoria);
+        articulo.setNombre(request.getNombre());
+        articulo.setDescripcion(request.getDescripcion());
+        articulo.setPrecioVta(request.getPrecioVta());
+        articulo.setActivo(<span class="kw">true</span>);
+
+        <span class="cm">// 3. Guardar y mapear Entity → Response DTO</span>
+        <span class="kw">return</span> toResponse(repository.save(articulo));
+    }
+
+    <span class="kw">private</span> <span class="type">ArticuloEmbalajeResponse</span> toResponse(<span class="type">ArticuloEmbalaje</span> a) {
+        <span class="type">ArticuloEmbalajeResponse</span> r = <span class="kw">new</span> <span class="type">ArticuloEmbalajeResponse</span>();
+        r.setIdArt(a.getIdArt());
+        r.setIdCat(a.getCategoria().getIdCat());
+        r.setNombreCategoria(a.getCategoria().getNombreCategoria());
+        r.setNombre(a.getNombre());
+        r.setDescripcion(a.getDescripcion());
+        r.setPrecioVta(a.getPrecioVta());
+        r.setActivo(a.getActivo());
+        <span class="kw">return</span> r;
+    }
+}
+</pre>
+
+<h2 id="spring-dto">DTOs (Request / Response)</h2>
+<p>DTOs separan la <strong>API publica</strong> del <strong>modelo interno</strong>:</p>
+
+<pre>
+<span class="cm">// REQUEST: lo que el cliente ENVIA</span>
+<span class="ann">@Data</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalajeRequest</span> {
+
+    <span class="ann">@NotNull</span>(message = <span class="str">"La categoria es obligatoria"</span>)
+    <span class="kw">private</span> <span class="type">Long</span> idCat;
+
+    <span class="ann">@NotBlank</span>(message = <span class="str">"El nombre es obligatorio"</span>)
+    <span class="kw">private</span> <span class="type">String</span> nombre;
+
+    <span class="kw">private</span> <span class="type">String</span> descripcion;   <span class="cm">// opcional: sin @NotBlank</span>
+
+    <span class="ann">@NotNull</span> <span class="ann">@Positive</span>
+    <span class="kw">private</span> <span class="type">BigDecimal</span> precioVta;
+}
+
+<span class="cm">// RESPONSE: lo que el servidor DEVUELVE</span>
+<span class="ann">@Data</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalajeResponse</span> {
+    <span class="kw">private</span> <span class="type">Long</span> idArt;
+    <span class="kw">private</span> <span class="type">Long</span> idCat;
+    <span class="kw">private</span> <span class="type">String</span> nombreCategoria;  <span class="cm">// dato extra que no esta en Request</span>
+    <span class="kw">private</span> <span class="type">String</span> nombre;
+    <span class="kw">private</span> <span class="type">String</span> descripcion;
+    <span class="kw">private</span> <span class="type">BigDecimal</span> precioVta;
+    <span class="kw">private</span> <span class="type">Boolean</span> activo;
+}
+</pre>
+
+<div class="tip">
+<strong>Por que no exponer la Entity directamente?</strong> Porque la entity tiene relaciones JPA (<code>@ManyToOne</code>) que causan referencias circulares al serializar a JSON. Ademas, el Response puede incluir campos calculados o de otras entidades que el Request no necesita.
+</div>
+
+<h2 id="spring-controller">Controller</h2>
+<p>Recibe las peticiones HTTP, valida, y delega al Service:</p>
+
+<pre>
+<span class="ann">@RestController</span>                        <span class="cm">// respuestas en JSON automaticamente</span>
+<span class="ann">@RequestMapping</span>(<span class="str">"/api/articulos"</span>)       <span class="cm">// prefijo de URL</span>
+<span class="ann">@RequiredArgsConstructor</span>
+<span class="kw">public class</span> <span class="type">ArticuloEmbalajeController</span> {
+
+    <span class="kw">private final</span> <span class="type">ArticuloEmbalajeService</span> service;
+
+    <span class="ann">@PostMapping</span>                           <span class="cm">// POST /api/articulos</span>
+    <span class="kw">public</span> <span class="type">ResponseEntity</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt; crear(
+            <span class="ann">@Valid</span> <span class="ann">@RequestBody</span> <span class="type">ArticuloEmbalajeRequest</span> request) {
+        <span class="kw">return</span> <span class="type">ResponseEntity</span>.status(<span class="type">HttpStatus</span>.CREATED)
+            .body(service.crear(request));
+    }
+
+    <span class="ann">@GetMapping</span>                            <span class="cm">// GET /api/articulos</span>
+    <span class="kw">public</span> <span class="type">ResponseEntity</span>&lt;<span class="type">List</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt;&gt; listar() {
+        <span class="kw">return</span> <span class="type">ResponseEntity</span>.ok(service.listarTodos());
+    }
+
+    <span class="ann">@GetMapping</span>(<span class="str">"/{id}"</span>)                    <span class="cm">// GET /api/articulos/5</span>
+    <span class="kw">public</span> <span class="type">ResponseEntity</span>&lt;<span class="type">ArticuloEmbalajeResponse</span>&gt; obtenerPorId(
+            <span class="ann">@PathVariable</span> <span class="type">Long</span> id) {
+        <span class="kw">return</span> <span class="type">ResponseEntity</span>.ok(service.obtenerPorId(id));
+    }
+}
+</pre>
+
+<table>
+<tr><th>Anotacion</th><th>HTTP</th><th>Uso tipico</th></tr>
+<tr><td><code>@GetMapping</code></td><td>GET</td><td>Leer / listar</td></tr>
+<tr><td><code>@PostMapping</code></td><td>POST</td><td>Crear</td></tr>
+<tr><td><code>@PutMapping</code></td><td>PUT</td><td>Actualizar completo</td></tr>
+<tr><td><code>@PatchMapping</code></td><td>PATCH</td><td>Actualizar parcial</td></tr>
+<tr><td><code>@DeleteMapping</code></td><td>DELETE</td><td>Eliminar</td></tr>
+</table>
+
+<h2 id="spring-exceptions">Manejo de excepciones global</h2>
+<p><code>@RestControllerAdvice</code> captura excepciones de TODOS los controllers y devuelve JSON limpio:</p>
+
+<pre>
+<span class="ann">@RestControllerAdvice</span>
+<span class="kw">public class</span> <span class="type">GlobalExceptionHandler</span> {
+
+    <span class="ann">@ExceptionHandler</span>(<span class="type">RecursoNoEncontradoException</span>.<span class="kw">class</span>)
+    <span class="kw">public</span> <span class="type">ResponseEntity</span>&lt;<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt;&gt; handleNotFound(
+            <span class="type">RecursoNoEncontradoException</span> ex) {
+        <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; error = <span class="kw">new</span> <span class="type">HashMap</span>&lt;&gt;();
+        error.put(<span class="str">"error"</span>, ex.getMessage());
+        <span class="kw">return</span> <span class="type">ResponseEntity</span>.status(<span class="type">HttpStatus</span>.NOT_FOUND).body(error);
+    }
+
+    <span class="ann">@ExceptionHandler</span>(<span class="type">MethodArgumentNotValidException</span>.<span class="kw">class</span>)
+    <span class="kw">public</span> <span class="type">ResponseEntity</span>&lt;<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt;&gt; handleValidation(
+            <span class="type">MethodArgumentNotValidException</span> ex) {
+        <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; errors = <span class="kw">new</span> <span class="type">HashMap</span>&lt;&gt;();
+        ex.getBindingResult().getFieldErrors()
+            .forEach(e -&gt; errors.put(e.getField(), e.getDefaultMessage()));
+        <span class="kw">return</span> <span class="type">ResponseEntity</span>.badRequest().body(errors);
+    }
+}
+</pre>
+
+<h2 id="spring-properties">Configuracion (application.properties)</h2>
+<pre>
+server.port=<span class="num">8006</span>                          <span class="cm"># Puerto del servicio</span>
+spring.application.name=ms_embalaje        <span class="cm"># Nombre para Eureka</span>
+
+<span class="cm"># Base de datos — ${VAR:default} lee variable de entorno o usa el default</span>
+spring.datasource.url=jdbc:mariadb://<span class="ann">${DB_HOST:localhost}</span>:3306/db_ms_embalaje?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=none         <span class="cm"># none = no toca el esquema</span>
+spring.jpa.show-sql=true                   <span class="cm"># muestra SQL en consola</span>
+
+<span class="cm"># Eureka</span>
+eureka.client.service-url.defaultZone=<span class="ann">${EUREKA_URI:http://localhost:8761/eureka/}</span>
+eureka.instance.prefer-ip-address=true
+</pre>
+
+<div class="tip">
+<strong>La sintaxis <code>${VAR:default}</code></strong> es clave para Docker. En local, usa <code>localhost</code>. En Docker Compose, inyectamos <code>DB_HOST=mariadb</code> y <code>EUREKA_URI=http://eureka-server:8761/eureka/</code> como variables de entorno.
+</div>
+
+<h2 id="spring-pom">pom.xml (dependencias Maven)</h2>
+<p>Maven maneja las dependencias de tu proyecto. El <code>pom.xml</code> es como el <code>package.json</code> de Node:</p>
+
+<pre>
+&lt;<span class="kw">parent</span>&gt;
+    &lt;artifactId&gt;<span class="str">spring-boot-starter-parent</span>&lt;/artifactId&gt;
+    &lt;version&gt;<span class="str">4.0.6</span>&lt;/version&gt;     <span class="cm">&lt;!-- version de Spring Boot --&gt;</span>
+&lt;/<span class="kw">parent</span>&gt;
+
+&lt;<span class="kw">properties</span>&gt;
+    &lt;java.version&gt;<span class="num">25</span>&lt;/java.version&gt;
+    &lt;spring-cloud.version&gt;<span class="str">2025.1.2</span>&lt;/spring-cloud.version&gt;
+&lt;/<span class="kw">properties</span>&gt;
+
+&lt;<span class="kw">dependencies</span>&gt;
+    <span class="cm">&lt;!-- JPA: ORM para base de datos --&gt;</span>
+    &lt;dependency&gt;spring-boot-starter-data-jpa&lt;/dependency&gt;
+    <span class="cm">&lt;!-- Validaciones: @NotNull, @NotBlank, etc --&gt;</span>
+    &lt;dependency&gt;spring-boot-starter-validation&lt;/dependency&gt;
+    <span class="cm">&lt;!-- Web MVC: @RestController, @GetMapping, etc --&gt;</span>
+    &lt;dependency&gt;spring-boot-starter-webmvc&lt;/dependency&gt;
+    <span class="cm">&lt;!-- WebFlux: WebClient para llamadas entre microservicios --&gt;</span>
+    &lt;dependency&gt;spring-boot-starter-webflux&lt;/dependency&gt;
+    <span class="cm">&lt;!-- Driver MariaDB --&gt;</span>
+    &lt;dependency&gt;mariadb-java-client&lt;/dependency&gt;
+    <span class="cm">&lt;!-- Eureka client: se registra en el discovery server --&gt;</span>
+    &lt;dependency&gt;spring-cloud-starter-netflix-eureka-client&lt;/dependency&gt;
+    <span class="cm">&lt;!-- Lombok: genera getters, setters, constructores --&gt;</span>
+    &lt;dependency&gt;lombok&lt;/dependency&gt;
+&lt;/<span class="kw">dependencies</span>&gt;
+
+<span class="cm">&lt;!-- BOM de Spring Cloud: controla versiones de Eureka, Gateway, etc --&gt;</span>
+&lt;<span class="kw">dependencyManagement</span>&gt;
+    &lt;dependency&gt;spring-cloud-dependencies ${spring-cloud.version} pom import&lt;/dependency&gt;
+&lt;/<span class="kw">dependencyManagement</span>&gt;
+</pre>
+
+<!-- ============================================================== -->
+<!-- MICROSERVICIOS                                                  -->
+<!-- ============================================================== -->
+
+<h2 id="ms-que-son">Que son microservicios</h2>
+<p>En lugar de una sola app monolitica, dividimos el sistema en <strong>servicios independientes</strong>, cada uno con su propia base de datos, su propio deploy y su propia responsabilidad.</p>
+
+<table>
+<tr><th>Monolito</th><th>Microservicios</th></tr>
+<tr><td>Una app = todo junto</td><td>Muchas apps pequenas</td></tr>
+<tr><td>Una BD compartida</td><td>Cada MS tiene su propia BD</td></tr>
+<tr><td>Escalar = duplicar todo</td><td>Escalar solo lo que necesitas</td></tr>
+<tr><td>Un bug puede tumbar todo</td><td>Un MS caido no afecta a los demas</td></tr>
+<tr><td>Deploy de todo o nada</td><td>Deploy independiente por servicio</td></tr>
+</table>
+
+<h2 id="ms-eureka">Eureka (Service Discovery)</h2>
+<p>Eureka es el <strong>registro central</strong>. Cada microservicio al arrancar le dice a Eureka: "Hola, soy ms_embalaje y estoy en la IP 172.18.0.4, puerto 8006".</p>
+
+<div class="diagram">
+  <span class="highlight">Eureka Server</span> (puerto 8761)
+       ↑ registro         ↑ registro         ↑ registro
+       |                  |                  |
+  <span class="green">ms_embalaje</span>       <span class="green">ms_finanzas</span>       <span class="green">ms_paquetes</span>
+   :8006                :8090                :8005
+       ↑                  ↑                  ↑
+       |    descubrimiento (lb://MS_EMBALAJE) |
+       +------ <span class="yellow">Gateway</span> (:8080) ------+--------+
+                    ↑
+                 Cliente
+</div>
+
+<p>El Gateway no hardcodea IPs — le pregunta a Eureka "donde esta MS_EMBALAJE?" y Eureka le responde con la IP y puerto actuales.</p>
+
+<h3>Configuracion del Eureka Server</h3>
+<pre>
+<span class="cm"># eureka_server/src/main/resources/application.yml</span>
+spring:
+  application:
+    name: eureka_server
+
+server:
+  port: <span class="num">8761</span>
+
+eureka:
+  client:
+    register-with-eureka: <span class="kw">false</span>   <span class="cm"># el server no se registra a si mismo</span>
+    fetch-registry: <span class="kw">false</span>
+  instance:
+    hostname: <span class="ann">${EUREKA_HOSTNAME:eureka-server}</span>
+</pre>
+
+<h3>Configuracion del Eureka Client (en cada MS)</h3>
+<pre>
+<span class="cm"># En application.properties de cada microservicio:</span>
+eureka.client.service-url.defaultZone=<span class="ann">${EUREKA_URI:http://localhost:8761/eureka/}</span>
+eureka.instance.prefer-ip-address=<span class="kw">true</span>
+</pre>
+
+<h2 id="ms-gateway">Gateway</h2>
+<p>El Gateway es el <strong>punto de entrada unico</strong>. El cliente solo conoce <code>localhost:8080</code>; el Gateway redirige al MS correcto segun la URL.</p>
+
+<pre>
+<span class="cm"># gateway/src/main/resources/application.yml</span>
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: ms-embalaje
+          uri: <span class="str">lb://MS_EMBALAJE</span>           <span class="cm"># lb = load balanced via Eureka</span>
+          predicates:
+            - Path=/api/articulos/**, /api/categorias/**, /api/stock/**
+
+        - id: ms-finanzas
+          uri: <span class="str">lb://MS_FINANZAS</span>
+          predicates:
+            - Path=/api/cajas/**, /api/aperturas/**, /api/movimientos/**
+
+        - id: ms-paquetes
+          uri: <span class="str">lb://MS_PAQUETES</span>
+          predicates:
+            - Path=/api/inventario/**
+</pre>
+
+<div class="tip">
+<strong>lb://MS_EMBALAJE</strong> significa: "busca en Eureka un servicio llamado MS_EMBALAJE y hazle load balancing". El nombre debe coincidir exactamente con el <code>spring.application.name</code> del microservicio (en mayusculas).
+</div>
+
+<h2 id="ms-comunicacion">Comunicacion entre microservicios</h2>
+<p>Cuando un MS necesita datos de otro, usa <code>WebClient</code> (HTTP asincrono). Ejemplo: ms_embalaje llamando a ms_sucursales:</p>
+
+<pre>
+<span class="cm">// Se inyecta un WebClient configurado con Eureka</span>
+<span class="ann">@Bean</span>
+<span class="kw">public</span> <span class="type">WebClient</span> webClient(<span class="type">WebClient.Builder</span> builder) {
+    <span class="kw">return</span> builder.build();
+}
+
+<span class="cm">// Llamada a otro MS:</span>
+<span class="type">SucursalDTO</span> sucursal = webClient.get()
+    .uri(<span class="str">"http://MS-SUCURSALES/api/v1/sucursales/{id}"</span>, idSucursal)
+    .retrieve()
+    .bodyToMono(<span class="type">SucursalDTO</span>.<span class="kw">class</span>)
+    .block();
+</pre>
+
+<!-- ============================================================== -->
+<!-- DOCKER                                                          -->
+<!-- ============================================================== -->
+
+<h2 id="docker-que-es">Que es Docker</h2>
+<p>Docker empaqueta tu app + sus dependencias en un <strong>contenedor</strong> aislado. Es como una maquina virtual ultraliviana.</p>
+
+<table>
+<tr><th>Concepto</th><th>Que es</th><th>Analogia</th></tr>
+<tr><td><strong>Imagen</strong></td><td>Plantilla inmutable</td><td>Receta de cocina</td></tr>
+<tr><td><strong>Contenedor</strong></td><td>Instancia en ejecucion</td><td>El plato ya cocinado</td></tr>
+<tr><td><strong>Dockerfile</strong></td><td>Instrucciones para crear la imagen</td><td>La receta escrita</td></tr>
+<tr><td><strong>Volume</strong></td><td>Almacenamiento persistente</td><td>El refrigerador (sobrevive al plato)</td></tr>
+<tr><td><strong>Network</strong></td><td>Red virtual entre contenedores</td><td>La mesa donde se comunican</td></tr>
+</table>
+
+<h2 id="docker-dockerfile">Dockerfile</h2>
+<p>Nuestro Dockerfile usa <strong>multi-stage build</strong> — dos etapas para que la imagen final sea liviana:</p>
+
+<pre>
+<span class="cm"># ETAPA 1: Compilar con Maven (imagen grande, ~800MB)</span>
+<span class="kw">FROM</span> maven:3.9-eclipse-temurin-25 <span class="kw">AS</span> build
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> pom.xml .
+<span class="kw">COPY</span> src ./src
+<span class="kw">RUN</span> mvn clean package -DskipTests
+
+<span class="cm"># ETAPA 2: Solo el JAR + JRE (imagen chica, ~250MB)</span>
+<span class="kw">FROM</span> eclipse-temurin:25-jre
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> --from=build /app/target/*.jar app.jar
+<span class="kw">ENTRYPOINT</span> ["java", "-jar", "app.jar"]
+</pre>
+
+<div class="tip">
+<strong>Por que multi-stage?</strong> La etapa de build tiene Maven + JDK (~800MB). La etapa final solo tiene JRE (~250MB). El <code>COPY --from=build</code> copia solo el JAR compilado, descartando todo lo demas.
+</div>
+
+<h2 id="docker-compose">Docker Compose</h2>
+<p>Orquesta multiples contenedores con un solo comando. Nuestro <code>docker-compose.yml</code>:</p>
+
+<pre>
+<span class="kw">services:</span>
+
+  <span class="str">mariadb:</span>                           <span class="cm"># Base de datos compartida</span>
+    image: mariadb:11
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+    ports: ["3306:3306"]
+    volumes: [mariadb_data:/var/lib/mysql]  <span class="cm"># datos persisten</span>
+    healthcheck: ...                        <span class="cm"># Docker verifica que este lista</span>
+
+  <span class="str">eureka-server:</span>                     <span class="cm"># Service Discovery</span>
+    build: ./eureka_server
+    ports: ["8761:8761"]
+    environment:
+      EUREKA_HOSTNAME: eureka-server
+    healthcheck: ...
+
+  <span class="str">gateway:</span>                           <span class="cm"># Punto de entrada</span>
+    build: ./gateway
+    ports: ["8080:8080"]
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server: { condition: service_healthy }
+
+  <span class="str">ms_embalaje:</span>                       <span class="cm"># Tu microservicio</span>
+    build: ./ms_embalaje
+    ports: ["8006:8006"]
+    environment:
+      DB_HOST: mariadb                     <span class="cm"># nombre del servicio = hostname</span>
+      EUREKA_URI: http://eureka-server:8761/eureka/
+    depends_on:
+      mariadb: { condition: service_healthy }
+      eureka-server: { condition: service_healthy }
+</pre>
+
+<h3>Flujo de arranque</h3>
+<div class="diagram">
+  1. <span class="green">mariadb</span> arranca → healthcheck verifica conexion
+  2. <span class="highlight">eureka-server</span> arranca → healthcheck verifica /eureka/apps
+  3. Cuando ambos estan <span class="green">healthy</span>:
+     → <span class="yellow">gateway</span>, <span class="yellow">ms_embalaje</span>, <span class="yellow">ms_finanzas</span>, <span class="yellow">ms_paquetes</span> arrancan en paralelo
+  4. Cada MS se registra en Eureka
+  5. Gateway descubre los MS via Eureka
+  6. Cliente accede a todo via gateway:8080
+</div>
+
+<h2 id="docker-comandos">Comandos utiles de Docker</h2>
+<table>
+<tr><th>Comando</th><th>Que hace</th></tr>
+<tr><td><code>docker compose up --build</code></td><td>Construir imagenes y levantar todo</td></tr>
+<tr><td><code>docker compose up -d</code></td><td>Levantar en segundo plano</td></tr>
+<tr><td><code>docker compose down</code></td><td>Apagar y eliminar contenedores</td></tr>
+<tr><td><code>docker compose down -v</code></td><td>Apagar + borrar volumenes (BD)</td></tr>
+<tr><td><code>docker compose ps</code></td><td>Ver estado de contenedores</td></tr>
+<tr><td><code>docker compose logs -f ms_embalaje</code></td><td>Ver logs en tiempo real</td></tr>
+<tr><td><code>docker compose restart ms_embalaje</code></td><td>Reiniciar solo un servicio</td></tr>
+<tr><td><code>docker exec -it sivebo-mariadb mysql -uroot</code></td><td>Entrar a la BD</td></tr>
+</table>
+
+<!-- ============================================================== -->
+<!-- SIVEBO ESPECIFICO                                               -->
+<!-- ============================================================== -->
+
+<h2 id="sivebo-arquitectura">Arquitectura de SIVEBO</h2>
+
+<div class="diagram">
+                          <span class="yellow">Cliente</span>
+                            |
+                     <span class="highlight">Gateway :8080</span>
+                    /       |       \
+               /api/       /api/      /api/
+             articulos    cajas     inventario
+            categorias  aperturas
+              stock    movimientos
+               |           |           |
+        <span class="green">ms_embalaje</span>  <span class="green">ms_finanzas</span>  <span class="green">ms_paquetes</span>
+          :8006        :8090         :8005
+            |            |             |
+        db_ms_embalaje  db_ms_finanzas  db_ms_paquetes
+            \            |             /
+             +------<span class="green">MariaDB :3306</span>------+
+</div>
+
+<h2 id="sivebo-embalaje">ms_embalaje (puerto 8006)</h2>
+<p><strong>Responsabilidad:</strong> Gestionar articulos de embalaje, sus categorias y el stock por sucursal.</p>
+
+<h4>Entidades</h4>
+<table>
+<tr><th>Entidad</th><th>Tabla</th><th>Campos clave</th></tr>
+<tr><td>CategoriaEmbalaje</td><td>categoria_embalaje</td><td>idCat, nombreCategoria</td></tr>
+<tr><td>ArticuloEmbalaje</td><td>articulo_embalaje</td><td>idArt, categoria (FK), nombre, precioVta, activo</td></tr>
+<tr><td>StockSucursal</td><td>stock_sucursal</td><td>idStock, articulo (FK), idSucursal, cantidadDisponible</td></tr>
+</table>
+
+<h4>Endpoints</h4>
+<table>
+<tr><th>Metodo</th><th>URL</th><th>Descripcion</th></tr>
+<tr><td>GET</td><td>/api/categorias</td><td>Listar todas las categorias</td></tr>
+<tr><td>POST</td><td>/api/categorias</td><td>Crear categoria</td></tr>
+<tr><td>GET</td><td>/api/articulos</td><td>Listar todos los articulos</td></tr>
+<tr><td>POST</td><td>/api/articulos</td><td>Crear articulo</td></tr>
+<tr><td>GET</td><td>/api/articulos/{id}</td><td>Obtener articulo por ID</td></tr>
+<tr><td>PUT</td><td>/api/articulos/{id}</td><td>Actualizar articulo</td></tr>
+<tr><td>PATCH</td><td>/api/articulos/{id}/desactivar</td><td>Desactivar (soft delete)</td></tr>
+<tr><td>POST</td><td>/api/stock</td><td>Crear registro de stock</td></tr>
+<tr><td>GET</td><td>/api/stock/sucursal/{id}</td><td>Stock por sucursal</td></tr>
+<tr><td>PATCH</td><td>/api/stock/actualizar?idArt=&idSucursal=&cantidad=</td><td>Actualizar cantidad</td></tr>
+<tr><td>PATCH</td><td>/api/stock/descontar?idArt=&idSucursal=&cantidad=</td><td>Descontar stock</td></tr>
+<tr><td>GET</td><td>/api/stock/verificar?idArt=&idSucursal=&cantidadRequerida=</td><td>Hay suficiente stock?</td></tr>
+</table>
+
+<h2 id="sivebo-finanzas">ms_finanzas (puerto 8090)</h2>
+<p><strong>Responsabilidad:</strong> Gestionar cajas por sucursal, sesiones de apertura/cierre y movimientos de dinero.</p>
+
+<h4>Entidades</h4>
+<table>
+<tr><th>Entidad</th><th>Campos clave</th></tr>
+<tr><td>CajaSucursal</td><td>idCaja, idSucursal</td></tr>
+<tr><td>AperturaCierre</td><td>idSesion, caja (FK), idUsuario, montoApertura, montoCierre, estado</td></tr>
+<tr><td>MovimientoCaja</td><td>idMov, sesion (FK), tipo (INGRESO/EGRESO), monto, concepto</td></tr>
+</table>
+
+<h4>Endpoints</h4>
+<table>
+<tr><th>Metodo</th><th>URL</th><th>Descripcion</th></tr>
+<tr><td>GET</td><td>/api/cajas</td><td>Listar todas las cajas</td></tr>
+<tr><td>POST</td><td>/api/cajas</td><td>Crear caja para una sucursal</td></tr>
+<tr><td>POST</td><td>/api/aperturas/abrir</td><td>Abrir sesion de caja</td></tr>
+<tr><td>PATCH</td><td>/api/aperturas/{id}/cerrar?montoCierre=</td><td>Cerrar sesion</td></tr>
+<tr><td>GET</td><td>/api/aperturas/caja/{id}/abierta</td><td>Sesion actualmente abierta</td></tr>
+<tr><td>GET</td><td>/api/aperturas/{id}/reporte-cierre</td><td>Reporte con totales</td></tr>
+<tr><td>POST</td><td>/api/movimientos</td><td>Registrar ingreso o egreso</td></tr>
+<tr><td>GET</td><td>/api/movimientos/sesion/{id}</td><td>Movimientos de una sesion</td></tr>
+</table>
+
+<h2 id="sivebo-paquetes">ms_paquetes (puerto 8005)</h2>
+<p><strong>Responsabilidad:</strong> Controlar el inventario de paquetes en bodega por sucursal.</p>
+
+<h4>Endpoints</h4>
+<table>
+<tr><th>Metodo</th><th>URL</th><th>Descripcion</th></tr>
+<tr><td>POST</td><td>/api/inventario/ingreso</td><td>Registrar ingreso de paquete</td></tr>
+<tr><td>PATCH</td><td>/api/inventario/{id}/salida</td><td>Registrar salida</td></tr>
+<tr><td>GET</td><td>/api/inventario/en-bodega</td><td>Paquetes actualmente en bodega</td></tr>
+<tr><td>GET</td><td>/api/inventario/sucursal/{id}</td><td>Paquetes por sucursal</td></tr>
+<tr><td>GET</td><td>/api/inventario/guia/{id}</td><td>Buscar por guia de despacho</td></tr>
+</table>
+
+<h2 id="sivebo-flujo">Flujo completo de trabajo</h2>
+
+<h3>Para desarrollar localmente (sin Docker)</h3>
+<ol>
+  <li>Tener MariaDB corriendo en localhost:3306</li>
+  <li>Levantar Eureka Server (puerto 8761)</li>
+  <li>Levantar Gateway (puerto 8080)</li>
+  <li>Levantar tu microservicio</li>
+  <li>Probar via <code>http://localhost:8080/api/...</code></li>
+</ol>
+
+<h3>Para levantar con Docker</h3>
+<pre>
+cd A:\GitHub
+docker compose up --build        <span class="cm"># primera vez</span>
+docker compose up -d             <span class="cm"># despues (en segundo plano)</span>
+<span class="cm"># Abrir http://localhost:8761 → ver Eureka dashboard</span>
+<span class="cm"># Abrir sivebo-test.html → probar los endpoints</span>
+</pre>
+
+<h3>Para crear un microservicio nuevo desde cero</h3>
+<ol>
+  <li>Ir a <strong>start.spring.io</strong> y seleccionar: Spring Web, Spring Data JPA, Validation, MariaDB Driver, Lombok, Eureka Discovery Client</li>
+  <li>Descargar y descomprimir en <code>A:\GitHub\ms_nombre\</code></li>
+  <li>Crear la estructura de carpetas:
+<pre>
+src/main/java/com/sivebo/ms_nombre/
+├── controller/      <span class="cm">← Endpoints REST</span>
+├── service/         <span class="cm">← Interfaces de logica</span>
+│   └── impl/        <span class="cm">← Implementaciones</span>
+├── repository/      <span class="cm">← Acceso a BD</span>
+├── model/
+│   ├── entity/      <span class="cm">← Entidades JPA</span>
+│   └── enums/       <span class="cm">← Enumeraciones</span>
+├── dto/
+│   ├── request/     <span class="cm">← Lo que el cliente envia</span>
+│   └── response/    <span class="cm">← Lo que el servidor responde</span>
+├── exception/       <span class="cm">← Excepciones + handler global</span>
+└── config/          <span class="cm">← Configuraciones (WebClient, etc)</span>
+</pre>
+  </li>
+  <li>Crear Entity → Repository → Service (interfaz + impl) → DTO → Controller → ExceptionHandler</li>
+  <li>Configurar <code>application.properties</code> con Eureka y BD</li>
+  <li>Agregar <code>@EnableDiscoveryClient</code> en la clase principal</li>
+  <li>Crear Dockerfile</li>
+  <li>Agregar al <code>docker-compose.yml</code></li>
+  <li>Agregar ruta en el Gateway</li>
+</ol>
+
+<h2 id="sivebo-defensa">Preguntas tipicas de defensa</h2>
+
+<h3>Arquitectura</h3>
+
+<h4>"Por que microservicios y no un monolito?"</h4>
+<p>Porque SIVEBO tiene dominios claramente separados (embalaje, finanzas, paquetes, sucursales, etc.) que pueden evolucionar independientemente. Si el equipo de finanzas necesita un cambio, se modifica y despliega solo ms_finanzas sin afectar a los demas. Ademas, si un servicio falla, los otros siguen funcionando.</p>
+
+<h4>"Que pasa si Eureka se cae?"</h4>
+<p>Los microservicios que ya se registraron mantienen una cache local del registro. Pueden seguir comunicandose entre si por un tiempo. Pero nuevos servicios no podran registrarse hasta que Eureka vuelva. En produccion se usan multiples instancias de Eureka (cluster) para evitar esto.</p>
+
+<h4>"Por que un Gateway?"</h4>
+<p>El cliente solo necesita conocer una URL (localhost:8080). El Gateway se encarga del enrutamiento, y en el futuro podemos agregar autenticacion centralizada, rate limiting, CORS y logging sin tocar los microservicios.</p>
+
+<h4>"Que es lb:// en las rutas del Gateway?"</h4>
+<p><code>lb://</code> significa <em>load balanced</em>. El Gateway le pregunta a Eureka la IP del servicio y si hay multiples instancias, distribuye las peticiones entre ellas.</p>
+
+<h3>Spring Boot</h3>
+
+<h4>"Que hace @SpringBootApplication?"</h4>
+<p>Es una meta-anotacion que combina: <code>@Configuration</code> (clase de configuracion), <code>@EnableAutoConfiguration</code> (configura todo automaticamente segun las dependencias), y <code>@ComponentScan</code> (escanea el package buscando @Service, @Controller, @Repository).</p>
+
+<h4>"Por que usas interfaz + implementacion en los Services?"</h4>
+<p>Principio de Inversion de Dependencias (SOLID). El Controller depende de la abstraccion (interfaz), no de la implementacion concreta. Esto facilita testing (puedes mockear) y permite cambiar la implementacion sin modificar los consumidores.</p>
+
+<h4>"Que es la inyeccion de dependencias?"</h4>
+<p>Spring crea los objetos (beans) y los conecta automaticamente. Cuando un Controller necesita un Service, no hace <code>new ServiceImpl()</code>. Spring detecta la dependencia y la inyecta via constructor (gracias a <code>@RequiredArgsConstructor</code>). Esto desacopla las clases entre si.</p>
+
+<h4>"Por que DTOs y no exponer la Entity directamente?"</h4>
+<p>Tres razones: (1) La Entity tiene relaciones JPA que pueden causar recursion infinita al serializar a JSON. (2) El Response puede incluir datos de multiples entidades. (3) El Request no necesita campos como ID o fechas que se generan automaticamente.</p>
+
+<h4>"Que hace @Valid?"</h4>
+<p>Activa la validacion automatica del DTO antes de que el metodo se ejecute. Si un campo tiene <code>@NotNull</code> y llega null, Spring lanza <code>MethodArgumentNotValidException</code> que nuestro <code>GlobalExceptionHandler</code> captura y devuelve como JSON con status 400.</p>
+
+<h4>"Que es JPA y que es Hibernate?"</h4>
+<p>JPA (Jakarta Persistence API) es la especificacion — define las anotaciones como <code>@Entity</code>, <code>@Id</code>, <code>@ManyToOne</code>. Hibernate es la implementacion que realmente ejecuta el SQL. Spring Boot usa Hibernate por defecto.</p>
+
+<h3>Docker</h3>
+
+<h4>"Que ventaja tiene Docker sobre instalar todo en la maquina?"</h4>
+<p>Cualquier persona del equipo ejecuta <code>docker compose up</code> y tiene el mismo entorno exacto: misma version de Java, MariaDB, configuracion. No hay "en mi maquina funciona". Ademas, es identico al entorno de produccion.</p>
+
+<h4>"Que es un multi-stage build?"</h4>
+<p>Un Dockerfile con dos FROM. La primera etapa compila con Maven + JDK (imagen grande). La segunda etapa solo copia el JAR y usa JRE (imagen chica). La imagen final pesa ~250MB en vez de ~800MB.</p>
+
+<h4>"Por que depends_on con condition: service_healthy?"</h4>
+<p>Porque <code>depends_on</code> solo garantiza que el contenedor inicio, no que la aplicacion esta lista. Con <code>service_healthy</code>, Docker espera a que el healthcheck pase (Eureka responde, MariaDB acepta conexiones) antes de arrancar los servicios dependientes.</p>
+
+<h4>"Que es la variable ${DB_HOST:localhost}?"</h4>
+<p>Es una variable de entorno con valor por defecto. En Docker Compose inyectamos <code>DB_HOST=mariadb</code> (nombre del servicio = hostname en la red Docker). En desarrollo local, como no hay variable, usa <code>localhost</code>.</p>
+
+</div>
+
+<script>
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar a').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.sidebar a').forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+document.querySelectorAll('h2[id], h3[id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
