@@ -292,6 +292,14 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** `USUARIO.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `USUARIO.nombre_rol` | FK | `GET /api/v1/roles` *(listar; UK `nombre_rol`)* |
+| `TOKEN_SESION.username` | FK | `GET /api/v1/usuarios` *(listar; UK `username`)* |
+| `USUARIO.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
+
 ---
 
 ### MS-02 · db_ms_sucursales — Configuración de Red
@@ -304,6 +312,13 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** Ninguna. Fuente de verdad de la red geográfica.
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `COMUNA.nombre_region` | FK | `GET /api/v1/regiones/buscar?nombre={nombre_region}` |
+| `SUCURSAL.nombre_comuna` | FK | `GET /api/v1/comunas/buscar?nombre={nombre_comuna}` |
+
 ---
 
 ### MS-03 · db_ms_admision — Ingreso de Carga
@@ -315,6 +330,18 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** `nro_doc_rem` / `nro_doc_dest` → `db_ms_clientes.CLIENTE.nro_documento` · `nombre_sucursal_origen` / `nombre_sucursal_dest` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `username_reg` → `db_ms_auth.USUARIO.username`
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `ADMISION.nombre_tipo` | FK | *(UK `nombre_tipo`; catálogo interno; sin endpoint público)* |
+| `ADMISION.nro_doc_rem` | Ref Ext | `GET /api/v1/clientes/buscar?tipoDocumento={tipo}&nroDocumento={nro_doc_rem}` |
+| `ADMISION.nro_doc_dest` | Ref Ext | `GET /api/v1/clientes/buscar?tipoDocumento={tipo}&nroDocumento={nro_doc_dest}` |
+| `ADMISION.nombre_sucursal_origen` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal_origen}` |
+| `ADMISION.nombre_sucursal_dest` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal_dest}` |
+| `ADMISION.username_reg` | Ref Ext | `GET /api/v1/usuarios` *(listar; UK `username`)* |
+| *(crea guía de despacho)* | Ref Ext salida | `POST /api/v1/guias` |
+
 ---
 
 ### MS-04 · db_ms_tracking — Logística y Estados
@@ -325,9 +352,17 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | `GUIA_DESPACHO` | id_guia `PK`, codigo_tracking `UK`, codigo_admision `Ref Ext`, fecha_creacion |
 | `HISTORIAL_LOGISTICO` | id_hist `PK`, codigo_tracking `FK`, nombre_estado `FK`, nombre_sucursal_actual `Ref Ext`, username `Ref Ext`, fecha_hora, comentario`?` |
 
-**Vista:** `V_ESTADO_ACTUAL_GUIA` — estado vigente por guía (último registro del historial).
-
 **Ref Ext:** `GUIA_DESPACHO.codigo_admision` → `db_ms_admision.ADMISION.codigo_admision` · `HISTORIAL_LOGISTICO.nombre_sucursal_actual` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `HISTORIAL_LOGISTICO.username` → `db_ms_auth.USUARIO.username`
+
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `HISTORIAL_LOGISTICO.codigo_tracking` | FK | `GET /api/v1/guias/buscar?codigoTracking={codigo_tracking}` |
+| `HISTORIAL_LOGISTICO.nombre_estado` | FK | *(UK `nombre_estado`; catálogo interno; sin endpoint público)* |
+| `GUIA_DESPACHO.codigo_admision` | Ref Ext | `GET /api/v1/admisiones?idSucursal={idSucursal}&nombreTipo={tipo}` *(validado en create)* |
+| `HISTORIAL_LOGISTICO.nombre_sucursal_actual` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal_actual}` |
+| `HISTORIAL_LOGISTICO.username` | Ref Ext | `GET /api/v1/usuarios` *(listar; UK `username`)* |
 
 ---
 
@@ -337,9 +372,14 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | --- | --- |
 | `INVENTARIO_PAQUETE` | id_inv `PK`, codigo_tracking `Ref Ext`, nombre_sucursal `Ref Ext`, fecha_ingreso, fecha_salida`?` |
 
-> **Nota de diseño:** La entidad `UBICACION_BODEGA` fue eliminada por no corresponder a un concepto del negocio. La ubicación física de un paquete queda expresada únicamente por la sucursal donde está almacenado.
-
 **Ref Ext:** `codigo_tracking` → `db_ms_tracking.GUIA_DESPACHO.codigo_tracking` · `nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
+
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `INVENTARIO_PAQUETE.codigo_tracking` | Ref Ext | `GET /api/v1/guias/buscar?codigoTracking={codigo_tracking}` |
+| `INVENTARIO_PAQUETE.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
 
 ---
 
@@ -352,6 +392,14 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | `STOCK_SUCURSAL` | id_stock `PK`, nombre_art `FK`, nombre_sucursal `Ref Ext`, cantidad_disponible, updated_at · `UK(nombre_art, nombre_sucursal)` |
 
 **Ref Ext:** `STOCK_SUCURSAL.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal`
+
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `ARTICULO_EMBALAJE.nombre_categoria` | FK | `GET /api/v1/categorias` *(listar; UK `nombre_categoria`)* |
+| `STOCK_SUCURSAL.nombre_art` + `nombre_sucursal` | FK + Ref Ext | `GET /api/v1/stock/verificar?idArt={idArt}&idSucursal={idSucursal}` *(UK compuesta)* |
+| `STOCK_SUCURSAL.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
 
 ---
 
@@ -366,6 +414,17 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** `VENTA.username` → `db_ms_auth.USUARIO.username` · `VENTA.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `DETALLE_VENTA.nombre_art` → `db_ms_inv_embalaje.ARTICULO_EMBALAJE.nombre` · `DETALLE_VENTA.codigo_admision` → `db_ms_admision.ADMISION.codigo_admision`
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `DETALLE_VENTA.nro_boleta` | FK | `GET /api/v1/ventas/buscar?nroBoleta={nro_boleta}` |
+| `VENTA.username` | Ref Ext | `GET /api/v1/usuarios` *(listar; UK `username`)* |
+| `VENTA.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
+| `DETALLE_VENTA.nombre_art` | Ref Ext | `GET /api/v1/stock/verificar?idArt={idArt}&idSucursal={idSucursal}` · `PATCH /api/v1/stock/descontar?idArt={idArt}&idSucursal={idSucursal}&cantidad={cantidad}` |
+| `DETALLE_VENTA.codigo_admision` | Ref Ext | *(nullable; referencia informativa, no validada en runtime)* |
+| *(registra movimiento de caja)* | Ref Ext salida | `GET /api/v1/cajas/sucursal/{idSucursal}` *(UK funcional)* · `GET /api/v1/aperturas/caja/{idCaja}/abierta` *(UK funcional)* · `POST /api/v1/movimientos` |
+
 ---
 
 ### MS-08 · db_ms_finanzas — Caja y Reportes
@@ -378,6 +437,16 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** `CAJA_SUCURSAL.nombre_sucursal` → `db_ms_sucursales.SUCURSAL.nombre_sucursal` · `APERTURA_CIERRE.username` → `db_ms_auth.USUARIO.username` · `MOVIMIENTO_CAJA.nro_boleta` → `db_ms_ventas.VENTA.nro_boleta`
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `APERTURA_CIERRE.nombre_sucursal` | FK | `GET /api/v1/cajas/sucursal/{idSucursal}` *(UK funcional: una caja por sucursal)* |
+| `MOVIMIENTO_CAJA.cod_sesion` | FK | `GET /api/v1/aperturas/caja/{idCaja}/abierta` *(UK funcional: sesión activa por caja)* |
+| `CAJA_SUCURSAL.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
+| `APERTURA_CIERRE.username` | Ref Ext | `GET /api/v1/usuarios` *(listar; UK `username`)* |
+| `MOVIMIENTO_CAJA.nro_boleta` | Ref Ext | `GET /api/v1/ventas/buscar?nroBoleta={nro_boleta}` |
+
 ---
 
 ### MS-09 · db_ms_clientes — Base de Datos de Personas
@@ -389,6 +458,12 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 
 **Ref Ext:** Ninguna. Fuente de verdad de personas.
 
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `CLIENTE.cod_tipo_doc` | FK | `GET /api/v1/tipos-documento/{codigo}` *(PK String = UK `codigo`)* |
+
 ---
 
 ### MS-10 · db_ms_portal — Consultas Públicas y Feedback
@@ -398,9 +473,15 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | `CONSULTA_PUBLICA` | id_cons `PK`, codigo_tracking_consultado, codigo_tracking `Ref Ext`·`?`, ip_usuario, fecha_hora |
 | `FEEDBACK_CLIENTE` | id_feed `PK`, codigo_tracking `Ref Ext`, nro_documento `Ref Ext`·`?`, calificacion (1–5), comentario`?`, fecha_hora |
 
-**Vista:** `V_CONSULTA_PUBLICA` — expone `guia_encontrada` como booleano derivado de `codigo_tracking IS NOT NULL`.
-
 **Ref Ext:** `codigo_tracking` → `db_ms_tracking.GUIA_DESPACHO.codigo_tracking` · `FEEDBACK_CLIENTE.nro_documento` → `db_ms_clientes.CLIENTE.nro_documento`
+
+**Endpoints asociados a FK y Ref Ext:**
+
+| Campo | Tipo | Endpoint UK |
+| --- | --- | --- |
+| `CONSULTA_PUBLICA.codigo_tracking` | Ref Ext | `GET /api/v1/guias/buscar?codigoTracking={codigo_tracking}` |
+| `FEEDBACK_CLIENTE.codigo_tracking` | Ref Ext | `GET /api/v1/guias/buscar?codigoTracking={codigo_tracking}` |
+| `FEEDBACK_CLIENTE.nro_documento` | Ref Ext | `GET /api/v1/clientes/buscar?tipoDocumento={tipo}&nroDocumento={nro_documento}` |
 
 ---
 
