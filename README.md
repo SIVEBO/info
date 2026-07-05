@@ -277,7 +277,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | `PK` | Clave primaria (`INT` / `BIGINT` + `AUTO_INCREMENT`) |
 | `UK` | Restricción de unicidad |
 | `FK` | Clave foránea interna (dentro del mismo microservicio) |
-| `Ref Ext` | Referencia externa a otro microservicio (solo el ID, sin FK formal) |
+| `Ref Ext` | Referencia externa a otro microservicio |
 | `?` | Campo nullable |
 
 ---
