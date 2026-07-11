@@ -6,6 +6,11 @@
 Fecha: Abril 2025
 Última actualización: Junio 2026
 
+Integrantes:
+    Lukas Avila
+    Daniel Muñoz
+    Miguel Urrutia
+
 ---
 
 ## 1. Definición del Negocio y Problemática
@@ -398,7 +403,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | Campo | Tipo | Endpoint UK |
 | --- | --- | --- |
 | `ARTICULO_EMBALAJE.nombre_categoria` | FK | `GET /api/v1/categorias` *(listar; UK `nombre_categoria`)* |
-| `STOCK_SUCURSAL.nombre_art` + `nombre_sucursal` | FK + Ref Ext | `GET /api/v1/stock/verificar?idArt={idArt}&idSucursal={idSucursal}` *(UK compuesta)* |
+| `STOCK_SUCURSAL.nombre_art` + `nombre_sucursal` | FK + Ref Ext | `GET /api/v1/stock/verificar?nombreArt={nombre_art}&nombreSucursal={nombre_sucursal}` *(UK compuesta)* |
 | `STOCK_SUCURSAL.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
 
 ---
@@ -421,7 +426,7 @@ El modelo de datos fue normalizado a **Tercera Forma Normal (3FN)**. Cada micros
 | `DETALLE_VENTA.nro_boleta` | FK | `GET /api/v1/ventas/buscar?nroBoleta={nro_boleta}` |
 | `VENTA.username` | Ref Ext | `GET /api/v1/usuarios` *(listar; UK `username`)* |
 | `VENTA.nombre_sucursal` | Ref Ext | `GET /api/v1/sucursales/buscar?nombre={nombre_sucursal}` |
-| `DETALLE_VENTA.nombre_art` | Ref Ext | `GET /api/v1/stock/verificar?idArt={idArt}&idSucursal={idSucursal}` · `PATCH /api/v1/stock/descontar?idArt={idArt}&idSucursal={idSucursal}&cantidad={cantidad}` |
+| `DETALLE_VENTA.nombre_art` | Ref Ext | `GET /api/v1/stock/verificar?nombreArt={nombre_art}&nombreSucursal={nombre_sucursal}` · `PATCH /api/v1/stock/descontar?nombreArt={nombre_art}&nombreSucursal={nombre_sucursal}&cantidad={cantidad}` |
 | `DETALLE_VENTA.codigo_admision` | Ref Ext | *(nullable; referencia informativa, no validada en runtime)* |
 | *(registra movimiento de caja)* | Ref Ext salida | `GET /api/v1/cajas/sucursal/{idSucursal}` *(UK funcional)* · `GET /api/v1/aperturas/caja/{idCaja}/abierta` *(UK funcional)* · `POST /api/v1/movimientos` |
 
